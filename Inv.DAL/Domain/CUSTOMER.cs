@@ -12,12 +12,12 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class MS_ItemImages
+    public partial class CUSTOMER
     {
-        public int ImgId { get; set; }
-        public Nullable<int> ItemCardId { get; set; }
-        public byte[] Image { get; set; }
-        public string ImgDesc1 { get; set; }
-        public string ImgDesc2 { get; set; }
+        public int CUSTOMER_ID { get; set; }
+        public string CUSTOMER_NAME { get; set; }
+        public string CUSTOMER_ADDRES { get; set; }
+        public string CUSTOMER_ADDRES_2 { get; set; }
+        public string PHONE { get; set; }
     }
 }

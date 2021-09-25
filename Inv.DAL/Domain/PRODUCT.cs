@@ -12,18 +12,16 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class GQ_GetUserBarnchAccess
+    public partial class PRODUCT
     {
-        public string USER_CODE { get; set; }
-        public int COMP_CODE { get; set; }
-        public int BRA_CODE { get; set; }
-        public string BRA_DESCL { get; set; }
-        public string BRA_DESCE { get; set; }
-        public string BRA_DESC { get; set; }
-        public bool EXECUTE { get; set; }
-        public bool CREATE { get; set; }
-        public bool EDIT { get; set; }
-        public bool DELETE { get; set; }
-        public bool PRINT { get; set; }
+        public int PRODUCT_ID { get; set; }
+        public string PRODUCT_NAME { get; set; }
+        public Nullable<int> PRODUCT_QET { get; set; }
+        public Nullable<decimal> PRODUCT_Purchasing_price { get; set; }
+        public Nullable<decimal> PRODUCT_PRICE { get; set; }
+        public Nullable<decimal> MinUnitPrice { get; set; }
+        public Nullable<int> ID_CAT { get; set; }
+        public string serial { get; set; }
+        public Nullable<int> TrType { get; set; }
     }
 }

@@ -12,17 +12,12 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Ms_ItemCollection
+    public partial class G_Nationality
     {
-        public int ItemCollectId { get; set; }
-        public Nullable<int> ItemCardId { get; set; }
-        public Nullable<int> SubItemId { get; set; }
-        public Nullable<int> UnitId { get; set; }
-        public Nullable<decimal> UnitRate { get; set; }
-        public Nullable<byte> ItemType { get; set; }
-        public Nullable<decimal> Quantity { get; set; }
-        public Nullable<decimal> QtyBeforRate { get; set; }
+        public int NationalityID { get; set; }
+        public string NationalityCode { get; set; }
+        public string DescA { get; set; }
+        public string DescL { get; set; }
         public string Remarks { get; set; }
-        public Nullable<bool> IsNotBasic { get; set; }
     }
 }

@@ -12,13 +12,11 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class G_PrintLog
+    public partial class Settings_Report
     {
-        public int PrintLogId { get; set; }
-        public Nullable<int> UserID { get; set; }
-        public Nullable<System.DateTime> PrintTime { get; set; }
-        public string DocName { get; set; }
-        public string AddField1 { get; set; }
-        public string AddField2 { get; set; }
+        public int ID_Report { get; set; }
+        public string ID_Button_Print { get; set; }
+        public string Name_Report { get; set; }
+        public string Name_Stored_Report { get; set; }
     }
 }

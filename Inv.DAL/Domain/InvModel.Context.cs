@@ -15,10 +15,10 @@ namespace Inv.DAL.Domain
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class InvEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public InvEntities()
-            : base("name=InvEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -27,7 +27,11 @@ namespace Inv.DAL.Domain
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cal_AccountChart> Cal_AccountChart { get; set; }
+        public virtual DbSet<CATEGRES> CATEGRES { get; set; }
+        public virtual DbSet<CUSTOMER> CUSTOMER { get; set; }
+        public virtual DbSet<EMPLOYEE> EMPLOYEE { get; set; }
+        public virtual DbSet<Enter_Money> Enter_Money { get; set; }
+        public virtual DbSet<familly_Cat> familly_Cat { get; set; }
         public virtual DbSet<G_AlertControl> G_AlertControl { get; set; }
         public virtual DbSet<G_AlertLog> G_AlertLog { get; set; }
         public virtual DbSet<G_AlertType> G_AlertType { get; set; }
@@ -39,9 +43,11 @@ namespace Inv.DAL.Domain
         public virtual DbSet<G_Currency> G_Currency { get; set; }
         public virtual DbSet<G_ModuleHelp> G_ModuleHelp { get; set; }
         public virtual DbSet<G_MODULES> G_MODULES { get; set; }
+        public virtual DbSet<G_Nationality> G_Nationality { get; set; }
+        public virtual DbSet<G_News> G_News { get; set; }
+        public virtual DbSet<G_Noteifications> G_Noteifications { get; set; }
         public virtual DbSet<G_NotificationCompany> G_NotificationCompany { get; set; }
         public virtual DbSet<G_PaperSize> G_PaperSize { get; set; }
-        public virtual DbSet<G_PrintLog> G_PrintLog { get; set; }
         public virtual DbSet<G_REGION> G_REGION { get; set; }
         public virtual DbSet<G_REGION_BRANCH> G_REGION_BRANCH { get; set; }
         public virtual DbSet<G_ReportWebSetting> G_ReportWebSetting { get; set; }
@@ -53,37 +59,28 @@ namespace Inv.DAL.Domain
         public virtual DbSet<G_SearchFormSetting> G_SearchFormSetting { get; set; }
         public virtual DbSet<G_SUB_SYSTEMS> G_SUB_SYSTEMS { get; set; }
         public virtual DbSet<G_SYSTEM> G_SYSTEM { get; set; }
-        public virtual DbSet<G_TransCounter> G_TransCounter { get; set; }
-        public virtual DbSet<G_TransCounterSetting> G_TransCounterSetting { get; set; }
         public virtual DbSet<G_USER_BRANCH> G_USER_BRANCH { get; set; }
         public virtual DbSet<G_USER_COMPANY> G_USER_COMPANY { get; set; }
         public virtual DbSet<G_USER_LOG> G_USER_LOG { get; set; }
-        public virtual DbSet<G_USER_MODULE> G_USER_MODULE { get; set; }
-        public virtual DbSet<G_UserGroups> G_UserGroups { get; set; }
-        public virtual DbSet<G_UserRole> G_UserRole { get; set; }
-        public virtual DbSet<G_UserRolePermissions> G_UserRolePermissions { get; set; }
         public virtual DbSet<G_USERS> G_USERS { get; set; }
-        public virtual DbSet<G_UserScreenFields> G_UserScreenFields { get; set; }
-        public virtual DbSet<G_VatNature> G_VatNature { get; set; }
         public virtual DbSet<I_Control> I_Control { get; set; }
-        public virtual DbSet<MS_ItemAlternatives> MS_ItemAlternatives { get; set; }
-        public virtual DbSet<MS_ItemCard> MS_ItemCard { get; set; }
-        public virtual DbSet<Ms_ItemCardOffers> Ms_ItemCardOffers { get; set; }
-        public virtual DbSet<MS_ItemCategory> MS_ItemCategory { get; set; }
-        public virtual DbSet<Ms_ItemCollection> Ms_ItemCollection { get; set; }
-        public virtual DbSet<MS_ItemCostHistory> MS_ItemCostHistory { get; set; }
-        public virtual DbSet<MS_ItemImages> MS_ItemImages { get; set; }
-        public virtual DbSet<Ms_ItemPartition> Ms_ItemPartition { get; set; }
-        public virtual DbSet<MS_Partition> MS_Partition { get; set; }
-        public virtual DbSet<MS_Stores> MS_Stores { get; set; }
+        public virtual DbSet<ITEME> ITEME { get; set; }
+        public virtual DbSet<ORDER_DELIVERY> ORDER_DELIVERY { get; set; }
+        public virtual DbSet<ORDER_SOFRA> ORDER_SOFRA { get; set; }
+        public virtual DbSet<ORDER_TECAYE> ORDER_TECAYE { get; set; }
+        public virtual DbSet<Outlet> Outlet { get; set; }
+        public virtual DbSet<PRODUCT> PRODUCT { get; set; }
+        public virtual DbSet<Purchases_Details> Purchases_Details { get; set; }
+        public virtual DbSet<Purchases_Master> Purchases_Master { get; set; }
+        public virtual DbSet<Report_Parameters> Report_Parameters { get; set; }
+        public virtual DbSet<Settings_Report> Settings_Report { get; set; }
+        public virtual DbSet<Stok_ORDER_DELIVERY> Stok_ORDER_DELIVERY { get; set; }
+        public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<Table_two_days> Table_two_days { get; set; }
+        public virtual DbSet<The_Gard> The_Gard { get; set; }
+        public virtual DbSet<C_item> C_item { get; set; }
+        public virtual DbSet<C_itemFamily> C_itemFamily { get; set; }
         public virtual DbSet<HIJRA_CONVERT> HIJRA_CONVERT { get; set; }
-        public virtual DbSet<I_VW_GetCompStatus> I_VW_GetCompStatus { get; set; }
-        public virtual DbSet<GQ_GetUserBarnchAccess> GQ_GetUserBarnchAccess { get; set; }
-        public virtual DbSet<GQ_GetUserBranch> GQ_GetUserBranch { get; set; }
-        public virtual DbSet<GQ_GetUserModule> GQ_GetUserModule { get; set; }
-        public virtual DbSet<GQ_GetUserRole> GQ_GetUserRole { get; set; }
-        public virtual DbSet<GQ_GetUsers> GQ_GetUsers { get; set; }
-        public virtual DbSet<GQ_ReportWebSetting> GQ_ReportWebSetting { get; set; }
     
         public virtual int G_ProcessTrans(Nullable<int> comp, Nullable<int> branch, string trType, string opMode, Nullable<int> trID, ObjectParameter trNo, ObjectParameter ok)
         {
@@ -110,17 +107,17 @@ namespace Inv.DAL.Domain
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("G_ProcessTrans", compParameter, branchParameter, trTypeParameter, opModeParameter, trIDParameter, trNo, ok);
         }
     
-        [DbFunction("InvEntities", "GFun_Companies")]
+        [DbFunction("Entities", "GFun_Companies")]
         public virtual IQueryable<GFun_Companies_Result> GFun_Companies(string userCode)
         {
             var userCodeParameter = userCode != null ?
                 new ObjectParameter("userCode", userCode) :
                 new ObjectParameter("userCode", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GFun_Companies_Result>("[InvEntities].[GFun_Companies](@userCode)", userCodeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GFun_Companies_Result>("[Entities].[GFun_Companies](@userCode)", userCodeParameter);
         }
     
-        [DbFunction("InvEntities", "GFun_UserCompanyBranch")]
+        [DbFunction("Entities", "GFun_UserCompanyBranch")]
         public virtual IQueryable<GFun_UserCompanyBranch_Result> GFun_UserCompanyBranch(string userCode, Nullable<int> compCode)
         {
             var userCodeParameter = userCode != null ?
@@ -131,10 +128,10 @@ namespace Inv.DAL.Domain
                 new ObjectParameter("CompCode", compCode) :
                 new ObjectParameter("CompCode", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GFun_UserCompanyBranch_Result>("[InvEntities].[GFun_UserCompanyBranch](@userCode, @CompCode)", userCodeParameter, compCodeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GFun_UserCompanyBranch_Result>("[Entities].[GFun_UserCompanyBranch](@userCode, @CompCode)", userCodeParameter, compCodeParameter);
         }
     
-        [DbFunction("InvEntities", "GFunc_GetPrivilage")]
+        [DbFunction("Entities", "GFunc_GetPrivilage")]
         public virtual IQueryable<GFunc_GetPrivilage_Result> GFunc_GetPrivilage(Nullable<int> year, Nullable<int> comp, Nullable<int> bra, string user, string sys, string mod)
         {
             var yearParameter = year.HasValue ?
@@ -161,10 +158,10 @@ namespace Inv.DAL.Domain
                 new ObjectParameter("Mod", mod) :
                 new ObjectParameter("Mod", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GFunc_GetPrivilage_Result>("[InvEntities].[GFunc_GetPrivilage](@year, @Comp, @bra, @user, @Sys, @Mod)", yearParameter, compParameter, braParameter, userParameter, sysParameter, modParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GFunc_GetPrivilage_Result>("[Entities].[GFunc_GetPrivilage](@year, @Comp, @bra, @user, @Sys, @Mod)", yearParameter, compParameter, braParameter, userParameter, sysParameter, modParameter);
         }
     
-        [DbFunction("InvEntities", "GFunc_GetPrivilageRole")]
+        [DbFunction("Entities", "GFunc_GetPrivilageRole")]
         public virtual IQueryable<GFunc_GetPrivilageRole_Result> GFunc_GetPrivilageRole(Nullable<int> comp, Nullable<int> bra, string user, string sys, string sub, string mod)
         {
             var compParameter = comp.HasValue ?
@@ -191,7 +188,7 @@ namespace Inv.DAL.Domain
                 new ObjectParameter("Mod", mod) :
                 new ObjectParameter("Mod", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GFunc_GetPrivilageRole_Result>("[InvEntities].[GFunc_GetPrivilageRole](@Comp, @bra, @user, @Sys, @sub, @Mod)", compParameter, braParameter, userParameter, sysParameter, subParameter, modParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GFunc_GetPrivilageRole_Result>("[Entities].[GFunc_GetPrivilageRole](@Comp, @bra, @user, @Sys, @sub, @Mod)", compParameter, braParameter, userParameter, sysParameter, subParameter, modParameter);
         }
     }
 }

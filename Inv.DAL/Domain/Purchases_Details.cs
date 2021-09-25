@@ -12,12 +12,16 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class G_VatNature
+    public partial class Purchases_Details
     {
-        public int VatNatID { get; set; }
-        public string VatNatureCode { get; set; }
-        public string VatNatureDescA { get; set; }
-        public string VatNatureDescE { get; set; }
-        public Nullable<decimal> VatPrc { get; set; }
+        public int ID { get; set; }
+        public int TrNo { get; set; }
+        public Nullable<int> ID_familly_Cat { get; set; }
+        public Nullable<int> ID_CAT { get; set; }
+        public Nullable<int> PRODUCT_ID { get; set; }
+        public Nullable<int> Purchases_Quantity { get; set; }
+        public Nullable<decimal> Purchases_Price { get; set; }
+        public Nullable<decimal> Sales_Price { get; set; }
+        public Nullable<decimal> MinUnitPrice { get; set; }
     }
 }

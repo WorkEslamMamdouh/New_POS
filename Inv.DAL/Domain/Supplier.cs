@@ -12,15 +12,13 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class GQ_GetUserRole
+    public partial class Supplier
     {
-        public string USER_CODE { get; set; }
-        public Nullable<bool> ISActive { get; set; }
-        public string DescA { get; set; }
-        public string DescE { get; set; }
-        public string Remarks { get; set; }
-        public int RoleId { get; set; }
-        public Nullable<bool> IsAvailable { get; set; }
-        public Nullable<bool> IsShowable { get; set; }
+        public int ID_Supplier { get; set; }
+        public string Name_Supplier { get; set; }
+        public string phone { get; set; }
+        public string Type_Supplier { get; set; }
+        public string Notes { get; set; }
+        public Nullable<bool> IS_Active { get; set; }
     }
 }

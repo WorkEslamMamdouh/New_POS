@@ -12,16 +12,14 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class MS_ItemAlternatives
+    public partial class ORDER_TECAYE
     {
-        public int AlterId { get; set; }
-        public Nullable<int> ItemCardId { get; set; }
-        public Nullable<int> AlterItemCardId { get; set; }
-        public Nullable<int> UnitId { get; set; }
-        public Nullable<decimal> UnitRate { get; set; }
-        public Nullable<byte> ItemType { get; set; }
-        public Nullable<decimal> Quantity { get; set; }
-        public Nullable<decimal> QtyBeforRate { get; set; }
-        public string Remarks { get; set; }
+        public int ID_Order_Tecaye { get; set; }
+        public string Date_Order_Tecaye { get; set; }
+        public Nullable<int> EMPLOYEE_ID { get; set; }
+        public Nullable<int> Namber_Order_Tecaye { get; set; }
+        public Nullable<decimal> Total_All { get; set; }
+        public string type_order { get; set; }
+        public Nullable<int> Num_Day { get; set; }
     }
 }

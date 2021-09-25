@@ -4,64 +4,61 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="331a2ca0c71d4a2698019b0b4c70657e" Name="Diagram1" ZoomLevel="60">
-        <EntityTypeShape EntityType="InvEntities.Cal_AccountChart" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_AlertControl" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_AlertLog" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_AlertType" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_BRANCH" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_Codes" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_COMPANY" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_CONTROL" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_COST_CENTER" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_Currency" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_ModuleHelp" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_MODULES" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_NotificationCompany" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_PaperSize" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_PrintLog" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_REGION" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_REGION_BRANCH" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_ReportWebSetting" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_Role" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_RoleModule" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_RoleUsers" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_SearchForm" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_SearchFormModule" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_SearchFormSetting" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_SUB_SYSTEMS" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_SYSTEM" Width="1.5" PointX="6.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_TransCounter" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_TransCounterSetting" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_USER_BRANCH" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_USER_COMPANY" Width="1.5" PointX="8.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_USER_LOG" Width="1.5" PointX="16.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_USER_MODULE" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_UserGroups" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_UserRole" Width="1.5" PointX="18.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_UserRolePermissions" Width="1.5" PointX="18.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_USERS" Width="1.5" PointX="18.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_UserScreenFields" Width="1.5" PointX="4.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.G_VatNature" Width="1.5" PointX="14.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.I_Control" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.MS_ItemAlternatives" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.MS_ItemCard" Width="1.5" PointX="6.75" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.Ms_ItemCardOffers" Width="1.5" PointX="8.75" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.MS_ItemCategory" Width="1.5" PointX="10.75" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.Ms_ItemCollection" Width="1.5" PointX="20.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.MS_ItemCostHistory" Width="1.5" PointX="20.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.MS_ItemImages" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.Ms_ItemPartition" Width="1.5" PointX="22.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.MS_Partition" Width="1.5" PointX="22.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.MS_Stores" Width="1.5" PointX="12.75" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.HIJRA_CONVERT" Width="1.5" PointX="14.75" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvEntities.I_VW_GetCompStatus" Width="1.5" PointX="3.375" PointY="23.75" />
-        <EntityTypeShape EntityType="InvEntities.GQ_GetUserBarnchAccess" Width="1.5" PointX="23.75" PointY="17.75" />
-        <EntityTypeShape EntityType="InvEntities.GQ_GetUserBranch" Width="1.5" PointX="23.75" PointY="21.75" />
-        <EntityTypeShape EntityType="InvEntities.GQ_GetUserModule" Width="1.5" PointX="0.75" PointY="24.75" />
-        <EntityTypeShape EntityType="InvEntities.GQ_GetUserRole" Width="1.5" PointX="17.75" PointY="24.75" />
-        <EntityTypeShape EntityType="InvEntities.GQ_GetUsers" Width="1.5" PointX="19.75" PointY="24.75" />
-        <EntityTypeShape EntityType="InvEntities.GQ_ReportWebSetting" Width="1.5" PointX="21.75" PointY="24.75" />
+      <Diagram DiagramId="331a2ca0c71d4a2698019b0b4c70657e" Name="Diagram1" ZoomLevel="46">
+        <EntityTypeShape EntityType="InvEntities.CATEGRES" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.CUSTOMER" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.EMPLOYEE" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InvEntities.Enter_Money" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InvEntities.familly_Cat" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.G_AlertControl" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InvEntities.G_AlertLog" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.G_AlertType" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="InvEntities.G_BRANCH" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="InvEntities.G_Codes" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.G_COMPANY" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="InvEntities.G_CONTROL" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="InvEntities.G_COST_CENTER" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="InvEntities.G_Currency" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="InvEntities.G_ModuleHelp" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="InvEntities.G_MODULES" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.G_Nationality" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="InvEntities.G_News" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.G_Noteifications" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="InvEntities.G_NotificationCompany" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="InvEntities.G_PaperSize" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="InvEntities.G_REGION" Width="1.5" PointX="10.75" PointY="12.75" />
+        <EntityTypeShape EntityType="InvEntities.G_REGION_BRANCH" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="InvEntities.G_ReportWebSetting" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.G_Role" Width="1.5" PointX="4.75" PointY="14.75" />
+        <EntityTypeShape EntityType="InvEntities.G_RoleModule" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="InvEntities.G_RoleUsers" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="InvEntities.G_SearchForm" Width="1.5" PointX="6.75" PointY="15.75" />
+        <EntityTypeShape EntityType="InvEntities.G_SearchFormModule" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.G_SearchFormSetting" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InvEntities.G_SUB_SYSTEMS" Width="1.5" PointX="16.75" PointY="8.75" />
+        <EntityTypeShape EntityType="InvEntities.G_SYSTEM" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="InvEntities.G_USER_BRANCH" Width="1.5" PointX="12.75" PointY="16.75" />
+        <EntityTypeShape EntityType="InvEntities.G_USER_COMPANY" Width="1.5" PointX="14.75" PointY="16.75" />
+        <EntityTypeShape EntityType="InvEntities.G_USER_LOG" Width="1.5" PointX="16.75" PointY="16.75" />
+        <EntityTypeShape EntityType="InvEntities.G_USERS" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.I_Control" Width="1.5" PointX="18.75" PointY="8.75" />
+        <EntityTypeShape EntityType="InvEntities.ITEME" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="InvEntities.ORDER_DELIVERY" Width="1.5" PointX="2.75" PointY="19.75" />
+        <EntityTypeShape EntityType="InvEntities.ORDER_SOFRA" Width="1.5" PointX="8.75" PointY="19.75" />
+        <EntityTypeShape EntityType="InvEntities.ORDER_TECAYE" Width="1.5" PointX="16.75" PointY="19.75" />
+        <EntityTypeShape EntityType="InvEntities.Outlet" Width="1.5" PointX="18.75" PointY="19.75" />
+        <EntityTypeShape EntityType="InvEntities.PRODUCT" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.Purchases_Details" Width="1.5" PointX="20.75" PointY="4.75" />
+        <EntityTypeShape EntityType="InvEntities.Purchases_Master" Width="1.5" PointX="4.75" PointY="20.75" />
+        <EntityTypeShape EntityType="InvEntities.Report_Parameters" Width="1.5" PointX="20.75" PointY="8.75" />
+        <EntityTypeShape EntityType="InvEntities.Settings_Report" Width="1.5" PointX="10.75" PointY="20.75" />
+        <EntityTypeShape EntityType="InvEntities.Stok_ORDER_DELIVERY" Width="1.5" PointX="20.75" PointY="12.75" />
+        <EntityTypeShape EntityType="InvEntities.Supplier" Width="1.5" PointX="12.75" PointY="20.75" />
+        <EntityTypeShape EntityType="InvEntities.Table_two_days" Width="1.5" PointX="20.75" PointY="16.75" />
+        <EntityTypeShape EntityType="InvEntities.The_Gard" Width="1.5" PointX="20.75" PointY="19.75" />
+        <EntityTypeShape EntityType="InvEntities.C_item" Width="1.5" PointX="22.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InvEntities.C_itemFamily" Width="1.5" PointX="22.75" PointY="7.75" />
+        <EntityTypeShape EntityType="InvEntities.HIJRA_CONVERT" Width="1.5" PointX="22.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,14 +12,15 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class G_TransCounterSetting
+    public partial class G_News
     {
-        public int CompCode { get; set; }
-        public string SystemCode { get; set; }
-        public string TransType { get; set; }
-        public Nullable<byte> YearStartValueType { get; set; }
-        public Nullable<bool> ISBranchCounter { get; set; }
-        public Nullable<int> YearStartFixedValue { get; set; }
-        public string Remarks { get; set; }
+        public int NewsID { get; set; }
+        public Nullable<int> NewsTypeCode { get; set; }
+        public Nullable<int> NewsToCode { get; set; }
+        public Nullable<System.DateTime> NewsDate { get; set; }
+        public Nullable<System.DateTime> NewsExpiry { get; set; }
+        public string NewsText { get; set; }
+        public Nullable<int> CompCode { get; set; }
+        public Nullable<int> BranchCode { get; set; }
     }
 }

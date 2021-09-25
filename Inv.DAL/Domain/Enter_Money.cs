@@ -12,13 +12,14 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class GQ_GetUserBranch
+    public partial class Enter_Money
     {
-        public string USER_CODE { get; set; }
-        public int COMP_CODE { get; set; }
-        public int BRA_CODE { get; set; }
-        public string BRA_DESCL { get; set; }
-        public string BRA_DESCE { get; set; }
-        public string BRA_DESC { get; set; }
+        public int id { get; set; }
+        public string Dasc_Name { get; set; }
+        public Nullable<decimal> pirce { get; set; }
+        public Nullable<int> Num_Day { get; set; }
+        public Nullable<int> EMPLOYEE_ID { get; set; }
+        public string Time { get; set; }
+        public string Tr_Type { get; set; }
     }
 }

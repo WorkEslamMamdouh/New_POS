@@ -12,15 +12,14 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class G_UserScreenFields
+    public partial class Stok_ORDER_DELIVERY
     {
-        public int ScreenFieldId { get; set; }
-        public Nullable<int> UserModuleId { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<int> UserGroupId { get; set; }
-        public string FieldName { get; set; }
-        public string AuthDesc { get; set; }
-        public Nullable<bool> Authinticated { get; set; }
-        public Nullable<int> AuthenticatedBy { get; set; }
+        public int ID_DELIVERY { get; set; }
+        public Nullable<int> PRODUCT_ID { get; set; }
+        public Nullable<double> Quantity_sell { get; set; }
+        public Nullable<decimal> price_One_part { get; set; }
+        public Nullable<decimal> Total_Price_One_Part { get; set; }
+        public string Notes_Order { get; set; }
+        public Nullable<int> FK_ORDER_Delivery { get; set; }
     }
 }

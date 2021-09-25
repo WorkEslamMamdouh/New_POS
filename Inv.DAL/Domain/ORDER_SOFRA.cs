@@ -12,12 +12,15 @@ namespace Inv.DAL.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class G_TransCounter
+    public partial class ORDER_SOFRA
     {
-        public int CompCode { get; set; }
-        public int BranchCode { get; set; }
-        public string SystemCode { get; set; }
-        public string TransType { get; set; }
-        public Nullable<int> LastSerial { get; set; }
+        public int ID_ORDER_SOFRA { get; set; }
+        public Nullable<int> QONTTE_ORDER_SOFRA { get; set; }
+        public Nullable<decimal> TAX_ORDER_SOFRA { get; set; }
+        public Nullable<decimal> SERVICE_ORDER_SOFRA { get; set; }
+        public Nullable<int> SOFRA_ID { get; set; }
+        public Nullable<int> EMPLOYEE_ID { get; set; }
+        public Nullable<int> Namber_Order_Sofra { get; set; }
+        public Nullable<System.DateTime> Date_Order_Sofra { get; set; }
     }
 }
