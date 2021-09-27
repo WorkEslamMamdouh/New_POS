@@ -254,7 +254,6 @@
     <Compile Include="Controllers\G_SUB_SYSTEController.cs" />
     <Compile Include="Controllers\GCodesController.cs" />
     <Compile Include="Controllers\GBranchController.cs" />
-    <Compile Include="Controllers\NationalityController.cs" />
     <Compile Include="Controllers\Shared\G_RoleController.cs" />
     <Compile Include="Controllers\Shared\G_RoleUsersController.cs" />
     <Compile Include="Controllers\Shared\I_ControlController.cs" />

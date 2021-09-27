@@ -60,8 +60,7 @@ namespace Inv.BLL.Services.GCostCenter
              
             foreach (var entity in Lstservice)
             {
-                if (entity.StatusFlag == 'd')
-                    unitOfWork.Repository<G_COST_CENTER>().Delete(entity.COMP_CODE);
+           
                 if (entity.StatusFlag == 'u')
                 {
                     
