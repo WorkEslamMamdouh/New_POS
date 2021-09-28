@@ -15,6 +15,15 @@ var Modules = {
     DefBranches: "DefBranches",
     Clientaccstat: "Clientaccstat",
     USERS: "USERS",
+    SlsTrSales: "SlsTrSales",
+    SlsTrReturn: "SlsTrReturn",
+    Categories: "Categories",
+    Items: "Items",
+    Purchases: "Purchases",
+    Supplier: "Supplier",
+    Salesinventory: "Salesinventory",
+    familly_Cat: "familly_Cat",
+    Income_expenses: "Income_expenses",
 };
 var MessageType = {
     Error: '2',
@@ -1352,5 +1361,39 @@ function CompareTime(t1, t2) {
     var m2 = Number(t2.slice(3, 5));
     var h3 = (h1 - h2) * 60 + (m1 - m2);
     return h3;
+}
+function formatDate(date) {
+    var d = new Date(date), month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear();
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+    return [year, month, day].join('-');
+}
+function DateFormatDataBes(dateForm) {
+    try {
+        var date = new Date();
+        var myDate = "";
+        if (dateForm.indexOf("Date(") > -1) {
+            myDate = dateForm.split('(')[1].split(')')[0];
+            date = new Date(Number(myDate));
+        }
+        else {
+            date = new Date(dateForm);
+        }
+        var yy = date.getFullYear();
+        var mm = (date.getMonth() + 1);
+        var dd = date.getDate();
+        var year = yy;
+        var month = (mm < 10) ? ("0" + mm.toString()) : mm.toString();
+        var day = (dd < 10) ? ("0" + dd.toString()) : dd.toString();
+        //The specified value "'2018-01-15'" does not conform to the required format, "dd/MM/yyyy".
+        //var startDate = day + "/" + month + "/" + year;
+        var startDate = year + "-" + month + "-" + day;
+        return startDate;
+    }
+    catch (e) {
+        return DateFormatRep((new Date()).toString());
+    }
 }
 //# sourceMappingURL=App.js.map

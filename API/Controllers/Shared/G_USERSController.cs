@@ -304,8 +304,16 @@ namespace Inv.API.Controllers
                 {
                     try
                     {
+
+
+                     
+
                         if (USER.G_USERS.Flag_Mastr == "i")
                         {
+
+                            string EMPLOY = " insert_EMPLOYEE '" + USER.G_USERS.USER_NAME + "','" + USER.G_USERS.USER_CODE + "'";
+                            db.Database.ExecuteSqlCommand(EMPLOY);
+
                             var usr = G_USERSService.Insert(USER.G_USERS);
 
 

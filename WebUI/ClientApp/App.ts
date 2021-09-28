@@ -4,14 +4,26 @@
 
 const JsGridHeaderCenter: string = "JsGridHeaderCenter";
 const TransparentButton: string = "TransparentButton";
- var Modules = {
-     Home: "Home",
-     branches: "branches",
-     Acc: "Acc",
-     DefBranches: "DefBranches",  
-    Clientaccstat: "Clientaccstat", 
+var Modules = {
+    Home: "Home",
+    branches: "branches",
+    Acc: "Acc",
+    DefBranches: "DefBranches",
+    Clientaccstat: "Clientaccstat",
     USERS: "USERS",
-   
+
+
+    SlsTrSales: "SlsTrSales",
+    SlsTrReturn: "SlsTrReturn",
+    Categories: "Categories",
+    Items: "Items",
+    Purchases: "Purchases",
+    Supplier: "Supplier",
+    Salesinventory: "Salesinventory",
+    familly_Cat: "familly_Cat",
+    Income_expenses: "Income_expenses",
+
+
 };
 var MessageType = {
     Error: '2',
@@ -391,14 +403,14 @@ function NavigateToSearchResult(Navigate: () => void) {
 //        data: { actionName: actionName, controllerName: controllerName }
 //    }).responseJSON).result as string
 //};
- var Url = {
+var Url = {
 
     Action: (actionName: string, controllerName: string) => (
         location.origin + "/" + controllerName + "/" + actionName
     )
 };
 
-var Ajax = {   
+var Ajax = {
     Call: <T>(settings: JQueryAjaxSettings): T => {
         try {
             ////debugger
@@ -416,7 +428,7 @@ var Ajax = {
         }
     },
     CallAsync: <T>(settings: JQueryAjaxSettings) => {
-       // CheckTime();
+        // CheckTime();
         //run_waitMe();
         $.ajax({
             type: settings.type,
@@ -430,15 +442,15 @@ var Ajax = {
             success: (d) => {
                 settings.success(d, "", null);
                 $(".waitMe").removeAttr("style").fadeOut(200);
-                
-                 
+
+
 
             },
             error: () => { $(".waitMe").removeAttr("style").fadeOut(200); }
         })
     },
     Callsync: <T>(settings: JQueryAjaxSettings) => {
-       // CheckTime();
+        // CheckTime();
         //run_waitMe();
         $.ajax({
 
@@ -454,8 +466,8 @@ var Ajax = {
             success: (d) => {
                 settings.success(d, "", null);
                 $(".waitMe").removeAttr("style").fadeOut(2500);
-               
-       
+
+
 
             },
             error: () => { $(".waitMe").removeAttr("style").fadeOut(2500); }
@@ -850,7 +862,7 @@ function DateFormat(dateForm: string): string {
 }
 
 function DateFormatRep(dateForm: string): string {
-  
+
     try {
         var date: Date = new Date();
         let myDate: string = "";
@@ -874,7 +886,7 @@ function DateFormatRep(dateForm: string): string {
         //The specified value "'2018-01-15'" does not conform to the required format, "dd/MM/yyyy".
         var startDate = day + "/" + month + "/" + year;
 
-        
+
 
         return startDate;
     } catch (e) {
@@ -885,7 +897,7 @@ function DateFormatRep(dateForm: string): string {
 
 
 
-function GetTime(){
+function GetTime() {
     var date: Date = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
@@ -898,41 +910,38 @@ function GetTime(){
     let TrTime = strTime;
     return TrTime;
 }
- 
+
 
 
 function GetVat(Nature: number, Prc: number, VatType: number) {
 
     var Tax_Type_Model: Tax_Type = new Tax_Type();
-    
-    if (VatType == 1 || VatType == 7 || VatType == 4)
-    {
+
+    if (VatType == 1 || VatType == 7 || VatType == 4) {
         Tax_Type_Model.Nature = Nature;
         Tax_Type_Model.Prc = Prc;
         Tax_Type_Model.VatType = VatType;
-        
+
         return Tax_Type_Model;
     }
-    if (VatType == 5 || VatType == 2)
-    { 
+    if (VatType == 5 || VatType == 2) {
         Tax_Type_Model.Nature = 2;
         Tax_Type_Model.Prc = 0;
         Tax_Type_Model.VatType = VatType;
 
         return Tax_Type_Model;
     }
-    if (VatType == 3 || VatType == 6)
-    { 
+    if (VatType == 3 || VatType == 6) {
         Tax_Type_Model.Nature = 4;
         Tax_Type_Model.Prc = 0;
         Tax_Type_Model.VatType = VatType;
 
         return Tax_Type_Model;
     }
-    
+
 
 }
- 
+
 function DateTimeFormat(dateForm: string): string {
     try {
 
@@ -975,7 +984,7 @@ function ConvertToDateDash(date: string): Date {
 
         let x = date.split(" ");
         let dt = x[0].split("-");
-        
+
 
 
         let year = dt[0];
@@ -983,7 +992,7 @@ function ConvertToDateDash(date: string): Date {
         let day = dt[2];
 
 
-        var startDate = year + "-" + month + "-" + day + "T00:00:00" ;
+        var startDate = year + "-" + month + "-" + day + "T00:00:00";
         let form_date = new Date(startDate);
         return form_date;
     } catch (e) {
@@ -1182,22 +1191,22 @@ function DisplayMassage(msg_Ar: string, msg_En: string, msg_type: string, OnOk?:
         $('#Text_Massage').html(msg_Ar);
 
     if (msg_type == '1') {
-        
+
         //$('#DivMassage').attr('class', 'col-lg-12  margingred  borderred');
         //$('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #5cb702; background-color : #4612128f !important	');
         //$('#Text_Massage').attr('style', 'text-align: center;font-weight: bold;color: #5cb702;margin-top: 14px; font-size: 24px; margin-left: 10%; margin-right: 6%;');
 
         //setTimeout(function () { $('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #5cb702; display: none; '); }, 6000);
-         
+
         $('#DivMassage').attr('class', 'col-lg-12  margingred  borderred');
         $('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #5cb702; background-color : #009605 !important	');
         $('#Text_Massage').attr('style', 'text-align: center;font-weight: bold;color: #ffffff;margin-top: 14px; font-size: 24px; margin-left: 10%; margin-right: 6%;');
 
         setTimeout(function () { $('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #5cb702; display: none; '); }, 6000);
-        
+
     }
     else if (msg_type == '2') {
-       
+
         //$('#DivMassage').attr('class', 'col-lg-12  margingred  borderred');
         //$('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #e41b1b; background-color : #4612128f !important	');
         //$('#Text_Massage').attr('style', 'text-align: center;font-weight: bold;color: #e41b1b;margin-top: 14px; font-size: 24px; margin-left: 10%;  margin-right: 6%;');
@@ -1211,7 +1220,7 @@ function DisplayMassage(msg_Ar: string, msg_En: string, msg_type: string, OnOk?:
         setTimeout(function () { $('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #e41b1b; display: none; '); }, 6000);
     }
     else if (msg_type == '3') {
-      
+
         //$('#DivMassage').attr('class', 'col-lg-12  margingred  borderred');
         //$('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #f0ad4e; background-color : #123a468f !important	');
         //$('#Text_Massage').attr('style', 'text-align: center;font-weight: bold;color: #f0ad4e;margin-top: 14px; font-size: 24px; margin-left: 10%;  margin-right: 6%;');
@@ -1256,7 +1265,7 @@ function DisplayMassage_Processes(msg_Ar: string, msg_En: string, msg_type: stri
     else if (msg_type == '3') {
         $('#DivMassage').attr('class', 'col-lg-12  margingred  borderred');
         $('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #f0ad4e; background-color : #000000 !important	');
-        $('#Text_Massage').attr('style', 'text-align: center;font-weight: bold;color: #f0ad4e;margin-top: 14px; font-size: 24px; margin-left: 10%;  margin-right: 6%;'); 
+        $('#Text_Massage').attr('style', 'text-align: center;font-weight: bold;color: #f0ad4e;margin-top: 14px; font-size: 24px; margin-left: 10%;  margin-right: 6%;');
 
         setTimeout(function () { $('#DivMassage').attr('style', ' border-style: solid;border: solid;border-color: #e41b1b; display: none; '); }, 7000);
 
@@ -1269,7 +1278,7 @@ function Errorinput(input: any) {
 
         $('' + input.selector + '').addClass('text_Mandatory');
         $('' + input.selector + '').focus();
-        setTimeout(function () { $('' + input.selector + '').removeClass('text_Mandatory'); }, 5000); 
+        setTimeout(function () { $('' + input.selector + '').removeClass('text_Mandatory'); }, 5000);
     }
     else {
         input.classList.add('text_Mandatory');
@@ -1521,8 +1530,7 @@ function OpenPopUp(moduleCode: string, PopupBody: string, PopupDialog: string) {
 
 }
 //to be validated  in insert / update all trnasacations 
-function CheckDate(TrDate: string, StDt: string, EdDt: string): boolean
-{
+function CheckDate(TrDate: string, StDt: string, EdDt: string): boolean {
 
 
     ////debugger
@@ -1533,12 +1541,12 @@ function CheckDate(TrDate: string, StDt: string, EdDt: string): boolean
     if ((check <= to && check >= from))
         return (true);
     else
-        return false; 
+        return false;
 
-  
+
 
 }
- 
+
 function ThousandsSeparator(num: number): string {
     let numAsString = num.toString();
 
@@ -1590,14 +1598,14 @@ function convertToG(date: string) {
 function CheckTime() {
     var SysSession: SystemSession = GetSystemSession();
 
-     var timelogin;
+    var timelogin;
     var dt = new Date();
-    var timenow =    dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-    var LastAccess = localStorage.getItem("LastAccess");  
-    var SysTimeOut = localStorage.getItem("startTimeOut");      
+    var timenow = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+    var LastAccess = localStorage.getItem("LastAccess");
+    var SysTimeOut = localStorage.getItem("startTimeOut");
     timelogin = LastAccess
     var timeout = CompareTime(timenow, timelogin);
-    localStorage.setItem("LastAccess", timenow) 
+    localStorage.setItem("LastAccess", timenow)
     var newSysTimeOut;
 
     try {
@@ -1609,19 +1617,19 @@ function CheckTime() {
         }
 
     } catch (e) {
-        newSysTimeOut = 10; 
+        newSysTimeOut = 10;
     }
-   
-    if (timeout > newSysTimeOut || timeout < 0)    
+
+    if (timeout > newSysTimeOut || timeout < 0)
         MessageBox.Show("لقد استنفذت وقت الجلسة، يجب معاودة الدخول مرة اخري ", "System Time out , Please relogin ", function () {
-            document.cookie = "Inv1_systemProperties=" + null + ";expires=Fri, 31 Dec 2030 23:59:59 GMT;path=/"; 
+            document.cookie = "Inv1_systemProperties=" + null + ";expires=Fri, 31 Dec 2030 23:59:59 GMT;path=/";
             document.cookie = "Inv1_Privilage=" + null + ";expires=Fri, 31 Dec 2030 23:59:59 GMT;path=/";
             document.cookie = "Privilage=" + null + ";expires=Fri, 31 Dec 2030 23:59:59 GMT;path=/";
 
             window.location.href = "/Login/LoginIndex";
         }), 1000;
 
-    } 
+}
 
 
 function Get_PriceWithVAT(item_unitprice: number, VatPRc: number, flag_PriceWithVAT: boolean) {
@@ -1663,10 +1671,56 @@ function CompareTime(t1: string, t2: string): number {
     var h2: number = Number(t2.slice(0, 2));
     var m2: number = Number(t2.slice(3, 5));
     var h3: number = (h1 - h2) * 60 + (m1 - m2);
-    
-    return h3;
-     
-} 
-  
 
- 
+    return h3;
+
+}
+
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+
+function DateFormatDataBes(dateForm: string): string {
+
+    try {
+        var date: Date = new Date();
+        let myDate: string = "";
+        if (dateForm.indexOf("Date(") > -1) {
+            myDate = dateForm.split('(')[1].split(')')[0];
+            date = new Date(Number(myDate));
+        }
+        else {
+            date = new Date(dateForm);
+        }
+
+
+        let yy = date.getFullYear();
+        let mm = (date.getMonth() + 1);
+        let dd = date.getDate();
+
+        let year = yy;
+        let month = (mm < 10) ? ("0" + mm.toString()) : mm.toString();
+        let day = (dd < 10) ? ("0" + dd.toString()) : dd.toString();
+
+        //The specified value "'2018-01-15'" does not conform to the required format, "dd/MM/yyyy".
+        //var startDate = day + "/" + month + "/" + year;
+        var startDate = year + "-" + month + "-" + day;
+
+
+        return startDate;
+    } catch (e) {
+        return DateFormatRep((new Date()).toString());
+    }
+}

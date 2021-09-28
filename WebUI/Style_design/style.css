@@ -1985,8 +1985,8 @@ canvas {
     /* transition: all .4s ease 0s; */
     z-index: 999;
     border: 1px solid #303030;
-    right: 69%;
-    top: 17%;
+    /*right: 69%;*/
+    top: 37%;
 }
 
     .chat-box-wrap.collapse.in.castmr {
@@ -2010,7 +2010,7 @@ canvas {
 
 .castmr-button {
     bottom: 40px;
-    right: 25px;
+    /*right: 25px;*/
     height: 40px;
     width: 40px;
     background: rgba(255,127,77,1);
@@ -2027,7 +2027,7 @@ canvas {
     cursor: pointer;
     color: #fff;
     font-size: 30px;
-    margin-right: 359px;
+    /*margin-right: 359px;*/
 }
 
 

@@ -11,7 +11,6 @@ var USERS;
     var BranchCode;
     var MSG_ID;
     var CountGrid = 0;
-    var btnSearch;
     var btnsave;
     var btnEdit;
     var btnback;
@@ -22,17 +21,13 @@ var USERS;
     var btnGive_assignments;
     var btnBlock_permissions;
     var searchbutmemreport;
-    var ddlStore;
     var drpuserType;
-    var ddlSalesman;
-    var ddlCashBox;
     var drpRoles;
     var drpuserType_2;
     var drpStatus;
     var txtUSER_CODE;
     var txtUSER_PASSWORD;
     var txtUSER_NAME;
-    var txtDepartmentName;
     var txtJobTitle;
     var txtMobile;
     var txtEmail;
@@ -105,15 +100,10 @@ var USERS;
         btnLoadRoles = document.getElementById("btnLoadRoles");
         btnGive_assignments = document.getElementById("btnGive_assignments");
         btnBlock_permissions = document.getElementById("btnBlock_permissions");
-        ddlStore = document.getElementById("ddlStore");
-        ;
-        ddlSalesman = document.getElementById("ddlSalesman");
-        ddlCashBox = document.getElementById("ddlCashBox");
         drpStatus = document.getElementById("drpStatus");
         txtUSER_CODE = document.getElementById("txtUSER_CODE");
         txtUSER_PASSWORD = document.getElementById("txtUSER_PASSWORD");
         txtUSER_NAME = document.getElementById("txtUSER_NAME");
-        txtDepartmentName = document.getElementById("txtDepartmentName");
         txtJobTitle = document.getElementById("txtJobTitle");
         txtMobile = document.getElementById("txtMobile");
         txtEmail = document.getElementById("txtEmail");
@@ -130,7 +120,6 @@ var USERS;
         drpuserType = document.getElementById("drpuserType");
         drpuserType_2 = document.getElementById("drpuserType_2");
         drpRoles = document.getElementById("drpRoles");
-        btnSearch = document.getElementById("btnEmpSearch");
         btnAddDetails.disabled = !SysSession.CurrentPrivileges.AddNew;
         btnEdit.disabled = !SysSession.CurrentPrivileges.EDIT;
     }
@@ -142,44 +131,10 @@ var USERS;
         btnback.onclick = btnback_onclick;
         btnEdit.onclick = btnEdit_onclick;
         drpRoles.onchange = drpRoles_change;
-        drpuserType_2.onchange = drpuserType_change;
         btnAddDetails.onclick = btnAddDetails_onclick;
         btnGive_assignments.onclick = Give_assignments_onClick;
         btnBlock_permissions.onclick = Block_permissions_onClick;
         searchbutmemreport.onkeyup = _SearchBox_Change;
-        btnSearch.onclick = btnSearch_onclick;
-    }
-    function drpuserType_change() {
-        var selectedRelease = List_UserType.filter(function (x) { return x.CodeValue == Number(drpuserType_2.value); })[0];
-        var resilt = selectedRelease.CodeValue;
-        if (resilt == 1) {
-            $("#selsman").removeClass("display_none");
-            $("#cashbox").addClass("display_none");
-            ddlCashBox.value = "null";
-        }
-        else if (resilt == 2) {
-            $("#cashbox").removeClass("display_none");
-            $("#selsman").addClass("display_none");
-            ddlSalesman.value = "null";
-            ddlStore.value = "null";
-        }
-        else if (resilt == 3) {
-            $("#cashbox").removeClass("display_none");
-            $("#selsman").removeClass("display_none");
-            ddlCashBox.value = "null";
-            ddlSalesman.value = "null";
-            ddlStore.value = "null";
-        }
-        else {
-            $("#cashbox").addClass("display_none");
-            $("#selsman").addClass("display_none");
-            ddlCashBox.value = "null";
-            ddlSalesman.value = "null";
-            ddlStore.value = "null";
-        }
-        $('#ddlCashBox').prop('selectedIndex', 0);
-        $('#ddlSalesman').prop('selectedIndex', 0);
-        $('#ddlStore').prop('selectedIndex', 0);
     }
     function Fillddlstatus() {
         if (SysSession.CurrentEnvironment.ScreenLanguage == "ar") {
@@ -221,70 +176,6 @@ var USERS;
             }
         });
     }
-    function fillddlSalesman() {
-        Ajax.Callsync({
-            type: "Get",
-            url: sys.apiUrl("AccDefSalesMen", "GetAllSalesPeople"),
-            data: {
-                CompCode: compcode, BranchCode: BranchCode, IsSalesEnable: true, UserCode: SysSession.CurrentEnvironment.UserCode, Token: "HGFD-" + SysSession.CurrentEnvironment.Token
-            },
-            success: function (d) {
-                var result = d;
-                if (result.IsSuccess) {
-                    SalesmanDetails = result.Response;
-                    SalesmanDetails = SalesmanDetails.filter(function (s) { return s.Isactive == true; });
-                    if (SysSession.CurrentEnvironment.ScreenLanguage == "en") {
-                        DocumentActions.FillCombowithdefult(SalesmanDetails, ddlSalesman, "SalesmanId", "NameE", "Select saleman");
-                    }
-                    else {
-                        DocumentActions.FillCombowithdefult(SalesmanDetails, ddlSalesman, "SalesmanId", "NameA", "اختر المندوب");
-                    }
-                    SysSession.CurrentEnvironment.UserType == 1 ? ($('#ddlSalesman option[value="null"]').remove()) : $('#ddlSalesman').prop('selectedIndex', 0);
-                }
-            }
-        });
-    }
-    function FillddlCashBox() {
-        Ajax.Callsync({
-            type: "Get",
-            url: sys.apiUrl("AccDefBox", "GetAll"),
-            data: { compCode: compcode, BranchCode: BranchCode, UserCode: SysSession.CurrentEnvironment.UserCode, Token: "HGFD-" + SysSession.CurrentEnvironment.Token },
-            success: function (d) {
-                var result = d;
-                if (result.IsSuccess) {
-                    CashboxDetails = result.Response;
-                    if (SysSession.CurrentEnvironment.ScreenLanguage == "en") {
-                        DocumentActions.FillCombowithdefult(CashboxDetails, ddlCashBox, "CashBoxID", "CashBox_DescE", " ");
-                    }
-                    else {
-                        DocumentActions.FillCombowithdefult(CashboxDetails, ddlCashBox, "CashBoxID", "CashBox_DescA", "اختر الصندوق");
-                    }
-                }
-            }
-        });
-    }
-    function FillddlStore() {
-        Ajax.Callsync({
-            type: "Get",
-            url: sys.apiUrl("StkDefStore", "GetAll"),
-            data: {
-                CompCode: compcode, BranchCode: BranchCode, UserCode: SysSession.CurrentEnvironment.UserCode, Token: "HGFD-" + SysSession.CurrentEnvironment.Token
-            },
-            success: function (d) {
-                ;
-                var result = d;
-                if (result.IsSuccess) {
-                    storeDetails = result.Response;
-                    if (SysSession.CurrentEnvironment.ScreenLanguage == "en") {
-                        DocumentActions.FillCombowithdefult(storeDetails, ddlStore, "StoreId", "DescL", "Select Store");
-                    }
-                    else {
-                        DocumentActions.FillCombowithdefult(storeDetails, ddlStore, "StoreId", "DescA", "اختر المستودع");
-                    }
-                }
-            }
-        });
-    }
     function _SearchBox_Change() {
         if (searchbutmemreport.value != "") {
             var search_1 = searchbutmemreport.value.toLowerCase();
@@ -313,8 +204,7 @@ var USERS;
         UserGrid.Columns = [
             { title: res.User_Code, name: "USER_CODE", type: "text", width: "5%" },
             { title: res.SHT_Name, name: "USER_NAME", type: "text", width: "5%" },
-            { title: res.department, name: "DepartmentName", type: "text", width: "10%" },
-            { title: res.Job, name: "JobTitle", type: "text", width: "10%" },
+            { title: res.Job, name: "DepartmentName", type: "text", width: "10%" },
             { title: res.App_Active, name: "IsActiveDesc", type: "text", width: "15%" },
         ];
     }
@@ -355,34 +245,11 @@ var USERS;
             chk_IsActive.checked = false;
         if (Selecteditem.USER_TYPE != null) {
             drpuserType_2.value = Selecteditem.USER_TYPE.toString();
-            if (Selecteditem.USER_TYPE == 1) {
-                $("#selsman").removeClass("display_none");
-                $("#cashbox").addClass("display_none");
-                ddlSalesman.value = Selecteditem.SalesManID.toString();
-                ddlStore.value = Selecteditem.StoreID == null ? 'null' : Selecteditem.StoreID.toString();
-            }
-            else if (Selecteditem.USER_TYPE == 2) {
-                $("#cashbox").removeClass("display_none");
-                $("#selsman").addClass("display_none");
-                ddlCashBox.value = Selecteditem.CashBoxID.toString();
-            }
-            else if (Selecteditem.USER_TYPE == 3) {
-                $("#cashbox").removeClass("display_none");
-                $("#selsman").removeClass("display_none");
-                ddlCashBox.value = Selecteditem.CashBoxID.toString();
-                ddlSalesman.value = Selecteditem.SalesManID.toString();
-                ddlStore.value = Selecteditem.StoreID == null ? 'null' : Selecteditem.StoreID.toString();
-            }
-            else {
-                $("#cashbox").addClass("display_none");
-                $("#selsman").addClass("display_none");
-            }
+            $("#cashbox").addClass("display_none");
+            $("#selsman").addClass("display_none");
         }
         if (!IsNullOrEmpty(Selecteditem.JobTitle)) {
             txtJobTitle.value = (Selecteditem.JobTitle);
-        }
-        if (!IsNullOrEmpty(Selecteditem.DepartmentName)) {
-            txtDepartmentName.value = (Selecteditem.DepartmentName);
         }
         if (!IsNullOrEmpty(Selecteditem.Email)) {
             txtEmail.value = (Selecteditem.Email);
@@ -601,6 +468,15 @@ var USERS;
                     List_Userdetails = result.Response;
                     for (var i = 0; i < List_Userdetails.length; i++) {
                         List_Userdetails[i].IsActiveDesc = List_Userdetails[i].USER_ACTIVE == true ? "فعال" : "غير فعال";
+                        if (List_Userdetails[i].USER_TYPE == 1) {
+                            List_Userdetails[i].DepartmentName = 'كاشير';
+                        }
+                        else if (List_Userdetails[i].USER_TYPE == 2) {
+                            List_Userdetails[i].DepartmentName = 'طيار';
+                        }
+                        else {
+                            List_Userdetails[i].DepartmentName = 'اداري';
+                        }
                     }
                     UserGrid.DataSource = List_Userdetails;
                     UserGrid.Bind();
@@ -650,7 +526,6 @@ var USERS;
         txtUSER_NAME.disabled = true;
         txtEmail.disabled = true;
         txtJobTitle.disabled = true;
-        txtDepartmentName.disabled = true;
         txtMobile.disabled = true;
         chk_IsActive.disabled = true;
         drpuserType_2.disabled = true;
@@ -760,49 +635,19 @@ var USERS;
             Errorinput(txtUSER_NAME);
             return false;
         }
-        if (txtUSER_PASSWORD.value == "") {
-            WorningMessage("من فضلك تاكد من ادخال كلمة السر   ", "Please make sure to enter your password", 'خطاء', 'Erorr');
-            Errorinput(txtUSER_PASSWORD);
-            return false;
-        }
-        if (txtUSER_CODE.value == "") {
-            WorningMessage("من فضلك تاكد من ادخال كود المستخدم    ", "Please make sure to enter your user ID  ", 'خطاء', 'Erorr');
-            Errorinput(txtUSER_CODE);
-            return false;
-        }
         if (drpuserType_2.value == 'null') {
             WorningMessage(" يجب اختيار نوع المستخدم", "User type must be chosen", 'خطاء', 'Erorr');
             Errorinput(drpuserType_2);
             return false;
         }
-        if (drpuserType_2.value == '1' && ddlSalesman.value == "null") {
-            WorningMessage(" يجب اختيار المندوب", "Please select a Salesman", 'خطاء', 'Erorr');
-            Errorinput(ddlSalesman);
+        if (txtUSER_CODE.value == "" && drpuserType_2.value != '2') {
+            WorningMessage("من فضلك تاكد من ادخال رمز الدخول    ", "Please make sure to enter your user ID  ", 'خطاء', 'Erorr');
+            Errorinput(txtUSER_CODE);
             return false;
         }
-        if (drpuserType_2.value == '1' && ddlStore.value == "null") {
-            WorningMessage(" يجب اختيار المستودع", "Please select a Store", 'خطاء', 'Erorr');
-            Errorinput(ddlStore);
-            return false;
-        }
-        if (drpuserType_2.value == '2' && ddlCashBox.value == "null") {
-            WorningMessage(" يجب اختيار الصندوق", "Please select a box", 'خطاء', 'Erorr');
-            Errorinput(ddlCashBox);
-            return false;
-        }
-        if (drpuserType_2.value == '3' && ddlSalesman.value == "null") {
-            WorningMessage(" يجب اختيار المندوب", "Please select a Salesman", 'خطاء', 'Erorr');
-            Errorinput(ddlSalesman);
-            return false;
-        }
-        if (drpuserType_2.value == '3' && ddlStore.value == "null") {
-            WorningMessage(" يجب اختيار المستودع", "Please select a Store", 'خطاء', 'Erorr');
-            Errorinput(ddlStore);
-            return false;
-        }
-        if (drpuserType_2.value == '3' && ddlCashBox.value == "null") {
-            WorningMessage(" يجب اختيار الصندوق", "Please select a box", 'خطاء', 'Erorr');
-            Errorinput(ddlCashBox);
+        if (txtUSER_PASSWORD.value == "" && drpuserType_2.value != '2') {
+            WorningMessage("من فضلك تاكد من ادخال كلمة السر   ", "Please make sure to enter your password", 'خطاء', 'Erorr');
+            Errorinput(txtUSER_PASSWORD);
             return false;
         }
         if ($('#txtEmail').val() != '') {
@@ -870,9 +715,9 @@ var USERS;
             Master.G_USERS.UpdatedAt = DateTimeFormat(Date().toString());
             Master.G_USERS.UpdatedBy = SysSession.CurrentEnvironment.UserCode;
         }
-        Master.G_USERS.StoreID = ddlStore.value == "null" ? null : Number(ddlStore.value);
-        Master.G_USERS.SalesManID = ddlSalesman.value == "null" ? null : Number(ddlSalesman.value);
-        Master.G_USERS.CashBoxID = ddlCashBox.value == "null" ? null : Number(ddlCashBox.value);
+        Master.G_USERS.StoreID = null;
+        Master.G_USERS.SalesManID = null;
+        Master.G_USERS.CashBoxID = null;
         Master.G_USERS.USER_TYPE = drpuserType_2.value == "null" ? null : Number(drpuserType_2.value);
         Ajax.Callsync({
             type: "POST",
@@ -926,6 +771,7 @@ var USERS;
         });
     }
     function Assign() {
+        txtUSER_CODE.value = txtUSER_CODE.value.trim() == "" ? txtUSER_NAME.value : txtUSER_CODE.value;
         Master.G_USERS = DocumentActions.AssignToModel(Model);
         Master.G_RoleUsers = new Array();
         for (var i = 0; i < CountGrid; i++) {
@@ -1020,7 +866,7 @@ var USERS;
         if (!ValidationHeader())
             return;
         var CanAdd = true;
-        if (CountGrid == 0) {
+        if (CountGrid == 0 && drpuserType_2.value != '2') {
             WorningMessage("يجب اختيار صلاحية للمستخدم", "You must choose a Role for the user", 'خطاء', 'Erorr');
             Errorinput(drpRoles);
             CanAdd = false;
@@ -1033,7 +879,7 @@ var USERS;
                 }
             }
         }
-        if (CanAdd == false) {
+        if (CanAdd == false && drpuserType_2.value != '2') {
             WorningMessage("يجب اختيار صلاحية للمستخدم", "You must choose a Role for the user", 'خطاء', 'Erorr');
             Errorinput(drpRoles);
         }
@@ -1058,7 +904,6 @@ var USERS;
         $("#drpRoles").removeClass("display_none");
         $("#txtRoleRemarks").removeClass("display_none");
         $("#Ch_RoleActive").removeClass("display_none");
-        $("#btnsearch").attr("disabled", "disabled");
         $("#drpuserType_2").prop("value", "null");
         fillRoles();
         Get_All_BRANCH_From_GBranch();
@@ -1070,6 +915,7 @@ var USERS;
         List_Roles = new Array();
         Roleetailsf = new Array();
         $("#div_BasicData").removeClass("display_none");
+        $("#div_Data").removeClass("disabledDiv");
     }
     function btnEdit_onclick() {
         $("#div_grid").addClass("disabledDiv");
@@ -1093,7 +939,6 @@ var USERS;
         $("#Ch_RoleActive").removeClass("display_none");
         $('#btnAddDetails').removeClass("display_none");
         $("#div_plassAddDetails").removeClass("display_none");
-        $("#btnsearch").attr("disabled", "disabled");
         for (var i = 0; i < CountGridBarnch; i++) {
             $("#EXECUTE" + i).removeAttr("disabled");
             $("#CREATE" + i).removeAttr("disabled");
@@ -1113,7 +958,6 @@ var USERS;
             $("#div_grid").removeClass("disabledDiv");
             $("#btnAdd").removeClass("display_none");
             $("#btnAdd").removeAttr("disabled");
-            $("#btnsearch").removeAttr("disabled");
             $('#btnAddDetails').addClass("display_none");
             $("#divdataa :input").prop("disabled", true);
             $("#drpRoles").addClass("display_none");
@@ -1136,7 +980,6 @@ var USERS;
             $("#div_Data").addClass("disabledDiv");
             $("#btnBlock_permissions").attr("disabled", "disabled");
             $("#btnGive_assignments").attr("disabled", "disabled");
-            $("#btnsearch").removeAttr("disabled");
             $("#div_plassAddDetails").addClass("display_none");
             $("#drpRoles").addClass("display_none");
             $("#txtRoleRemarks").addClass("display_none");
@@ -1153,32 +996,6 @@ var USERS;
         txtUpdatedAt.disabled = true;
         txtCreatedAt.disabled = true;
         txtUpdatedBy.disabled = true;
-    }
-    function btnSearch_onclick() {
-        var sys = new SystemTools();
-        sys.FindKey(Modules.USERS, "btnUSERS", "", function () {
-            var id = SearchGrid.SearchDataGrid.SelectedKey;
-            alert(id);
-            if (!IsNullOrEmpty(id)) {
-                Ajax.Callsync({
-                    type: "Get",
-                    url: sys.apiUrl("A_REC_CUSTOMER", "GetBycode"),
-                    data: { CST_CODE: id, comp: compcode, UserCode: SysSession.CurrentEnvironment.UserCode, Token: "HGFD-" + SysSession.CurrentEnvironment.Token },
-                    success: function (d) {
-                        var result = d;
-                        if (result.IsSuccess) {
-                            var Cust = result.Response;
-                            if (SysSession.CurrentEnvironment.ScreenLanguage == "en") {
-                                $("#txtCustomer").val(Cust.USER_CODE);
-                            }
-                            else {
-                                $("#txtCustomer").val(Cust.USER_CODE);
-                            }
-                        }
-                    }
-                });
-            }
-        });
     }
 })(USERS || (USERS = {}));
 //# sourceMappingURL=USERS.js.map

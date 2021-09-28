@@ -1,4 +1,4 @@
-﻿using Inv.API.Models;
+﻿using API.Models;
 using Inv.BLL.Services.Customer;
 using Inv.DAL.Domain;
 using System;
@@ -14,13 +14,14 @@ using System.Data.SqlClient;
 using System.Data.Entity;
 using Inv.DAL.Repository;
 using Newtonsoft.Json;
+using Inv.API.Models;
 
 namespace API.Controllers
 {
     [EnableCorsAttribute("*", "*", "*")]
     public class CustomerController : BaseController
     {
-         
+
         private readonly ICustomerServices CustomerServices;
 
         public CustomerController(ICustomerServices _ICustomerServices)
@@ -35,14 +36,14 @@ namespace API.Controllers
             if (ModelState.IsValid)
             {
                 var Cust = CustomerServices.GetAll().ToList();
-                
-                    return Ok(new BaseResponse(Cust));
-              
+
+                return Ok(new BaseResponse(Cust));
+
             }
             return BadRequest(ModelState);
         }
 
-         
+
         [HttpPost, AllowAnonymous]
         public IHttpActionResult Insert([FromBody]CUSTOMER Nation)
         {
@@ -70,7 +71,7 @@ namespace API.Controllers
                     CustomerServices.Delete(ID);
                     return Ok(new BaseResponse());
                 }
-                catch (Exception  )
+                catch (Exception)
                 {
                     return Ok(new BaseResponse(0, "Error"));
                 }
@@ -106,15 +107,14 @@ namespace API.Controllers
         public IHttpActionResult UpdateCustlist(List<CUSTOMER> CUSTOMERList)
         {
 
-            if (ModelState.IsValid)
-            {
-                 
-                    try
-                    {
-                        var insertedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'i').ToList();
-                        var updatedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'u').ToList();
-                        var deletedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'd').ToList();
-                        ResponseResult res = new ResponseResult();
+            
+
+                try
+                {
+                    var insertedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'i').ToList();
+                    var updatedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'u').ToList();
+                    var deletedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'd').ToList();
+                    ResponseResult res = new ResponseResult();
                     //loop insered 
                     if (insertedRecords.Count > 0)
                     {
@@ -123,7 +123,7 @@ namespace API.Controllers
                             var InsertedRec = CustomerServices.Insert(item);
                             return Ok(new BaseResponse(InsertedRec.CUSTOMER_ID));
                         }
-                       
+
                     }
 
 
@@ -135,20 +135,20 @@ namespace API.Controllers
                             var updatedRec = CustomerServices.Update(item);
                             return Ok(new BaseResponse(updatedRec.CUSTOMER_ID));
                         }
-                       
+
                     }
 
                     //var ID_CUSTOMER = CustomerServices.GetAll(x => x.PHONE == CUSTOMERList[0].PHONE).ToList();
 
                     //return Ok(new BaseResponse(ID_CUSTOMER[0].CUSTOMER_ID));
-                     
-                    }
-                    catch (Exception ex)
-                    { 
-                        return Ok(new BaseResponse(HttpStatusCode.ExpectationFailed, ex.Message));
-                    }
-                
-            }
+
+                }
+                catch (Exception ex)
+                {
+                    return Ok(new BaseResponse(HttpStatusCode.ExpectationFailed, ex.Message));
+                }
+
+          
             return BadRequest(ModelState);
         }
 

@@ -6,13 +6,22 @@ var HomeComponent;
 (function (HomeComponent) {
     //let res: any = GetResourceList("");
     var sys = new SystemTools();
+    var tol_allnotification2;
+    var But_Outlet;
+    var But_Input;
+    var btnCash;
+    var Close;
+    var Balance = 0;
+    var CountGrid = 0;
+    var Notification = new Array();
+    var UserDetails = new Array();
     var btnDashboard;
     var btn_loguotuser;
     var SysSession = GetSystemSession();
     var systemEnv = SysSession.CurrentEnvironment;
     function OpenPage(moduleCode) {
         SysSession.CurrentEnvironment.ModuleCode = moduleCode;
-        // //debugger;
+        debugger;
         var compCode = SysSession.CurrentEnvironment.CompCode;
         var branchCode = SysSession.CurrentEnvironment.BranchCode;
         var UserCode = SysSession.CurrentEnvironment.UserCode;
@@ -23,7 +32,7 @@ var HomeComponent;
         Ajax.Callsync({
             type: "GET",
             url: sys.apiUrl("SystemTools", "GetUserPrivilage"),
-            data: { year: Number(CurrentYear), compCode: compCode, branchCode: branchCode, UserCode: UserCode, SystemCode: SystemCode, Modulecode: Modulecode },
+            data: { year: Number(CurrentYear), compCode: Number(compCode), branchCode: Number(branchCode), UserCode: UserCode, SystemCode: SystemCode, Modulecode: Modulecode },
             success: function (d) {
                 if (d == undefined) {
                     window.open(Url.Action("LoginIndex", "Login"), "_self");
@@ -181,8 +190,178 @@ var HomeComponent;
                 backtotop.removeClass('active');
             }
         });
+        tol_allnotification2 = document.getElementById('tol_allnotification');
+        btnCash = document.getElementById('btnCash');
+        But_Input = document.getElementById('But_Input');
+        But_Outlet = document.getElementById('But_Outlet');
+        Close = document.getElementById('Close');
+        But_Input.onclick = Enter_Money;
+        But_Outlet.onclick = Cash_Box;
+        btnCash.onclick = Get_balance;
+        Close.onclick = Close_Day;
+        Check_Close_Day();
+        tol_allnotification2.onclick = tol_allnotification_onclick;
+        FillddlPilot();
     }
     HomeComponent.InitalizeComponent = InitalizeComponent;
+    function FillddlPilot() {
+        debugger;
+        Ajax.Callsync({
+            type: "Get",
+            url: sys.apiUrl("G_USERS", "GetAllUser"),
+            data: {},
+            success: function (d) {
+                var result = d;
+                if (result.IsSuccess) {
+                    UserDetails = result.Response;
+                    UserDetails = UserDetails.filter(function (x) { return x.USER_TYPE == 2 && x.USER_ACTIVE == true; });
+                }
+            }
+        });
+    }
+    function OKNotification(ID_ORDER, Name_Pilot, Tax) {
+        //WorningMessage("تاكيد الطلب", "Do you want to delete?", "تحذير", "worning", () => {
+        Ajax.Callsync({
+            type: "Get",
+            url: sys.apiUrl("SlsTrSales", "Aprovd_Order"),
+            data: { ID_ORDER_Delivery: ID_ORDER, Name_Pilot: Name_Pilot, Tax: Tax },
+            success: function (d) {
+                var result = d;
+                if (result.IsSuccess == true) {
+                    printreport(ID_ORDER);
+                    tol_allnotification_onclick();
+                }
+                else {
+                    MessageBox.Show(result.ErrorMessage, "خطأ");
+                }
+            }
+        });
+        //});
+    }
+    function printreport(ID_ORDER_Print) {
+        debugger;
+        var _StockList = new Array();
+        var _Stock = new Settings_Report();
+        _Stock.Type_Print = 4;
+        _Stock.ID_Button_Print = 'saless_ret';
+        _Stock.Parameter_1 = ID_ORDER_Print.toString();
+        //_Stock.Parameter_2 = "";
+        //_Stock.Parameter_3 = "";
+        //_Stock.Parameter_4 = "";
+        //_Stock.Parameter_5 = "";
+        //_Stock.Parameter_6 = "";
+        //_Stock.Parameter_7 = "";
+        //_Stock.Parameter_8 = "";
+        //_Stock.Parameter_9 = "";
+        _StockList.push(_Stock);
+        var rp = new ReportParameters();
+        rp.Data_Report = JSON.stringify(_StockList); //output report as View
+        debugger;
+        Ajax.Callsync({
+            url: Url.Action("Data_Report_Open", "PrintReports"),
+            data: rp,
+            success: function (d) {
+                var result = d;
+                PrintImage(result);
+            }
+        });
+    }
+    function ImagetoPrint(source) {
+        return "<html><head><scri" + "pt>function step1(){\n" +
+            "setTimeout('step2()', 10);}\n" +
+            "function step2(){window.print();window.close()}\n" +
+            "</scri" + "pt></head><body onload='step1()'>\n" +
+            "<img src='data:image/png;base64," + source + "' /></body></html>";
+    }
+    function PrintImage(source) {
+        var pwa = window.open('', 'Print-Window', 'height=600,width=800');
+        pwa.document.open();
+        pwa.document.write(ImagetoPrint(source));
+        pwa.document.close();
+    }
+    function DeleteNotification(ID_ORDER) {
+        WorningMessage("هل تريد الحذف؟", "Do you want to delete?", "تحذير", "worning", function () {
+            Ajax.Callsync({
+                type: "Get",
+                url: sys.apiUrl("SlsTrSales", "Delete_Order"),
+                data: { ID_ORDER_Delivery: ID_ORDER },
+                success: function (d) {
+                    var result = d;
+                    if (result.IsSuccess == true) {
+                        tol_allnotification_onclick();
+                    }
+                    else {
+                        MessageBox.Show(result.ErrorMessage, "خطأ");
+                    }
+                }
+            });
+        });
+    }
+    function tol_allnotification_onclick() {
+        Ajax.Callsync({
+            type: "Get",
+            url: sys.apiUrl("SlsTrSales", "GetAllNotification"),
+            success: function (d) {
+                //debugger
+                var result = d;
+                if (result.IsSuccess == true) {
+                    Notification = result.Response;
+                    $("#notificationUL").html('');
+                    CountGrid = 0;
+                    for (var i = 0; i < Notification.length; i++) {
+                        BuildNotification(CountGrid);
+                        //Disbly_BuildControls(i, AllGetStokMasterDetail);
+                        CountGrid += 1;
+                    }
+                    for (var i = 0; i < UserDetails.length; i++) {
+                        $('.ddlName_Pilot').append('<option  value="' + UserDetails[i].USER_NAME + '">' + UserDetails[i].USER_NAME + '</option>');
+                    }
+                }
+                else {
+                    MessageBox.Show(result.ErrorMessage, "خطأ");
+                }
+            }
+        });
+    }
+    function BuildNotification(cnt) {
+        var html;
+        html = '<li class="style_li"> <span  id="txt_Notification' + cnt + '" ></span> ' +
+            '<br/> ' +
+            '<span><select id="ddlName_Pilot' + cnt + '" class="ddlName_Pilot form-control col-lg-5"><option value="null">اختار الطيار</option></select><input id="Tax_Pilot' + cnt + '" type="number"  class="form-control input-sm col-xs-2"></div><button id="btnSave' + cnt + '" type="button" class="btn btn-success col-xs-2"> تأكيد <span class="glyphicon glyphicon-backward"></span></button> <button id="btnDelete' + cnt + '" type="button" class="btn btn-danger col-xs-2"> الغاء <span class="glyphicon glyphicon-floppy-saved"></span></button></span> ' +
+            '</li> ';
+        $("#notificationUL").append(html);
+        $('#txt_Notification' + cnt).html('' + Number(cnt + 1) + '- رقم الفاتوره ( ' + Notification[cnt].Namber_Order_Delivery + ' )   اسم الزبون ( ' + Notification[cnt].CUSTOMER_NAME + ' ) --' + Notification[cnt].Date_Order_Delivery + '');
+        $('#btnSave' + cnt + '').on('click', function () {
+            if ($('#ddlName_Pilot' + cnt + '').val() == 'null') {
+                MessageBox.Show('يجب اختيار الطيار ', 'تحظير');
+                Errorinput($('#ddlName_Pilot' + cnt + ''));
+                return;
+            }
+            var ddlName_Pilot = $('#ddlName_Pilot' + cnt + '').val();
+            var Tax = $('#Tax_Pilot' + cnt + '').val();
+            OKNotification(Notification[cnt].ID_ORDER_Delivery, ddlName_Pilot, Number(Tax));
+        });
+        $('#btnDelete' + cnt + '').on('click', function () {
+            DeleteNotification(Notification[cnt].ID_ORDER_Delivery);
+        });
+    }
+    function Get_balance() {
+        Ajax.Callsync({
+            type: "Get",
+            url: sys.apiUrl("Outletpirce", "Get_Balance"),
+            success: function (d) {
+                //debugger
+                var result = d;
+                if (result.IsSuccess == true) {
+                    Balance = result.Response;
+                    $('#Balance').html(' المبلغ (' + Balance + ')');
+                }
+                else {
+                    MessageBox.Show(result.ErrorMessage, "خطأ");
+                }
+            }
+        });
+    }
     function LogoutUserApi() {
         var userCode = SysSession.CurrentEnvironment.UserCode;
         Ajax.Callsync({
@@ -426,12 +605,20 @@ var HomeComponent;
     HomeComponent.OpenView = OpenView;
     function InitializePages() {
         $("#btnHome").click(function () { OpenPage(Modules.Home); });
-        $("#btnClientaccstat").click(function () { OpenPage(Modules.Clientaccstat); }); //
-        $("#btnUSERS").click(function () { OpenPage(Modules.USERS); }); //
+        $("#btnClientaccstat").click(function () { OpenPage(Modules.Clientaccstat); }); //   
+        $("#btnUSERS").click(function () { OpenPage(Modules.USERS); }); //   
         $("#btnAcc").click(function () { OpenPage(Modules.Acc); });
         $("#btnbranches").click(function () { OpenPage(Modules.branches); });
-        //8-9-2021
         $("#btnDefBranches").click(function () { OpenPage(Modules.DefBranches); });
+        $("#btnSlsTrSales").click(function () { OpenPage(Modules.SlsTrSales); });
+        $("#btnSlsTrReturn").click(function () { OpenPage(Modules.SlsTrReturn); });
+        $("#btnPurchases").click(function () { OpenPage(Modules.Purchases); });
+        $("#btnCategories").click(function () { OpenPage(Modules.Categories); });
+        $("#btnItems").click(function () { OpenPage(Modules.Items); });
+        $("#btnSupplier").click(function () { OpenPage(Modules.Supplier); });
+        $("#btnSalesinventory").click(function () { OpenPage(Modules.Salesinventory); });
+        $("#btnfamilly_Cat").click(function () { OpenPage(Modules.familly_Cat); });
+        $("#btnIncome_expenses").click(function () { OpenPage(Modules.Income_expenses); });
     }
     function Notifications_Message() {
         var comCode = SysSession.CurrentEnvironment.CompCode;
@@ -554,6 +741,117 @@ var HomeComponent;
                     else {
                         $("#modalHelpRep").html("<div style=\"direction:ltr;height: 289px;overflow: scroll;overflow-x: hidden;font-weight: bold;\">" + res.HelpBody_En + "</div>");
                     }
+                }
+            }
+        });
+    }
+    function Cash_Box() {
+        if ($('#id_pirce').val() == '' || $('#id_Dasc_Name').val() == '') {
+            MessageBox.Show("  خطأ  يجب ادخل المبلغ والوصف ", "خطأ");
+            return;
+        }
+        var Dasc_Name = $('#id_Dasc_Name').val();
+        var pirce = Number($('#id_pirce').val());
+        var Tr_Type = 'مصروفات';
+        Ajax.Callsync({
+            type: "Get",
+            url: sys.apiUrl("Outletpirce", "Insert"),
+            data: { Dasc_Name: Dasc_Name, pirce: pirce, UserName: SysSession.CurrentEnvironment.UserCode, Tr_Type: Tr_Type },
+            success: function (d) {
+                //debugger
+                var result = d;
+                if (result.IsSuccess == true) {
+                    var Outlet = result.Response;
+                    if (Outlet == pirce) {
+                        MessageBox.Show("تم ", "الحفظ");
+                        $('#id_Dasc_Name').val('');
+                        $('#id_pirce').val('');
+                        $('#Balance').html(' المبلغ (' + (Balance - pirce) + ')');
+                    }
+                    else {
+                        MessageBox.Show(" خطأ لا يوجد مبلغ كافي  (" + Outlet + ")", "خطأ");
+                        $('#id_Dasc_Name').val('');
+                        $('#id_pirce').val('');
+                    }
+                }
+                else {
+                    MessageBox.Show(result.ErrorMessage, "خطأ");
+                }
+            }
+        });
+    }
+    function Enter_Money() {
+        if ($('#id_pirce').val() == '' || $('#id_Dasc_Name').val() == '') {
+            MessageBox.Show("  خطأ  يجب ادخل المبلغ والوصف ", "خطأ");
+            return;
+        }
+        var Dasc_Name = $('#id_Dasc_Name').val();
+        var pirce = Number($('#id_pirce').val());
+        var Tr_Type = 'أيرادات';
+        Ajax.Callsync({
+            type: "Get",
+            url: sys.apiUrl("Outletpirce", "Insert_Enter_Money"),
+            data: { Dasc_Name: Dasc_Name, pirce: pirce, UserName: SysSession.CurrentEnvironment.UserCode, Tr_Type: Tr_Type },
+            success: function (d) {
+                //debugger
+                var result = d;
+                if (result.IsSuccess == true) {
+                    var Outlet = result.Response;
+                    MessageBox.Show("تم ", "الحفظ");
+                    $('#id_Dasc_Name').val('');
+                    $('#id_pirce').val('');
+                    $('#Balance').html(' المبلغ (' + (Balance - Outlet) + ')');
+                }
+                else {
+                    MessageBox.Show(result.ErrorMessage, "خطأ");
+                }
+            }
+        });
+    }
+    function Close_Day() {
+        //$('#Close').attr('style', 'margin-top: -18%;background-color: #4df109;');
+        if ($('#Close').attr('style') != 'margin-top: -77%;background-color: #4df109;border-radius: 11px;') {
+            ConfirmMessage("هل ترغب في قفل اليوم ", "code cannot br repeated?", "تحذير", "worning", function () {
+                Ajax.Callsync({
+                    type: "Post",
+                    url: sys.apiUrl("Close_Day", "Close"),
+                    success: function (d) {
+                        //debugger
+                        var result = d;
+                        if (result.IsSuccess == true) {
+                            $('#Close').attr('style', 'margin-top: -77%;background-color: #4df109;border-radius: 11px;');
+                        }
+                        else {
+                            $('#Close').attr('style', 'margin-top: -77%;background-color: #c40303;border-radius: 11px;');
+                        }
+                    }
+                });
+                return false;
+            });
+        }
+    }
+    function Check_Close_Day() {
+        Ajax.Callsync({
+            type: "Get",
+            url: sys.apiUrl("Close_Day", "Check_Close_Day"),
+            success: function (d) {
+                //debugger
+                var result = d;
+                if (result.IsSuccess == true) {
+                    var res = result.Response;
+                    //alert(res);
+                    if (res == '1900-01-01T00:00:00') {
+                        //Close.style.
+                        $('#TitleSpan').html("");
+                        $('#Close').attr('style', 'margin-top: -77%;background-color: #4df109;border-radius: 11px;');
+                    }
+                    else {
+                        $('#TitleSpan').html(formatDate(res));
+                        $('#Close').attr('style', 'margin-top: -77%;background-color: #c40303;border-radius: 11px;');
+                    }
+                }
+                else {
+                    MessageBox.Show(result.ErrorMessage, "خطأ");
                 }
             }
         });

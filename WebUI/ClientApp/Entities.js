@@ -2031,16 +2031,6 @@ var G_News = (function (_super) {
     }
     return G_News;
 }(SecurityClass));
-var SlsInvoiceMasterDetails = (function (_super) {
-    __extends(SlsInvoiceMasterDetails, _super);
-    function SlsInvoiceMasterDetails() {
-        var _this = _super.call(this) || this;
-        _this.I_Sls_TR_Invoice = new I_Sls_TR_Invoice();
-        _this.I_Sls_TR_InvoiceItems = new Array();
-        return _this;
-    }
-    return SlsInvoiceMasterDetails;
-}(SecurityClass));
 var PurReceiveMasterDetails = (function (_super) {
     __extends(PurReceiveMasterDetails, _super);
     function PurReceiveMasterDetails() {
@@ -5633,4 +5623,350 @@ var CashVoucherMasterDetails = (function (_super) {
     }
     return CashVoucherMasterDetails;
 }(SecurityClass));
+var Settings_Report = (function () {
+    function Settings_Report() {
+        this.ID_Button_Print = "";
+        this.Name_Report = "";
+        this.Name_Stored_Report = "";
+        this.Parameter_1 = "";
+        this.Parameter_2 = "";
+        this.Parameter_3 = "";
+        this.Parameter_4 = "";
+        this.Parameter_5 = "";
+        this.Parameter_6 = "";
+        this.Parameter_7 = "";
+        this.Parameter_8 = "";
+        this.Parameter_9 = "";
+        this.Type_Print = 1;
+    }
+    return Settings_Report;
+}());
+var PRODUCT = (function () {
+    function PRODUCT() {
+        this.PRODUCT_ID = 0;
+        this.PRODUCT_NAME = "";
+        this.PRODUCT_QET = 0;
+        this.PRODUCT_Purchasing_price = 0;
+        this.PRODUCT_PRICE = 0;
+        this.MinUnitPrice = 0;
+        this.ID_CAT = 0;
+        this.serial = "";
+        this.TrType = 0;
+        this.StatusFlag = "";
+    }
+    return PRODUCT;
+}());
+var ReviewSalesItemInfo = (function (_super) {
+    __extends(ReviewSalesItemInfo, _super);
+    function ReviewSalesItemInfo() {
+        var _this = _super.call(this) || this;
+        _this.Name_Product_sell = "";
+        _this.ID_DELIVERY = 0;
+        _this.Quantity_sell = 0;
+        _this.price_One_part;
+        _this.Total_Price_One_Part;
+        _this.Notes_Order = "";
+        _this.FK_ORDER_Delivery = 0;
+        _this.MinUnitPrice;
+        _this.ID_CAT = 0;
+        _this.PRODUCT_NAME = "";
+        _this.PRODUCT_QET = 0;
+        _this.PRODUCT_ID = 0;
+        _this.Remarks = "";
+        return _this;
+    }
+    return ReviewSalesItemInfo;
+}(SecurityClass));
+var ReviewSalesMaster = (function (_super) {
+    __extends(ReviewSalesMaster, _super);
+    function ReviewSalesMaster() {
+        var _this = _super.call(this) || this;
+        _this.ID_ORDER_Delivery = 0;
+        _this.Date_Order_Delivery = "";
+        _this.CUSTOMER_NAME = "";
+        _this.CUSTOMER_ADDRES = "";
+        _this.PHONE = "";
+        _this.CUSTOMER_ADDRES_2 = "";
+        _this.Total_All;
+        _this.EMPLOYEE_NAME = "";
+        _this.Date = "";
+        _this.EMPLOYEE_ID = 0;
+        _this.Tax = 0;
+        _this.Confirmation = false;
+        _this.USER_CODE = "";
+        _this.CUSTOMER_ID = 0;
+        _this.type_order = "";
+        _this.Nametype_order = "";
+        _this.Name_Pilot = "";
+        _this.Namber_Order_Delivery = 0;
+        return _this;
+    }
+    return ReviewSalesMaster;
+}(SecurityClass));
+var ORDER_Master = (function (_super) {
+    __extends(ORDER_Master, _super);
+    function ORDER_Master() {
+        var _this = _super.call(this) || this;
+        _this.UserName = "";
+        _this.Namber_Order_Delivery = 0;
+        _this.Total_All = 0;
+        _this.Date_Order_Delivery = "";
+        _this.Tax = 0;
+        _this.CUSTOMER_ID = 0;
+        _this.type_order = "";
+        _this.Confirmation = false;
+        return _this;
+    }
+    return ORDER_Master;
+}(SecurityClass));
+var ORDER_DELIVERY = (function (_super) {
+    __extends(ORDER_DELIVERY, _super);
+    function ORDER_DELIVERY() {
+        var _this = _super.call(this) || this;
+        _this.ID_ORDER_Delivery = 0;
+        _this.EMPLOYEE_ID = 0;
+        _this.Namber_Order_Delivery = 0;
+        _this.Date_Order_Delivery = "";
+        _this.CUSTOMER_ID = 0;
+        _this.Total_All;
+        _this.Tax = 0;
+        _this.type_order = "";
+        _this.Name_Pilot = "";
+        _this.Confirmation = false;
+        _this.Num_Day = 0;
+        return _this;
+    }
+    return ORDER_DELIVERY;
+}(SecurityClass));
+var SlsInvoiceMasterDetails = (function (_super) {
+    __extends(SlsInvoiceMasterDetails, _super);
+    function SlsInvoiceMasterDetails() {
+        var _this = _super.call(this) || this;
+        _this.I_Sls_TR_Invoice = new ORDER_Master();
+        _this.I_Sls_TR_InvoiceItems = new Array();
+        return _this;
+    }
+    return SlsInvoiceMasterDetails;
+}(SecurityClass));
+var SlsMasterDetails = (function (_super) {
+    __extends(SlsMasterDetails, _super);
+    function SlsMasterDetails() {
+        var _this = _super.call(this) || this;
+        _this.I_Sls_TR_Invoice = new ORDER_DELIVERY();
+        _this.I_Sls_TR_InvoiceItems = new Array();
+        return _this;
+    }
+    return SlsMasterDetails;
+}(SecurityClass));
+var PurchasesMasterDetails = (function (_super) {
+    __extends(PurchasesMasterDetails, _super);
+    function PurchasesMasterDetails() {
+        var _this = _super.call(this) || this;
+        _this.Purchases_Master = new Purchases_Master();
+        _this.Purchases_Details = new Array();
+        return _this;
+    }
+    return PurchasesMasterDetails;
+}(SecurityClass));
+var CustomG_USERS = (function (_super) {
+    __extends(CustomG_USERS, _super);
+    function CustomG_USERS() {
+        var _this = _super.call(this) || this;
+        _this.G_USERS = new G_USERS();
+        _this.G_RoleUsers = new Array();
+        return _this;
+    }
+    return CustomG_USERS;
+}(SecurityClass));
+var CUSTOMER = (function (_super) {
+    __extends(CUSTOMER, _super);
+    function CUSTOMER() {
+        var _this = _super.call(this) || this;
+        _this.CUSTOMER_ID = 0;
+        _this.CUSTOMER_NAME = "";
+        _this.CUSTOMER_ADDRES = "";
+        _this.CUSTOMER_ADDRES_2 = "";
+        _this.PHONE = "";
+        _this.StatusFlag = "";
+        return _this;
+    }
+    return CUSTOMER;
+}(SecurityClass));
+var Stok_ORDER_DELIVERY = (function (_super) {
+    __extends(Stok_ORDER_DELIVERY, _super);
+    function Stok_ORDER_DELIVERY() {
+        var _this = _super.call(this) || this;
+        _this.ID_DELIVERY = 0;
+        _this.PRODUCT_ID = 0;
+        _this.Quantity_sell = 0;
+        _this.price_One_part;
+        _this.Total_Price_One_Part;
+        _this.Notes_Order = "";
+        _this.FK_ORDER_Delivery = 0;
+        _this.Name_Product_sell = "";
+        _this.Remarks = "";
+        _this.StatusFlag = "";
+        return _this;
+    }
+    return Stok_ORDER_DELIVERY;
+}(SecurityClass));
+var Notification_Proc = (function (_super) {
+    __extends(Notification_Proc, _super);
+    function Notification_Proc() {
+        var _this = _super.call(this) || this;
+        _this.CUSTOMER_NAME = '';
+        _this.Date_Order_Delivery = '';
+        _this.ID_ORDER_Delivery = 0;
+        _this.Namber_Order_Delivery = 0;
+        _this.Name_Pilot = "";
+        _this.PHONE = "";
+        _this.confirmation = false;
+        return _this;
+    }
+    return Notification_Proc;
+}(SecurityClass));
+var IQ_Purchases_Master = (function (_super) {
+    __extends(IQ_Purchases_Master, _super);
+    function IQ_Purchases_Master() {
+        var _this = _super.call(this) || this;
+        _this.TrNo = 0;
+        _this.Tr_Date = "";
+        _this.ID_Supplier = 0;
+        _this.Name_Supplier = "";
+        _this.Type_Debit = false;
+        _this.Type_Debit_Name = "";
+        _this.Total_Amount = 0;
+        _this.phone = "";
+        _this.Type_Supplier = "";
+        _this.Notes = "";
+        _this.REMARKS = "";
+        _this.IS_Active = false;
+        _this.Paid_Up = 0;
+        _this.To_be_Paid = 0;
+        _this.CashPaidAmount = 0;
+        return _this;
+    }
+    return IQ_Purchases_Master;
+}(SecurityClass));
+var IQ_Purchases_Details = (function (_super) {
+    __extends(IQ_Purchases_Details, _super);
+    function IQ_Purchases_Details() {
+        var _this = _super.call(this) || this;
+        _this.ID = 0;
+        _this.TrNo = 0;
+        _this.Name_CAT = "";
+        _this.PRODUCT_NAME = "";
+        _this.Purchases_Quantity = 0;
+        _this.Purchases_Price = 0;
+        _this.Sales_Price = 0;
+        _this.MinUnitPrice = 0;
+        _this.PRODUCT_ID = 0;
+        _this.ID_CAT = 0;
+        _this.ID_familly_Cat = 0;
+        _this.PRODUCT_QET = 0;
+        _this.StatusFlag = "";
+        return _this;
+    }
+    return IQ_Purchases_Details;
+}(SecurityClass));
+var familly_Cat = (function (_super) {
+    __extends(familly_Cat, _super);
+    function familly_Cat() {
+        var _this = _super.call(this) || this;
+        _this.ID_familly_Cat = 0;
+        _this.Name_familly_Cat = "";
+        _this.StatusFlag = '';
+        return _this;
+    }
+    return familly_Cat;
+}(SecurityClass));
+var Purchases_Details = (function (_super) {
+    __extends(Purchases_Details, _super);
+    function Purchases_Details() {
+        var _this = _super.call(this) || this;
+        _this.ID = 0;
+        _this.TrNo = 0;
+        _this.ID_familly_Cat = 0;
+        _this.ID_CAT = 0;
+        _this.PRODUCT_ID = 0;
+        _this.Purchases_Quantity = 0;
+        _this.Purchases_Price;
+        _this.Sales_Price;
+        _this.MinUnitPrice;
+        _this.StatusFlag = '';
+        return _this;
+    }
+    return Purchases_Details;
+}(SecurityClass));
+var Purchases_Master = (function (_super) {
+    __extends(Purchases_Master, _super);
+    function Purchases_Master() {
+        var _this = _super.call(this) || this;
+        _this.TrNo = 0;
+        _this.Tr_Date = "";
+        _this.ID_Supplier = 0;
+        _this.Type_Debit = false;
+        _this.Total_Amount = 0;
+        _this.Paid_Up = 0;
+        _this.To_be_Paid = 0;
+        _this.REMARKS = "";
+        _this.Num_Day = 0;
+        _this.CashPaidAmount = 0;
+        return _this;
+    }
+    return Purchases_Master;
+}(SecurityClass));
+var The_Gard = (function (_super) {
+    __extends(The_Gard, _super);
+    function The_Gard() {
+        var _this = _super.call(this) || this;
+        _this.id_Num = 0;
+        _this.PRODUCT_NAME = "";
+        _this.PRODUCT_Purchasing_price = 0;
+        _this.PRODUCT_PRICE = 0;
+        _this.PRODUCT_Qut = 0;
+        _this.Total_Price_One_Part = 0;
+        _this.Shortage = 0;
+        _this.Outlet = 0;
+        _this.Task = 0;
+        _this.Day_Date = "";
+        _this.Shift_User = "";
+        return _this;
+    }
+    return The_Gard;
+}(SecurityClass));
+var Supplier = (function (_super) {
+    __extends(Supplier, _super);
+    function Supplier() {
+        var _this = _super.call(this) || this;
+        _this.ID_Supplier = 0;
+        _this.Name_Supplier = "";
+        _this.phone = "";
+        _this.Type_Supplier = "";
+        _this.Notes = "";
+        _this.IS_Active = false;
+        _this.IS_Active_Name = "";
+        return _this;
+    }
+    return Supplier;
+}(SecurityClass));
+var CATEGRES = (function (_super) {
+    __extends(CATEGRES, _super);
+    function CATEGRES() {
+        var _this = _super.call(this) || this;
+        _this.ID_CAT = 0;
+        _this.Name_CAT = "";
+        _this.ID_familly_Cat = 0;
+        _this.StatusFlag = "";
+        return _this;
+    }
+    return CATEGRES;
+}(SecurityClass));
+var SlsInvoiceTrNo_Or_ID = (function () {
+    function SlsInvoiceTrNo_Or_ID() {
+        this.TrNo = 0;
+        this.ID_ORDER = 0;
+    }
+    return SlsInvoiceTrNo_Or_ID;
+}());
 //# sourceMappingURL=Entities.js.map

@@ -97,14 +97,14 @@ namespace Inv.WebUI.Controllers
         }
 
         #region Open Pages 
-        
-            
-          
+
+
+
         public ActionResult USERSIndex()
         {
             return View("~/Views/Tools/USERS/USERSIndex.cshtml");
-        } 
-         public ActionResult AdminBarIndex()
+        }
+        public ActionResult AdminBarIndex()
         {
             return View("~/Views/AdminSetting/AdminBarIndex.cshtml");
         }
@@ -117,7 +117,58 @@ namespace Inv.WebUI.Controllers
         {
             return View("~/Views/AdminSetting/AdminCompIndex.cshtml");
         }
-         
+
+
+
+
+
+
+        public ActionResult SlsTrSalesIndex()
+        {
+            return View("~/Views/Sales/SlsTrSalesIndex.cshtml");
+        }
+        public ActionResult SlsTrReturnIndex()
+        {
+            return View("~/Views/Sales/SlsTrReturnIndex.cshtml");
+        }
+        public ActionResult PurchasesIndex()
+        {
+            return View("~/Views/Purchases/PurchasesIndex.cshtml");
+        }
+
+        public ActionResult CategoriesIndex()
+        {
+            return View("~/Views/Stock/CategoriesIndex.cshtml");
+        }
+
+
+        public ActionResult ItemsIndex()
+        {
+            return View("~/Views/Stock/ItemsIndex.cshtml");
+        }
+        public ActionResult familly_CatIndex()
+        {
+
+            return View("~/Views/Stock/familly_Cat.cshtml");
+        }
+        public ActionResult SupplierIndex()
+        {
+            return View("~/Views/Generalsetting/SupplierIndex.cshtml");
+        }
+        public ActionResult SalesinventoryIndex()
+        {
+
+            return View("~/Views/Report/Salesinventory.cshtml");
+        }
+        public ActionResult Income_expensesIndex()
+        {
+
+            return View("~/Views/Report/Income_expenses.cshtml");
+        }
+
+
+
+
         #endregion  Open Pages 
 
     }

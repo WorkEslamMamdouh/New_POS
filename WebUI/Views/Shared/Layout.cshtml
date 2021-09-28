@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="~/images/newlogo.jpg"> 
+    <link rel="shortcut icon" href="~/images/newlogo.jpg">
     <title>@SystemResource.App_Home</title>
     @Styles.Render("~/Bundles/AppStyle2")
     <link id="bootstrap_rtl" href="~/Style_design/bootstrap-rtl.css" rel="stylesheet" />
@@ -40,11 +40,11 @@
 
                     @*<a href="#">
 
-                        <img src="~/images/logokids.png" alt="" />
-                    </a>*@
+                            <img src="~/images/logokids.png" alt="" />
+                        </a>*@
                     @*<a  href="#">
-                       <i hidden id="i_toolpar" class="glyphicon glyphicon-share-alt"></i>
-                    </a>*@
+                           <i hidden id="i_toolpar" class="glyphicon glyphicon-share-alt"></i>
+                        </a>*@
                 </div>
                 <script>
 
@@ -56,190 +56,118 @@
                             <a id="btnHome" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class=" liItem nav-link dropdown-toggle">  <i id="btnHome" class="glyphicon glyphicon-home"></i>    <span id="btnHome" class="mini-dn">@SystemResource.Men_Home</span></a>
                         </li>
                         <li class="liItem MED nav-item display_none " id="btnSales">
-                            <a id="lep1" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn">من نحن  </span><i id="span1" class="fa fa-caret-left float-left"></i></a>
+                            <a id="lep1" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn">المبيعات </span><i id="span1" class="fa fa-caret-left float-left"></i></a>
                             <div id=" " role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                                 <ul id=" ">
-                                    <li class="liItem dropdown-item" id="btnDefBranches" key="DefBranches"><a id="btnDefBranches">فروعنا</a></li>
-                                    <li class="liItem dropdown-item" id="btnContact" key=""><a id="">للتواصل </a></li>
+                                    <li class="liItem dropdown-item" id="btnSlsTrSales" key="SlsTrSales"><a id="btnSlsTrSales">المبيعات</a></li>
+                                    <li class="liItem dropdown-item" id="btnSlsTrReturn" key="SlsTrReturn"><a id="btnSlsTrReturn">مرتجع الفواتير</a></li>
+
                                 </ul>
                             </div>
                         </li>
 
                         <li class="liItem MED nav-item display_none " id="btnPurchase">
-                            <a id="lep2" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-usd"></i>  <span class="mini-dn"> التعريفات </span><i id="span2" class="fa fa-caret-left float-left"></i></a>
+                            <a id="lep2" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-usd"></i>  <span class="mini-dn"> المشتريات </span><i id="span2" class="fa fa-caret-left float-left"></i></a>
                             <div id="" role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                                 <ul id=" ">
+                                    <li class="liItem dropdown-item" id="btnPurchases" key="Purchases"><a id="btnPurchases">المشتريات</a></li>
+                                    @*<li class="liItem dropdown-item" id="btnSlsTrReturn" key="SlsTrReturn"><a id="btnSlsTrReturn">مرتجع الفواتير</a></li>*@
 
-                                    <li class="liItem dropdown-item" id="btnbranches" key="branches"><a id="btnbranches">الفروع</a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">الاصناف </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">وحدات الاصناف </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فئات الاصناف  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">أكواد تحليله</a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فئات العملاء  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id=""> أنواع العملاء   </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  العملاء  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فئات الموردين  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  انواع الموردين  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أكواد الموردين     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  المدن     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الهيكل الاداري     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الوظائف     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الموظفين     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  دفتر الحركات     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الصناديق     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  البنوك     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  المصروفات     </a></li>
 
                                 </ul>
                             </div>
                         </li>
                         <li class="liItem MED nav-item display_none " id="btnservicesystem">
-                            <a id="lep3" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-th-list	"></i>  <span class="mini-dn"> المخازن  </span><i id="span3" class="fa fa-caret-left float-left"></i></a>
+                            <a id="lep3" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-th-list	"></i>  <span class="mini-dn"> إعدادات عامة  </span><i id="span3" class="fa fa-caret-left float-left"></i></a>
                             <div id="" role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                                 <ul id=" ">
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الفروع  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الاصناف  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فئات الاصناف  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  خصائص الاصناف  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  وحدات الاصناف  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  2طباغة بركود  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  طلب تحويل مخازن  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  تحويل مخازن  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أصناف ذات خصائص  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  جرد الأصناف  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">   مستند توريد مخزني    </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">   مستند صرف مخزني     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">   تسعيرة الأصناف     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">   تسعير الأصناف     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">   تغييراكواد الأصناف    </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">   ضبط تكاليف وكميات     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">   كارت الميزان     </a></li>
+                                    <li class="liItem dropdown-item" id="btnSupplier" key="Supplier"><a id="btnSupplier">الموردين</a></li>
+                                    <li class="liItem dropdown-item" id="btnUSERS" key="USERS"><a id="btnUSERS">الموظفين</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="liItem MED nav-item display_none " id="btnInventory">
-                            <a id="lep4" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn"> مشتريات </span><i id="span4" class="fa fa-caret-left float-left"></i></a>
+                            <a id="lep4" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn"> التقارير </span><i id="span4" class="fa fa-caret-left float-left"></i></a>
                             <div id=" " role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                                 <ul id=" ">
 
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فاتورة مشتريات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  توريد مخزني  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فئات الموردين  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أنواع الموردين  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الموردين  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أمر شراء  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  مرتجعات مشتريات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  كارت الميزان  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  طلب شراء  </a></li>
+                                    <li class="liItem dropdown-item" id="btnSalesinventory" key="Salesinventory"><a id="btnSalesinventory">جرد  المبيعات</a></li>
+                                    <li class="liItem dropdown-item" id="btnIncome_expenses" key="Income_expenses"><a id="btnIncome_expenses">كشف حساب</a></li>
+
                                 </ul>
                             </div>
                         </li>
                         <li class="liItem MED nav-item display_none " id="btnCashBoxDefinitions">
-                            <a id="lep5" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-hourglass"></i>  <span class="mini-dn">مبيعات </span><i id="span5" class="fa fa-caret-left float-left"></i></a>
+                            <a id="lep5" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-hourglass"></i>  <span class="mini-dn">إدارة المخازن </span><i id="span5" class="fa fa-caret-left float-left"></i></a>
                             <div id="" role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                                 <ul id=" ">
-
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فاتورة المبيعات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أمر شراء  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  عرض سعر  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  تسليم فاتورة مبيعات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أنواع العملاء  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  العملاء  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فئات العملاء  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  مرتجعات مبيعات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  كارت الميزان  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  استعلام صنف  </a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="liItem MED nav-item display_none " id="btnGenDefinitionMen">
-                            <a id="lep6" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn">@SystemResource.meue_Accounts  </span><i id="span6" class="fa fa-caret-left float-left"></i></a>
-                            <div id=" " role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                                <ul id=" ">
-                                    <li class="liItem dropdown-item" id="btnAcc" key=""><a id="btnAcc">  دليل الحسابات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  تصنيف الحسابات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  تبويب الحسابات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أنواع المستندات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  مستند قبض  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  مستند صرف  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  تحويلات ماليه  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  تسويات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أرصده افتتاحية  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الصناديق  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أكواد تحليلة  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  المصروفات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الضرائب  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  مراكز التكلفة  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  تصفية عهده  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الفترات المالية  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  مستندات قيد يومية     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  اغلاق الفترات المالية     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فئات العملاء     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  العملاء     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  ظبط التأثيرات المحاسبية     </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  موازنة مالية     </a></li>
-
+                                    <li class="liItem dropdown-item" id="btnfamilly_Cat" key="familly_Cat"><a id="btnfamilly_Cat"> انواع الفئات</a></li>
+                                    <li class="liItem dropdown-item" id="btnCategories" key="Categories"><a id="btnCategories">الفئات</a></li>
+                                    <li class="liItem dropdown-item" id="btnItems" key="Items"><a id="btnItems">الاصناف</a></li>
 
                                 </ul>
                             </div>
                         </li>
-                        <li class="liItem MED nav-item display_none " id="btnStkDefinitionMenu">
-                            <a id="lep7" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn"> البنوك  </span><i id="span7" class="fa fa-caret-left float-left"></i></a>
-                            <div id=" " role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                                <ul id=" ">
+                        <li class="liItem MED nav-item display_none " id="btnCash">
+                            <a id="lep6" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn">الخزينة </span><i id="span6" class="fa fa-caret-left float-left"></i></a>
+                            <div id=" " role="menu" class="dropdown-menu left-menu-dropdown animated flipInX" style=" background: linear-gradient(to right, rgb(0 0 0 / 0%) 0%, #054f5b9c 100%) !important; color:white; width: 100%;">
+                                <ul>
+
+                                    <li class="liItem dropdown-item" id=" " key=" ">
 
 
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  البنوك والحسابات البنكية  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  الحافظة البنكية  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  اشعار بنكي  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أنواع خطابات الضمان  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  فئات خطاب الضمان  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  حالات خطابات الضمان  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  خطابات الضمان  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  حركةخطاب الضمان  </a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="liItem MED nav-item display_none " id="btnAccDefinitionMen">
-                            <a id="lep8" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn"> أدوات البرنامج  </span><i id="span8" class="fa fa-caret-left float-left"></i></a>
-                            <div id=" " role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                                <ul id=" ">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
 
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  نظام الأرشف  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  تصدير بيانات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  استيراد بيانات  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أدوات المستخدمين  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  المستخدمين  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  صلاحيات المستخدمين  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  أساسيات البرنامج  </a></li>
-                                    <li class="liItem dropdown-item" id="btnDistribution" key=""><a id="">  مصمم التقارير  </a></li>
+                                            </div>
+                                            <label id="Balance" class="login2 pull-right pull-right-pro" style="color: #f50d0d;">المبلغ </label>
+                                        </div>
+                                        <div class="col-lg-4">
+
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="login2 pull-right pull-right-pro" style="color: bisque;">الـوصـف</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <textarea id="id_Dasc_Name" class="form-control" style="height: 60px;background-color: #ffd8a5;" type="text" placeholder="الـوصـف"></textarea>
+                                        </div>
+
+                                    </li>
+                                    <li class="liItem dropdown-item" id=" " key=" ">
+
+                                        <div class="col-lg-4">
+
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="login2 pull-right pull-right-pro" style="color: bisque;font-weight: bold;font-size: 21px;">السعـــر</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input id="id_pirce" class="form-control" style="background-color: #d7ff99;" type="number" placeholder="السعـــر">
+                                        </div>
+
+                                    </li>
+
+                                    <li class="liItem dropdown-item" id=" " key=" ">
+                                        <div class="col-lg-1" style="width: 0px;">
+
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <input id="But_Outlet" type="button" class="btn btn-info" style=" width: 118%; background: linear-gradient(to right, #652f08 0%, #c80000 100%);" value=" Out ">
+                                        </div>
+
+
+                                        <div class="col-lg-5">
+                                            <input id="But_Input" type="button" class="btn btn-info" style="width: 118%; " value="Push">
+                                        </div>
+                                        <div class="col-lg-1">
+
+                                        </div>
+                                    </li>
 
                                 </ul>
                             </div>
                         </li>
 
-
-
-                        <li class="liItem MED nav-item display_none " id="btnReportMenu">
-                            <a id="lep11" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn">@SystemResource.Reports  </span><i id="span11" class="fa fa-caret-left float-left"></i></a>
-                            <div id=" " role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                                <ul id=" ">
-                                    <li class="liItem dropdown-item" id="btnClientaccstat" key="Clientaccstat"><a id=""> @SystemResource.Clientstatment </a></li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-
-                        <li class="liItem MED nav-item display_none " id="btnToolsMenu">
-                            <a id="lep13" href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="glyphicon glyphicon-equalizer"></i>  <span class="mini-dn">   @SystemResource.mnue_Tools    </span><i id="span13" class="fa fa-caret-left float-left"></i></a>
-                            <div id=" " role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                                <ul id=" ">
-
-                                    <li class="liItem dropdown-item" id="btnUSERS" key="USERS"><a id="">ا  @SystemResource.User </a></li>
-                                </ul>
-                            </div>
-                        </li>
 
                     </ul>
                 </div>
@@ -252,56 +180,56 @@
                     <div id="clortest" class="container-fluid">
                         <div class="row" style="margin-top: 0.5% !important; cursor: pointer">
                             <div class="col-lg-12" style="text-align: center;cursor: pointer;">
-                                <label id="Add_New" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#0b6ba2">  @SystemResource.App_new <span class="glyphicon glyphicon-plus"></span></label>
-                                <label id="btnEdit" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#ff6a00">  @SystemResource.App_Update <span class="fa fa-edit"></span></label>
-                                <label id="btnsave" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#0bb614">  @SystemResource.App_save  <span class="glyphicon glyphicon-floppy-saved"></span></label>
-                                <label id="btnDelete" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#f30a1f">  حذف  <span class="glyphicon glyphicon-trash"></span></label>
+                                @*<label id="Add_New" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#0b6ba2">  @SystemResource.App_new <span class="glyphicon glyphicon-plus"></span></label>
+                                    <label id="btnEdit" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#ff6a00">  @SystemResource.App_Update <span class="fa fa-edit"></span></label>
+                                    <label id="btnsave" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#0bb614">  @SystemResource.App_save  <span class="glyphicon glyphicon-floppy-saved"></span></label>
+                                    <label id="btnDelete" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#f30a1f">  حذف  <span class="glyphicon glyphicon-trash"></span></label>*@
                                 @*  <label  id="btnback" class="col-lg-1 w6 p-0" style="cursor:pointer;color:#176380">  @SystemResource.App_back  <span class="fa fa-mail-reply"></span></label>
 
-                                <label class="col-lg-2 w7 p-0" style="cursor:pointer;color:#0e0af3">   اعادة تهيئة  <span class="glyphicon glyphicon-refresh"> </span></label>
-                                 <label class="col-lg-1 w7 p-0" style="cursor:pointer;color:#0dad12">استعرض <span class=" fa fa-play-circle-o"></span></label>
-                                 <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#e50af3">   @SystemResource.App_Print  <span class="glyphicon glyphicon-print"></span></label>
-                                 <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#171414">   الدفتر  <span class="glyphicon glyphicon-book"></span></label>
-                                 <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#3d6ef9">   بحث  <span class="glyphicon glyphicon-search"></span></label>
-                                 <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#1ec709">  فحص <span class="glyphicon glyphicon-check"></span></label>
-                                 <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#f97a3d">تحميل <span class=" fa fa-cogs"></span></label>
-                                 <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#555"> ادوات <span class=" fa fa-cogs"></span></label>
-                                 <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#03a9f4 ">ترحيل  <span class=" fa fa-clipboard"></span></label>
-                                 <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:red"> اغلاق <span class=" fa fa-stop-circle-o	"></span></label>
-                                 <div class="col-lg-3 w11 p-0 " style="cursor:pointer;color:#3d6ef9">
-                                     <span class=" fa fa-angle-double-right stylenext	"></span>
-                                     <span class=" fa fa-angle-right	stylenext"></span>
-                                     <span class="">1</span>
-                                     <span class="">من</span>
-                                     <span class=" ">60</span>
-                                     <span class=" fa fa-angle-left	stylenext"></span>
-                                     <span class=" fa fa-angle-double-left	stylenext"></span>
-                                 </div>
-                                 <label onclick="openFullscreen()" class="col-lg-1 p-0" style="width:1%"> <span class=" fa fa-tv"></span></label>
-                                 <label onclick="closeFullscreen()" class="col-lg-1 p-0" style="width:2%"><span class=" fa fa-tablet"></span></label>*@
+                                    <label class="col-lg-2 w7 p-0" style="cursor:pointer;color:#0e0af3">   اعادة تهيئة  <span class="glyphicon glyphicon-refresh"> </span></label>
+                                     <label class="col-lg-1 w7 p-0" style="cursor:pointer;color:#0dad12">استعرض <span class=" fa fa-play-circle-o"></span></label>
+                                     <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#e50af3">   @SystemResource.App_Print  <span class="glyphicon glyphicon-print"></span></label>
+                                     <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#171414">   الدفتر  <span class="glyphicon glyphicon-book"></span></label>
+                                     <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#3d6ef9">   بحث  <span class="glyphicon glyphicon-search"></span></label>
+                                     <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#1ec709">  فحص <span class="glyphicon glyphicon-check"></span></label>
+                                     <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#f97a3d">تحميل <span class=" fa fa-cogs"></span></label>
+                                     <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#555"> ادوات <span class=" fa fa-cogs"></span></label>
+                                     <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:#03a9f4 ">ترحيل  <span class=" fa fa-clipboard"></span></label>
+                                     <label class="col-lg-1 w6 p-0" style="cursor:pointer;color:red"> اغلاق <span class=" fa fa-stop-circle-o	"></span></label>
+                                     <div class="col-lg-3 w11 p-0 " style="cursor:pointer;color:#3d6ef9">
+                                         <span class=" fa fa-angle-double-right stylenext	"></span>
+                                         <span class=" fa fa-angle-right	stylenext"></span>
+                                         <span class="">1</span>
+                                         <span class="">من</span>
+                                         <span class=" ">60</span>
+                                         <span class=" fa fa-angle-left	stylenext"></span>
+                                         <span class=" fa fa-angle-double-left	stylenext"></span>
+                                     </div>
+                                     <label onclick="openFullscreen()" class="col-lg-1 p-0" style="width:1%"> <span class=" fa fa-tv"></span></label>
+                                     <label onclick="closeFullscreen()" class="col-lg-1 p-0" style="width:2%"><span class=" fa fa-tablet"></span></label>*@
 
                             </div>
                             @*<div class="col-lg-5 p-0 ">
-                                <div class="col-lg-3 p-0 ">
-                                    <span class=" fa fa-angle-double-right stylenext	"></span>
-                                    <span class=" fa fa-angle-right	stylenext"></span>
-                                    <span class="">1</span>
-                                    <span class="">من</span>
-                                    <span class=" ">60</span>
-                                    <span class=" fa fa-angle-left	stylenext"></span>
-                                    <span class=" fa fa-angle-double-left	stylenext"></span>
-                                </div>
+                                    <div class="col-lg-3 p-0 ">
+                                        <span class=" fa fa-angle-double-right stylenext	"></span>
+                                        <span class=" fa fa-angle-right	stylenext"></span>
+                                        <span class="">1</span>
+                                        <span class="">من</span>
+                                        <span class=" ">60</span>
+                                        <span class=" fa fa-angle-left	stylenext"></span>
+                                        <span class=" fa fa-angle-double-left	stylenext"></span>
+                                    </div>
 
-                                <div class="col-lg-9 p-0 ">
-                                    <label class="col-lg-2 pr-0">  فحص <span class="glyphicon glyphicon-check"></span></label>
-                                    <label class="col-lg-2 pr-0">تحميل <span class=" fa fa-cogs"></span></label>
-                                    <label class="col-lg-2 pr-0"> ادوات <span class=" fa fa-cogs"></span></label>
-                                    <label class="col-lg-2 pr-0">ترحيل  <span class=" fa fa-clipboard"></span></label>
-                                    <label class="col-lg-2 pr-0"> اغلاق <span class=" gglyphicon glyphicon-off	"></span></label>
+                                    <div class="col-lg-9 p-0 ">
+                                        <label class="col-lg-2 pr-0">  فحص <span class="glyphicon glyphicon-check"></span></label>
+                                        <label class="col-lg-2 pr-0">تحميل <span class=" fa fa-cogs"></span></label>
+                                        <label class="col-lg-2 pr-0"> ادوات <span class=" fa fa-cogs"></span></label>
+                                        <label class="col-lg-2 pr-0">ترحيل  <span class=" fa fa-clipboard"></span></label>
+                                        <label class="col-lg-2 pr-0"> اغلاق <span class=" gglyphicon glyphicon-off	"></span></label>
 
-                                </div>
+                                    </div>
 
-                            </div>*@
+                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -388,15 +316,15 @@
                                         </li>
                                         <li class="liItem nav-item " id="tol_allnotification" key="tol_allnotification">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="indicator-nt"></span></a>
-                                            <div role="menu" class="notification-author dropdown-menu animated flipInX">
-                                                <div class="notification-single-top">
-                                                    <h1 style="color:white!important">@SystemResource.tol_Notifications</h1>
-                                                </div>
-                                                <div class="notifcations" id="notification">
-                                                    <div class="notic_triangle"></div>
-                                                    <ul class="list-unstyled" id="notificationUL"></ul>
-                                                </div>
-                                            </div>
+                                            @*<div role="menu" class="notification-author dropdown-menu animated flipInX">
+                                                    <div class="notification-single-top">
+                                                        <h1 style="color:white!important">@SystemResource.tol_Notifications</h1>
+                                                    </div>
+                                                    <div class="notifcations" id="notification">
+                                                        <div class="notic_triangle"></div>
+                                                        <ul class="list-unstyled" id="notificationUL"></ul>
+                                                    </div>
+                                                </div>*@
                                         </li>
                                         <li class="liItem nav-item" id="tol_Userstoppar">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
@@ -416,6 +344,14 @@
                                                 </li>
                                             </ul>
                                         </li>
+                                        <li class="liItem nav-item nav-setting-open MED display_none" id="btnClose" style=" ">
+                                            <div class=" " style="margin-right:2%;">
+                                                <button type="button" id="Close" title="Close Day" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn" style="margin-top: -69%;background-color: #c40303; ">
+                                                    <i class="fa fa-power-off"></i>
+                                                </button>
+
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -427,6 +363,13 @@
             <!-- Mobile Menu start  موبيل منيو -->
             <!-- Mobile Menu end -->
             <!-- Breadcome End-->
+            <div id="divtest" class="style_divnot display_none">
+                <div class="notifcations" id="notification">
+                    <ul class="notes-menu-list" id="notificationUL" style="color:#eee ;">
+                        <li>   <span></span> </li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div id="cont" class="divcont">
             @RenderBody()
@@ -526,9 +469,9 @@
         $('#chinng_languag').on('click', function () {
             $('#main-menu').toggleClass('rtl-menu');
         });
-        <script>
 
-            var elem = document.documentElement;
+
+        var elem = document.documentElement;
         function openFullscreen() {
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
@@ -550,7 +493,7 @@
         }
 
         $('#sidebarCollapse').on('click', function () {
-                $('#sidebarCollapse').toggleClass('stylebtnmenu');
+            $('#sidebarCollapse').toggleClass('stylebtnmenu');
             $('#sidebarCollapse').toggleClass('bla');
 
             $('#cont').toggleClass('colapsdivcont');
@@ -558,28 +501,32 @@
         });
 
         $('#chinng_languag').on('click', function () {
-                $('#main-menu').toggleClass('rtl-menu');
+            $('#main-menu').toggleClass('rtl-menu');
         });
 
 
         $(document).ready(function () {
 
-                $("#btnclosefooter").click(function () {
-                    $("#displaydiv").removeClass("display_none");
-                    $("#btnclosefooter").addClass("display_none");
-                    $("#chevron2").removeClass("display_none");
-                    $("#footer").animate({ width: '500px', opacity: '0.8' }, "slow");
+            $("#btnclosefooter").click(function () {
+                $("#displaydiv").removeClass("display_none");
+                $("#btnclosefooter").addClass("display_none");
+                $("#chevron2").removeClass("display_none");
+                $("#footer").animate({ width: '500px', opacity: '0.8' }, "slow");
 
-                    $("#chevron").toggleClass("glyphicon-hand-right");
-                    $("#chevron").toggleClass("glyphicon-chevron-left");
+                $("#chevron").toggleClass("glyphicon-hand-right");
+                $("#chevron").toggleClass("glyphicon-chevron-left");
 
 
-                });
+            });
+
+            $('#tol_allnotification').on('click', function () {
+                $('#divtest').toggleClass('display_none');
+            });
 
             $("#chevron2").click(function () {
                 $("#displaydiv").addClass("display_none");
                 $("#btnclosefooter").removeClass("display_none");
-                $("#footer").animate({width: '0px', opacity: '0' }, "slow");
+                $("#footer").animate({ width: '0px', opacity: '0' }, "slow");
 
                 $("#chevron").toggleClass("glyphicon-hand-right");
                 $("#chevron").toggleClass("glyphicon-chevron-left");
@@ -590,7 +537,6 @@
         });
     </script>
 
-    </script>
     <script src="~/Style_design/messages_Script.js"></script>
 </body>
 </html>

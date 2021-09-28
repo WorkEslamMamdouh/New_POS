@@ -17,79 +17,51 @@ using System.Text;
 using System.Web.Configuration;
 using Inv.WebUI.Reports.Models;
 using Inv.WebUI.Reports.Forms;
-
-
 using System.Net.Http;
-using OnBarcode.Barcode;
-using QRCoder;
 using Inv.DAL.Repository;
-using Inv.API.Tools;
 using Inv.DAL.Domain;
 using Microsoft.Reporting.WebForms;
+using System.Data;
+using System.Configuration;
+ 
 
 namespace RS.WebUI.Reports.Forms
 {//eslam 1 dec 2020
     public partial class ReportsForm : System.Web.UI.Page
     {
+
         //SessionRecord CurrentSession;
         StdParamters CurrentReportParameters;
+        Settings_Report_StdParamters Repor = new Settings_Report_StdParamters();
 
         ReportsDetails ReportsDetail = new ReportsDetails();
         ReportInfo Rep = new ReportInfo();
         ClassPrint Printer = new ClassPrint();
 
         protected InvEntities db = UnitOfWork.context(BuildConnectionString());
+        //private SamahEntities _db = new SamahEntities();
+        //string cs = ConfigurationManager.ConnectionStrings["SamahEntities"].ConnectionString;
+
+
+        //string cs = "Data Source=SQL5061.site4now.net; database =db_a7882d_apieltawhed; user id =db_a7882d_apieltawhed_admin; Password=619619Ss619619";
+        string cs = "Data Source= . ; database = POS2021 ; user id = sa ; Password= 619619 ;";
+
         string Par;
-        string NameAr;
-        string NameEn;
-        string BrNameAr;
-        string BrNameEn;
-        string SystemCode = "";
-        string SubSystemCode = "";
-        int CompCode = 0;
-        int? branCode = 0;
-        string LoginUser = "";
-        string ScreenLanguage = "";
+
         public static string BuildConnectionString()
         {
             var httpClient = new HttpClient();
             var res = httpClient.GetStringAsync(WebConfigurationManager.AppSettings["ServiceUrl"] + "SystemTools/BuildConnection").Result;
             return res;
         }
-        public Boolean CheckUser(string Guid, string uCode)
 
-        {
-            string Pref = Guid.Substring(0, 5);
-            string OrgGuid = Guid.Remove(0, 5); // remove  prefix 
-
-            string EnGuid = Pref + Inv.WebUI.Reports.Models.UserTools.Encrypt(OrgGuid, "Business-Systems");
-
-            var usr = db.G_USERS.Where(x => x.USER_CODE == uCode).ToList();
-            if (usr.Count == 0)
-            {
-                return false;
-            }
-            if (usr[0].Tokenid != EnGuid)
-            {
-                return false;
-            }
-            if (usr[0].LastLogin == null)
-            {
-                return false;
-            }
-            DateTime LL = Convert.ToDateTime(usr[0].LastLogin);
-            if (DateTime.Now.Subtract(LL).Hours > 8)
-            {
-                return false;
-            }
-            return true;
-
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+
+
                 string x = Request["rpt"];
                 string y = Request["par"];
                 y = y.Replace("*", "+");
@@ -97,15 +69,12 @@ namespace RS.WebUI.Reports.Forms
                     return;
                 if (Request["par"] != null)
                 {   //mahroos 
-                    Par = Inv.WebUI.Reports.Models.UserTools.Decrypt(y, "Business-Systems");
+                    Par = Reports.Models.UserTools.Decrypt(y, "Business-Systems");
 
                     CurrentReportParameters = JsonConvert.DeserializeObject<StdParamters>(Par);
                 }
                 //add api call returns boolean mahroos 
-                if (!CheckUser(CurrentReportParameters.Tokenid, CurrentReportParameters.UserCode))
-                {
-                    return;
-                }
+
 
                 reportViewer1.ShowPrintButton = true;
 
@@ -126,6 +95,8 @@ namespace RS.WebUI.Reports.Forms
         #region Bind Reports Functions
         private void BindReport(string reportName, int OutputTypeNo, string OutputType, ReportsDetails ReportsDetail, params object[] models)
         {
+
+
             if (OutputTypeNo == 2) { OutputType = "PDF"; }
             else { OutputType = "Excel"; }
             //reportViewer1.LocalReport.ReportPath = Se"Excel"rver.MapPath("../Report/" + reportName + ".rdlc");
@@ -143,6 +114,8 @@ namespace RS.WebUI.Reports.Forms
             reportViewer1.LocalReport.DataSources.Clear();
             foreach (var model in models)
             {
+                //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + model + "');", true);
+
                 ReportDataSource source = new ReportDataSource(reportName, model);
 
                 reportViewer1.LocalReport.DataSources.Add(source);
@@ -153,6 +126,8 @@ namespace RS.WebUI.Reports.Forms
             if (OutputTypeNo == 1)
             {
                 reportViewer1.DataBind();
+                //Printer.PrintToPrinter(reportViewer1.LocalReport, ReportsDetail);
+
 
             }
             else if (OutputTypeNo == 4)
@@ -181,19 +156,19 @@ namespace RS.WebUI.Reports.Forms
 
 
         }
-        private void BindReport(string reportName, List<DataSourceStruct> models)
-        {
-            reportViewer1.LocalReport.ReportPath = Server.MapPath("../Reports/" + reportName + ".rdlc");
-            reportViewer1.LocalReport.DataSources.Clear();
-            foreach (var model in models)
-            {
-                ReportDataSource source = new ReportDataSource(model.Name, model.DataSource);
-                reportViewer1.LocalReport.DataSources.Add(source);
-            }
+        //private void BindReport(string reportName, List<DataSourceStruct> models)
+        //{
+        //    reportViewer1.LocalReport.ReportPath = Server.MapPath("../Reports/" + reportName + ".rdlc");
+        //    reportViewer1.LocalReport.DataSources.Clear();
+        //    foreach (var model in models)
+        //    {
+        //        ReportDataSource source = new ReportDataSource(model.Name, model.DataSource);
+        //        reportViewer1.LocalReport.DataSources.Add(source);
+        //    }
 
-            reportViewer1.DataBind();
+        //    reportViewer1.DataBind();
 
-        }
+        //}
         private void BindSSRS(string reportName, List<DataSourceStruct> models)
         {
             reportViewer1.LocalReport.ReportPath = Server.MapPath("../Reports/" + reportName + ".rdlc");
@@ -206,126 +181,6 @@ namespace RS.WebUI.Reports.Forms
 
             reportViewer1.DataBind();
         }
-        #endregion
-
-        #region Calling Reports Function
-
-        protected void btnPrint_Click(object sender, EventArgs e)
-        {
-            ReportPrintDocument rp = new ReportPrintDocument(reportViewer1.LocalReport);
-            rp.Print();
-        }
-
-        //private ReportInfo OpenReport(string ReportName)
-        //{
-
-        //    GQ_ReportWebSetting Result = new GQ_ReportWebSetting();
-
-        //    var DefauldReports = db.GQ_ReportWebSetting.Where(x => x.SystemCode == SystemCode && x.SubSystemCode == SubSystemCode && x.ReportID == ReportName);
-        //    if (DefauldReports.Count() != 0)
-        //    {
-        //        var report = DefauldReports.Where(x => x.COMP_CODE == CompCode && x.BRA_Code == branCode && x.USER_CODE == LoginUser);
-        //        if (report.Count() == 0)
-        //        {
-        //            report = report.Where(x => x.COMP_CODE == CompCode && x.USER_CODE == LoginUser);
-        //        }
-        //        if (report.Count() == 0)
-        //        {
-        //            report = report.Where(x => x.COMP_CODE == CompCode && x.BRA_Code == branCode);
-        //        }
-        //        if (report.Count() == 0)
-        //        {
-        //            report = report.Where(x => x.COMP_CODE == CompCode);
-        //        }
-        //        if (report.Count() == 0)
-        //        {
-        //            Result = DefauldReports.FirstOrDefault();
-        //        }
-        //        else
-        //        {
-        //            Result = report.FirstOrDefault();
-        //        }
-        //    }
-
-        //    ReportInfo ReportInfoObj = new ReportInfo();
-        //    ReportInfoObj.OutputTypeNo = Result != null ? Result.OutputTypeNo.ToString() : "";
-        //    ReportInfoObj.OutputType = Result != null ? Result.OutputType : "";
-        //    ReportInfoObj.dataSource = Result != null ? Result.ReportDataSouce : "";
-        //    ReportInfoObj.PrinterName = Result != null ? Result.PrinterName : "";
-        //    ReportInfoObj.PageSize = Result != null ? Result.PageSize : "";
-        //    ReportInfoObj.RightMargin = Result != null ? Convert.ToDouble(Result.RightMarginMM) : 0;
-        //    ReportInfoObj.LeftMargin = Result != null ? Convert.ToDouble(Result.LeftMarginMM) : 0;
-        //    ReportInfoObj.TopMargin = Result != null ? Convert.ToDouble(Result.TopMarginMM) : 0;
-        //    ReportInfoObj.BottomMargin = Result != null ? Convert.ToDouble(Result.BottomMarginMM) : 0;
-        //    ReportInfoObj.PageHight = Result != null ? Convert.ToDouble(Result.PageHightCM) : 0;
-        //    ReportInfoObj.PageWidth = Result != null ? Convert.ToDouble(Result.PageWidthCM) : 0;
-        //    ReportInfoObj.Landscape = Result != null ? Convert.ToBoolean(Result.IsLandScape) : false;
-        //    if (ScreenLanguage == "ar")
-        //    {
-        //        ReportInfoObj.reportName = Result != null ? Result.ReportDesignNameAr : "";
-        //    }
-        //    else
-        //    {
-        //        ReportInfoObj.reportName = Result != null ? Result.ReportDesignNameEn : "";
-        //    }
-        //    return ReportInfoObj;
-        //}
-
-        private ReportStandardParameters getStandardParameters()
-        {
-            ReportStandardParameters StandardParameter = new ReportStandardParameters();
-            ScreenLanguage = CurrentReportParameters.ScreenLanguage;
-            //CurrentSession = JsonConvert.DeserializeObject<SessionRecord>(Request["ses"]);
-            if (ScreenLanguage == "ar")
-            {
-                reportViewer1.Attributes.Add("style", "direction:rtl;");
-            }
-            else
-            {
-                reportViewer1.Attributes.Add("style", "direction:ltr;");
-            }
-            //int CompCode = int.Parse(Request["CompCode"].ToString());
-            CompCode = int.Parse(CurrentReportParameters.CompCode);
-            branCode = int.Parse(CurrentReportParameters.BranchCode);
-            // G_COMPANY Comp = new G_COMPANY();
-            var Comp = db.G_COMPANY.Where(x => x.COMP_CODE == CompCode).ToList();
-            var Bra = db.G_BRANCH.Where(x => x.COMP_CODE == CompCode && x.BRA_CODE == branCode).ToList();
-            NameAr = Comp[0].NameA;// SecuritySystem.Decrypt(Comp[0].NameA);
-            NameEn = Comp[0].NameE;// SecuritySystem.Decrypt(Comp[0].NameE);
-
-            BrNameAr = Bra[0].BRA_DESC;
-            BrNameEn = Bra[0].BRA_DESCL;
-            if (BrNameAr == null)
-                BrNameAr = " ";
-            if (BrNameEn == null)
-                BrNameEn = " ";
-            StandardParameter.spComCode = new SqlParameter("@comp", CompCode);
-
-            //string comapnyName = Request["CompNameA"].ToString();
-            StandardParameter.spComNameA = new SqlParameter("@CompNameA", NameAr);
-
-            //string CompNameE = Request["CompNameE"].ToString();
-            StandardParameter.spComNameE = new SqlParameter("@CompNameE", NameEn);
-
-            //string BraNameA = Request["BraNameA"].ToString();
-            StandardParameter.spBraNameA = new SqlParameter("@BraNameA", BrNameAr);
-
-            //string BraNameE = Request["BraNameE"].ToString();
-            StandardParameter.braNameE = new SqlParameter("@BraNameE", BrNameEn);
-
-            SystemCode = CurrentReportParameters.SystemCode;
-
-            SubSystemCode = CurrentReportParameters.SubSystemCode;
-
-
-            LoginUser = CurrentReportParameters.UserCode;
-            StandardParameter.spLoginUser = new SqlParameter("@LoginUser", LoginUser);
-
-            StandardParameter.spbra = new SqlParameter("@bra", branCode);
-
-            return StandardParameter;
-        }
-
         public class ReportPrintDocument : PrintDocument
         {
             private PageSettings m_pageSettings;
@@ -490,6 +345,159 @@ namespace RS.WebUI.Reports.Forms
             }
         }
 
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+            ReportPrintDocument rp = new ReportPrintDocument(reportViewer1.LocalReport);
+            rp.Print();
+        }
+
+        #endregion
+
+        #region Calling Reports Function
+
+        string value1;
+        string value2;
+        string value3;
+        string value4;
+        string value5;
+        string value6;
+        string value7;
+        string value8;
+        string value9;
+        int Type_Print = 1;
+
+
+        public void Get_Name_Report_toParameter()
+        {
+            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + 11 + "');", true);
+
+            string PO;
+            RepFinancials RepPar = JsonConvert.DeserializeObject<RepFinancials>(Par);
+            PO = RepPar.Data_Report.ToString();
+            List<Settings_Report_StdParamters> POR = JsonConvert.DeserializeObject<List<Settings_Report_StdParamters>>(PO);
+            //var query = db.Database.SqlQuery<IProc_Rep_AccAdjustList_Result>(_Query).ToList();
+            foreach (var item in POR)
+            {
+
+                var data3 = db.Get_Settings_Report_and_Parameter(item.ID_Button_Print).ToList();
+
+                value1 = item.Parameter_1;
+                value2 = item.Parameter_2;
+                value3 = item.Parameter_3;
+                value4 = item.Parameter_4;
+                value5 = item.Parameter_5;
+                value6 = item.Parameter_6;
+                value7 = item.Parameter_7;
+                value8 = item.Parameter_8;
+                value9 = item.Parameter_9;
+                Type_Print = item.Type_Print;
+
+                foreach (var data in data3)
+                {
+
+                    Repor.ID_Button_Print = data.ID_Button_Print;
+                    Repor.Name_Report = data.Name_Report;
+
+                    Repor.Name_Stored_Report = data.Name_Stored_Report;
+                    Repor.Parameter_1 = data.Parameter_1;
+                    Repor.Parameter_2 = data.Parameter_2;
+                    Repor.Parameter_3 = data.Parameter_3;
+                    Repor.Parameter_4 = data.Parameter_4;
+                    Repor.Parameter_5 = data.Parameter_5;
+                    Repor.Parameter_6 = data.Parameter_6;
+                    Repor.Parameter_7 = data.Parameter_7;
+                    Repor.Parameter_8 = data.Parameter_8;
+                    Repor.Parameter_9 = data.Parameter_9;
+
+
+                    DataTable dt = GetData_toParameter();
+                    BindReport(Repor.Name_Report, Type_Print, "PDF", ReportsDetail, dt);
+
+
+                }
+            }
+
+
+
+        }
+
+        public DataTable GetData_toParameter()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+
+                //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + con.WorkstationId + "');", true);
+
+                SqlCommand cmd = new SqlCommand("" + Repor.Name_Stored_Report + "", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                if ((Repor.Parameter_1) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_1 + "", value1));
+                }
+                if ((Repor.Parameter_2) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_2 + "", value2));
+                }
+                if ((Repor.Parameter_3) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_3 + "", value3));
+                }
+                if ((Repor.Parameter_4) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_4 + "", value4));
+                }
+                if ((Repor.Parameter_5) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_5 + "", value5));
+                }
+                if ((Repor.Parameter_6) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_6 + "", value6));
+                }
+                if ((Repor.Parameter_7) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_7 + "", value7));
+                }
+                if ((Repor.Parameter_8) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_8 + "", value8));
+                }
+                if ((Repor.Parameter_9) != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@" + Repor.Parameter_9 + "", value9));
+                }
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.SelectCommand = cmd;
+
+
+                try
+                {
+                    con.Open();
+                    adp.Fill(dt);
+                }
+                catch (Exception sqlEx)
+                {
+                    Console.WriteLine(@"：Unable to establish a connection: {0}", sqlEx);
+                }
+
+
+
+
+            }
+
+
+
+
+            return dt;
+
+
+
+        }
+
         public void ReportsDetails()
         {
 
@@ -506,125 +514,6 @@ namespace RS.WebUI.Reports.Forms
         }
 
         #endregion
-        /// <summary>
-        //work 1/12/2020
-        /// </summary>
-        /// <returns></returns>
-        //public IEnumerable<IQ_GetSalesMan> RPT_Test()
-        //{
-        //    ReportStandardParameters StandPar = getStandardParameters();
-        //    Reportparam RepPar = JsonConvert.DeserializeObject<Reportparam>(Par);
-
-
-
-        //    ReportInfo Rep = OpenReport("Test");
-        //    int Type = 3;
-
-        //    if (Type == 2)
-        //        Rep = OpenReport("TestPDF");
-        //    if (Type == 3)
-        //        Rep = OpenReport("TestEXCEL");
-
-        //    var query = db.Database.SqlQuery<IQ_GetSalesMan>
-        //        ("select * from   " + Rep.dataSource + "").ToList();
-
-        //    ReportsDetails ReportsDetail = new ReportsDetails();
-        //    ReportsDetail.PrintName = Rep.PrinterName;
-        //    ReportsDetail.PageSize = Rep.PageSize;
-        //    ReportsDetail.Landscape = Rep.Landscape;
-        //    ReportsDetail.RightMargin = Rep.RightMargin;
-        //    ReportsDetail.LeftMargin = Rep.LeftMargin;
-        //    ReportsDetail.TopMargin = Rep.TopMargin;
-        //    ReportsDetail.BottomMargin = Rep.BottomMargin;
-        //    ReportsDetail.PageHight = Rep.PageHight;
-        //    ReportsDetail.PageWidth = Rep.PageWidth;
-
-        //    BindReport(Rep.reportName, Type, Rep.OutputType, ReportsDetail, query);
-        //    return query;
-        //}
-        //R_Rpt_AccReceiptList
-       
-         
-        //public IEnumerable<IProc_Prnt_OperationDeposit_Result> Prnt_OperationDeposit()
-        //{
-        //    ReportStandardParameters StandPar = getStandardParameters();
-        //    RepFinancials RepPar = JsonConvert.DeserializeObject<RepFinancials>(Par);
-
-        //    int Type = int.Parse(RepPar.Type.ToString());
-        //    SqlParameter spRepType = new SqlParameter("@RepType", Type);
-
-        //    var TRId = int.Parse(RepPar.TRId.ToString());
-        //    SqlParameter spTRId = new SqlParameter("@TRId", TRId);
-
-        //    var SalesmanID = int.Parse(RepPar.SalesmanID.ToString());
-        //    SqlParameter spSalesmanID = new SqlParameter("@Slsid", SalesmanID == -1 ? System.Data.SqlTypes.SqlInt32.Null : SalesmanID);
-
-
-        //       Rep = OpenReport("Prnt_OperationDeposit");
-
-          
-        //    if (Type == 0) { Type = int.Parse(Rep.OutputTypeNo); }
-
-
-        //    string _Query = "execute " + Rep.dataSource +
-        //        " @comp = '" + StandPar.spComCode.Value + "'" +
-        //        ", @bra = '" + StandPar.spbra.Value + "'" +
-        //        ", @CompNameA = '" + StandPar.spComNameA.Value + "'" +
-        //        ", @CompNameE = '" + StandPar.spComNameE.Value + "'" +
-        //        ", @BraNameA = '" + StandPar.spBraNameA.Value + "'" +
-        //        ", @BraNameE = '" + StandPar.braNameE.Value + "'" +
-        //        ", @LoginUser = '" + StandPar.spLoginUser.Value + "'" +
-        //         ",@RepType = " + spRepType.Value +
-        //         ",@TRId = " + spTRId.Value +
-        //         ",@Slsid = " + spSalesmanID.Value;
-        //    var query = db.Database.SqlQuery<IProc_Prnt_OperationDeposit_Result>(_Query).ToList();
-            
-        //    ReportsDetails();
-        //    BindReport(Rep.reportName, Type, Rep.OutputType, ReportsDetail, query);
-        //    return query;
-        //}
-
-
-
-
-
-
- 
-        //public IEnumerable<IProc_Prnt_VATReport_Result> Prnt_VATReport()
-        //{
-        //    ReportStandardParameters StandPar = getStandardParameters();
-        //    RepFinancials RepPar = JsonConvert.DeserializeObject<RepFinancials>(Par);
-
-        //    // //ReportInfo Rep;
-        //    int RepType = int.Parse(RepPar.RepType.ToString());
-        //    SqlParameter spRepType = new SqlParameter("@RepType", RepType);
-
-        //    int vatyear = int.Parse(RepPar.vatyear.ToString());
-        //    SqlParameter spvatyear = new SqlParameter("@vatyear", vatyear);
-
-        //    int prdcode = int.Parse(RepPar.prdcode.ToString());
-        //    SqlParameter spprdcode = new SqlParameter("@prdcode", prdcode);
-
-        //    Rep = OpenReport("Prnt_VATReport");
-
-        //    string _Query = "execute " + Rep.dataSource +
-        //   " @comp = '" + StandPar.spComCode.Value + "'" +
-        //   ", @bra = '" + StandPar.spbra.Value + "'" +
-        //   ", @CompNameA = '" + StandPar.spComNameA.Value + "'" +
-        //   ", @CompNameE = '" + StandPar.spComNameE.Value + "'" +
-        //   ", @BraNameA = '" + StandPar.spBraNameA.Value + "'" +
-        //   ", @BraNameE = '" + StandPar.braNameE.Value + "'" +
-        //   ", @LoginUser = '" + StandPar.spLoginUser.Value + "'" +
-        //   ", @RepType = " + spRepType.Value +
-        //   ", @vatyear = " + spvatyear.Value +
-        //   ", @prdcode = " + spprdcode.Value + "";
-
-        //    List<IProc_Prnt_VATReport_Result> query = db.Database.SqlQuery<IProc_Prnt_VATReport_Result>(_Query).ToList();
-        //    ReportsDetails();
-
-        //    BindReport(Rep.reportName, RepType, Rep.OutputType, ReportsDetail, query);
-        //    return query;
-        //}
 
 
 

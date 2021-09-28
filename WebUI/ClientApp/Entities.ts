@@ -213,15 +213,15 @@ class ReportParameters {
     public Level: number;
     public OpenType: number;
     public PrdType: number;
-    public EndType: number; 
-    public VchrSource: number; 
-    public VchrType: number; 
+    public EndType: number;
+    public VchrSource: number;
+    public VchrType: number;
     public fromacc: string;
     public toacc: string;
     public storeID: number;
     public TfType: number;
     public FromstoreID: number;
-    public ToStoreID: number;  
+    public ToStoreID: number;
     public FromBra: number;
     public ToBra: number;
     public src: number;
@@ -236,7 +236,7 @@ class ReportParameters {
 
     public cusCatID: number;
     public cusGroupid: number;
-    public cusid: number; 
+    public cusid: number;
     public SLStype: number;
     public dtccCode: string;
     public TransCode: string;
@@ -246,6 +246,8 @@ class ReportParameters {
     public VatBraCode: number;
     public vatyear: number;
     public prdcode: number;
+    public Data_Report: string;
+
 }
 
 class G_BRANCH extends SecurityClass {
@@ -293,7 +295,7 @@ class G_BRANCH extends SecurityClass {
         this.Address_District = "";
         this.NationalityID = 0;
         this.Currencyid = 0;
-        
+
     }
     public COMP_CODE: number;
     public BRA_CODE: number;
@@ -376,7 +378,7 @@ class GQ_GetLnkVarBranch extends SecurityClass {
         this.GLAcc_DescE = "";
 
 
-      }
+    }
     public CompCode: number;
     public BraCode: number;
     public Lnktype: string;
@@ -390,19 +392,18 @@ class GQ_GetLnkVarBranch extends SecurityClass {
     public GSt_DescE: string;
     public GLAcc_DescA: string;
     public GLAcc_DescE: string;
-   
+
 }
 
-class IGetunitprice
-{
-    constructor() { 
+class IGetunitprice {
+    constructor() {
         this.unitprice = 0;
         this.unitpricewithvat = 0;
-       
+
     }
     public unitprice: number;
     public unitpricewithvat: number;
-   
+
 
 }
 
@@ -451,7 +452,7 @@ class IQ_GetOperationSalesmanItem extends SecurityClass {
     public Est_SalesPrice: number;
     public Est_CostPrice: number;
     public VatNatID: number;
-    public VatPrc: number;  
+    public VatPrc: number;
 }
 
 
@@ -550,10 +551,10 @@ class I_TR_OperationSalesmanItem extends SecurityClass {
     public SoldQty: number;
     public ScrapQty: number;
     public OnhandQty: number;
-    public StatusFlag: string; 
+    public StatusFlag: string;
 
 }
- 
+
 
 class I_TR_OperationTFDetail extends SecurityClass {
     constructor() {
@@ -564,7 +565,7 @@ class I_TR_OperationTFDetail extends SecurityClass {
         this.ItemID = 0;
         this.SendQty = 0;
         this.RecQty = 0;
-        this.StatusFlag ="";
+        this.StatusFlag = "";
     }
     public OperationTFDetailID: number;
     public OperationTFID: number;
@@ -787,14 +788,14 @@ class G_MODULES extends SecurityClass {
 class G_Nationality extends SecurityClass {
     constructor() {
         super();
-        this.NationalityID = 0; 
+        this.NationalityID = 0;
         this.NationalityCode = "";
         this.DescA = "";
         this.DescL = "";
         this.Remarks = "";
         this.StatusFlag = "";
     }
-    public NationalityID: number; 
+    public NationalityID: number;
     public NationalityCode: string;
     public DescA: string;
     public DescL: string;
@@ -832,7 +833,7 @@ class A_RecPay_D_CashBox extends SecurityClass {
 }
 
 
-class AVAT_D_SrvCategory extends SecurityClass{
+class AVAT_D_SrvCategory extends SecurityClass {
     constructor() {
         super();
         this.SrvCategoryID = 0;
@@ -875,7 +876,7 @@ class AVAT_D_SrvCategory extends SecurityClass{
     public ItemFormatFix: string;
     public ItemFormatSerial: string;
 }
-class AQVAT_GetSrvCategory extends SecurityClass{
+class AQVAT_GetSrvCategory extends SecurityClass {
     constructor() {
         super();
         this.DescA = "";
@@ -1031,7 +1032,7 @@ class IQ_GetSalesMan extends SecurityClass {
         this.ISOperationEnable = false;
         this.PurchaseLimit = 0;
         this.SalesCreditLimit = 0;
-        this.NationalityID = 0;        
+        this.NationalityID = 0;
         this.NationalityCode = "";
         this.Nat_DescA = "";
         this.Nat_DescE = "";
@@ -1069,7 +1070,7 @@ class IQ_GetSalesMan extends SecurityClass {
     public ISOperationEnable: boolean;
     public PurchaseLimit: number;
     public SalesCreditLimit: number;
-    public NationalityID: number;    
+    public NationalityID: number;
     public NationalityCode: string;
     public Nat_DescA: string;
     public Nat_DescE: string;
@@ -1152,7 +1153,7 @@ class A_D_VAT_TYPE extends SecurityClass {
         this.DESCRIPTION = "";
         this.VatType = 0;
         this.VatPerc = 0;
-        this.LineOrder=0
+        this.LineOrder = 0
     }
     public COMP_CODE: number;
     public TYPE: number;
@@ -1325,7 +1326,7 @@ class I_Item extends SecurityClass {
         this.VndItemCode = "";
         this.BarCode1 = "";
         this.BarCode2 = "";
-        this.FirstEntryDate = "";         
+        this.FirstEntryDate = "";
         this.Remarks = "";
         this.CreatedAt = "";
         this.CreatedBy = "";
@@ -1352,7 +1353,7 @@ class I_Item extends SecurityClass {
     public VndItemCode: string;
     public BarCode1: string;
     public BarCode2: string;
-    public FirstEntryDate: string;     
+    public FirstEntryDate: string;
     public Remarks: string;
     public CreatedAt: string;
     public CreatedBy: string;
@@ -1472,15 +1473,15 @@ class I_D_UOM extends SecurityClass {
 }
 
 class Tax_Type {
-    constructor() { 
+    constructor() {
         this.Nature = 0;
         this.Prc = 0;
-        this.VatType = 0; 
+        this.VatType = 0;
     }
     public Nature: number;
     public Prc: number;
     public VatType: number;
-   
+
 }
 
 
@@ -2511,7 +2512,7 @@ class A_ACCOUNT extends SecurityClass {
         this.CCDT_TYPE = "";
         this.CUR_CODE = "";
         this.StatusFlag = "";
- 
+
     }
     public COMP_CODE: number;
     public ACC_CODE: string;
@@ -3405,17 +3406,6 @@ class G_News extends SecurityClass {
     public CompCode: number;
     public BranchCode: number;
 }
-class SlsInvoiceMasterDetails extends SecurityClass {
-    constructor() {
-        super();
-        this.I_Sls_TR_Invoice = new I_Sls_TR_Invoice();
-        this.I_Sls_TR_InvoiceItems = new Array<I_Sls_TR_InvoiceItems>();
-    }
-    public I_Sls_TR_Invoice: I_Sls_TR_Invoice;
-    public I_Sls_TR_InvoiceItems: Array<I_Sls_TR_InvoiceItems>;
-
-
-}
 class PurReceiveMasterDetails extends SecurityClass {
     constructor() {
         super();
@@ -3433,10 +3423,10 @@ class Rec_D_CustomerDetail extends SecurityClass {
     constructor() {
         super();
         this.A_Rec_D_Customer = new A_Rec_D_Customer();
-        this.A_Rec_D_CustomerDoc = new Array<A_Rec_D_CustomerDoc>(); 
+        this.A_Rec_D_CustomerDoc = new Array<A_Rec_D_CustomerDoc>();
     }
     public A_Rec_D_Customer: A_Rec_D_Customer;
-    public A_Rec_D_CustomerDoc: Array<A_Rec_D_CustomerDoc>; 
+    public A_Rec_D_CustomerDoc: Array<A_Rec_D_CustomerDoc>;
 
 }
 
@@ -3445,12 +3435,12 @@ class Rec_D_CustomerDetail extends SecurityClass {
 class I_Item_Year_Details extends SecurityClass {
     constructor() {
         super();
-        this.I_Item = new Array <I_Item>();
-        this.I_ItemYear = new Array<I_ItemYear>();        
+        this.I_Item = new Array<I_Item>();
+        this.I_ItemYear = new Array<I_ItemYear>();
     }
     public I_Item: Array<I_Item>;
     public I_ItemYear: Array<I_ItemYear>;
-  
+
 }
 
 
@@ -3494,7 +3484,7 @@ class AllGetOperationMasterDisplay extends SecurityClass {
     public IQ_GetOperationCharges: Array<IQ_GetOperationCharges>;
     public I_TR_OperationDeposit: Array<IQ_GetOperationDepsit>;
     public TR_OperationSalesman: Array<IQ_GetOperationSalesman>;
-    public TR_OperationSalesmanItem: Array<IQ_GetOperationSalesmanItem>; 
+    public TR_OperationSalesmanItem: Array<IQ_GetOperationSalesmanItem>;
 }
 
 
@@ -3721,7 +3711,7 @@ class I_Sls_TR_InvoiceItems extends SecurityClass {
         this.MinUnitPrice = 0;
         this.ItemFamilyID = 0;
         this.Name_ItemFamily = "";
-        this.OnhandQty = 0; 
+        this.OnhandQty = 0;
         this.StatusFlag = "";
 
     }
@@ -3774,7 +3764,7 @@ class I_Sls_TR_InvoiceItems extends SecurityClass {
     public MinUnitPrice: number;
     public ItemFamilyID: number;
     public OnhandQty: number;
-    public StatusFlag: string; 
+    public StatusFlag: string;
 }
 class IQ_GetSlsInvoiceStatistic extends SecurityClass {
     constructor() {
@@ -4396,7 +4386,7 @@ class I_TR_Operation extends SecurityClass {
         this.Close_CashOnhand = 0;
         this.Close_CashOnBank = 0;
         this.Close_BankAccNo = "";
-        this.Close_TotalSales = 0; 
+        this.Close_TotalSales = 0;
         this.Close_Marketting = 0;
         this.Close_TotalExpenses = 0;
         this.Close_Adjustment = 0;
@@ -4406,9 +4396,9 @@ class I_TR_Operation extends SecurityClass {
         this.Close_SalesManCommition = 0;
         this.Close_NetProfit = 0;
         this.Close_Remarks = "";
-        this.IsGenerated = false; 
-        this.PolicyNo = ""; 
-        this.CustomNo = ""; 
+        this.IsGenerated = false;
+        this.PolicyNo = "";
+        this.CustomNo = "";
     }
     public OperationID: number;
     public TrNo: number;
@@ -4686,9 +4676,9 @@ class IQ_GetOperation extends SecurityClass {
         this.ClearanceDate = "";
         this.ClearanceDateH = "";
         this.ClearanceDateH = "";
-        this.IsGenerated = false; 
-        this.PolicyNo = ""; 
-        this.CustomNo = ""; 
+        this.IsGenerated = false;
+        this.PolicyNo = "";
+        this.CustomNo = "";
 
 
     }
@@ -4755,7 +4745,7 @@ class IQ_GetOperation extends SecurityClass {
     public IsGenerated: boolean;
     public PolicyNo: string;
     public CustomNo: string;
-     
+
 }
 
 
@@ -5072,7 +5062,7 @@ class I_Pur_D_Charges extends SecurityClass {
         this.VatType = 0;
         this.StatusFlag = "";
         this.OPGLExpenseAcc = "";
-         
+
 
     }
     public ChargeID: number;
@@ -5084,7 +5074,7 @@ class I_Pur_D_Charges extends SecurityClass {
     public DefaultPerc: number;
     public IsAffectPurchaseCost: boolean;
     public GLExpenseAcc: string;
-    public VatType: number;   
+    public VatType: number;
     public StatusFlag: string;
     public OPGLExpenseAcc: string;
 
@@ -5240,9 +5230,9 @@ class I_Pur_Tr_PurchaseOrder extends SecurityClass {
     public BranchCode: number;
     public CurrencyID: number;
     public IsReceived: boolean;
-    public DliveryConditions : string;
+    public DliveryConditions: string;
     public ShipmentConditions: string;
-    public ValidityPeriod : string;
+    public ValidityPeriod: string;
 }
 
 class I_Pur_Tr_PurchaseOrderDetail extends SecurityClass {
@@ -5837,7 +5827,7 @@ class G_USERS extends SecurityClass {
 class GQ_GetUsers extends SecurityClass {
     constructor() {
         super();
-        this.LoginUrl = false; 
+        this.LoginUrl = false;
         this.USER_CODE = "";
         this.USER_PASSWORD = "";
         this.USER_ACTIVE = false;
@@ -5875,7 +5865,7 @@ class GQ_GetUsers extends SecurityClass {
         this.SUB_SYSTEM_CODE = "";
         this.Flag_Mastr = "";
         this.StoreID = 0;
-         
+
     }
     public LoginUrl: boolean;
     public SYSTEM_CODE: string;
@@ -6809,7 +6799,7 @@ class I_TR_OperationTF extends SecurityClass {
     public IsReceived: boolean;
     public IsRequested: boolean;
 }
- 
+
 class IQ_GetOperationTF extends SecurityClass {
     constructor() {
         super();
@@ -7751,10 +7741,10 @@ class IQ_GetItemCategory extends SecurityClass {
 class IQVendorMasterDetail extends SecurityClass {
     constructor() {
         super();
-        this.IQ_GetVendor = new  Array < IQ_GetVendor>();
+        this.IQ_GetVendor = new Array<IQ_GetVendor>();
         this.AQ_GetVendorDoc = new Array<AQ_GetVendorDoc>();
     }
-    public IQ_GetVendor: Array< IQ_GetVendor>;
+    public IQ_GetVendor: Array<IQ_GetVendor>;
     public AQ_GetVendorDoc: Array<AQ_GetVendorDoc>;
 }
 
@@ -8428,7 +8418,7 @@ class AQVAT_GetSlsInvoiceList extends SecurityClass {
     public ItemVatTotal: number;
     public RoundingAmount: number;
     public RetInv_TrNo: number;
-  public  statusDesciption  :string;
+    public statusDesciption: string;
     public IsCashDesciption: string;
     public RetInv_DocNo: string;
 }
@@ -8631,7 +8621,7 @@ class AQVAT_GetPurInvoiceDetail extends SecurityClass {
         this.itm_DescE = "";
         this.CompCode = 0;
         this.BranchCode = 0;
-        this.VND_SERIAL =0;
+        this.VND_SERIAL = 0;
     }
     public InvoiceDetailID: number;
     public InvoiceHeaderID: number;
@@ -8767,7 +8757,7 @@ class AVAT_TR_PurInvoiceDetail extends SecurityClass {
         this.CompCode = 0;
         this.BranchCode = 0;
         this.VND_SERIAL = 0;
-        this.StatusFlag ="";
+        this.StatusFlag = "";
     }
     public InvoiceDetailID: number;
     public InvoiceHeaderID: number;
@@ -9112,11 +9102,11 @@ class A_CCDT_Types extends SecurityClass {
 
 class ListOperationDepositDetail extends SecurityClass {
     constructor() {
-        super(); 
+        super();
         this.I_TR_OperationSalesmanItem = new Array<I_TR_OperationSalesmanItem>();
         this.I_TR_OperationDeposit = new Array<I_TR_OperationDeposit>();
     }
-  
+
     public I_TR_OperationSalesmanItem: Array<I_TR_OperationSalesmanItem>;
     public I_TR_OperationDeposit: Array<I_TR_OperationDeposit>;
 }
@@ -9504,5 +9494,529 @@ class CashVoucherMasterDetails extends SecurityClass {
         this.A_CashVoucher_Detail = new Array<A_CashVoucher_Detail>();
     }
     public A_CashVoucher_Header: A_CashVoucher_Header;
-    public A_CashVoucher_Detail  : Array<A_CashVoucher_Detail>;
+    public A_CashVoucher_Detail: Array<A_CashVoucher_Detail>;
 }
+
+
+
+class Settings_Report {
+    constructor() {
+        this.ID_Button_Print = "";
+        this.Name_Report = "";
+        this.Name_Stored_Report = "";
+        this.Parameter_1 = "";
+        this.Parameter_2 = "";
+        this.Parameter_3 = "";
+        this.Parameter_4 = "";
+        this.Parameter_5 = "";
+        this.Parameter_6 = "";
+        this.Parameter_7 = "";
+        this.Parameter_8 = "";
+        this.Parameter_9 = "";
+        this.Type_Print = 1;
+
+    }
+    public ID_Button_Print: string;
+    public Name_Report: string;
+    public Name_Stored_Report: string;
+    public Parameter_1: string;
+    public Parameter_2: string;
+    public Parameter_3: string;
+    public Parameter_4: string;
+    public Parameter_5: string;
+    public Parameter_6: string;
+    public Parameter_7: string;
+    public Parameter_8: string;
+    public Parameter_9: string;
+    public Type_Print: number;
+}
+
+
+
+class PRODUCT {
+    constructor() {
+        this.PRODUCT_ID = 0;
+        this.PRODUCT_NAME = "";
+        this.PRODUCT_QET = 0;
+        this.PRODUCT_Purchasing_price = 0;
+        this.PRODUCT_PRICE = 0;
+        this.MinUnitPrice = 0;
+        this.ID_CAT = 0;
+        this.serial = "";
+        this.TrType = 0;
+        this.StatusFlag = "";
+    }
+    public PRODUCT_ID: number;
+    public PRODUCT_NAME: string;
+    public PRODUCT_QET: number;
+    public PRODUCT_Purchasing_price: number;
+    public PRODUCT_PRICE: number;
+    public MinUnitPrice: number;
+    public ID_CAT: number;
+    public serial: string;
+    public TrType: number;
+    public StatusFlag: string;
+}
+
+
+class ReviewSalesItemInfo extends SecurityClass {
+    constructor() {
+        super();
+        this.Name_Product_sell = "";
+        this.ID_DELIVERY = 0;
+        this.Quantity_sell = 0;
+        this.price_One_part
+        this.Total_Price_One_Part
+        this.Notes_Order = "";
+        this.FK_ORDER_Delivery = 0;
+        this.MinUnitPrice
+        this.ID_CAT = 0;
+        this.PRODUCT_NAME = "";
+        this.PRODUCT_QET = 0;
+        this.PRODUCT_ID = 0;
+        this.Remarks = "";
+    }
+    public ID_DELIVERY: number;
+    public Quantity_sell: number;
+    public price_One_part: any;
+    public Total_Price_One_Part: any;
+    public Name_Product_sell: string;
+    public Notes_Order: string;
+    public FK_ORDER_Delivery: number;
+    public MinUnitPrice: any;
+    public ID_CAT: number;
+    public PRODUCT_NAME: string;
+    public PRODUCT_QET: number;
+    public PRODUCT_ID: number;
+    public Remarks: string;
+}
+
+
+class ReviewSalesMaster extends SecurityClass {
+    constructor() {
+        super();
+        this.ID_ORDER_Delivery = 0;
+        this.Date_Order_Delivery = "";
+        this.CUSTOMER_NAME = "";
+        this.CUSTOMER_ADDRES = "";
+        this.PHONE = "";
+        this.CUSTOMER_ADDRES_2 = "";
+        this.Total_All
+        this.EMPLOYEE_NAME = "";
+        this.Date = "";
+        this.EMPLOYEE_ID = 0;
+        this.Tax = 0;
+        this.Confirmation = false;
+        this.USER_CODE = "";
+        this.CUSTOMER_ID = 0;
+        this.type_order = "";
+        this.Nametype_order = "";
+        this.Name_Pilot = "";
+        this.Namber_Order_Delivery = 0;
+    }
+    public ID_ORDER_Delivery: number;
+    public Date_Order_Delivery: string;
+    public CUSTOMER_NAME: string;
+    public CUSTOMER_ADDRES: string;
+    public PHONE: string;
+    public CUSTOMER_ADDRES_2: string;
+    public Total_All: any;
+    public EMPLOYEE_NAME: string;
+    public Date: string;
+    public EMPLOYEE_ID: number;
+    public Tax: number;
+    public Confirmation: boolean;
+    public USER_CODE: string;
+    public CUSTOMER_ID: number;
+    public type_order: string;
+    public Nametype_order: string;
+    public Name_Pilot: string;
+    public Namber_Order_Delivery: number;
+}
+
+
+class ORDER_Master extends SecurityClass {
+    constructor() {
+        super();
+        this.UserName = "";
+        this.Namber_Order_Delivery = 0;
+        this.Total_All = 0;
+        this.Date_Order_Delivery = "";
+        this.Tax = 0;
+        this.CUSTOMER_ID = 0;
+        this.type_order = "";
+        this.Confirmation = false;
+    }
+    public UserName: string;
+    public Namber_Order_Delivery: number;
+    public Total_All: any;
+    public Date_Order_Delivery: string;
+    public Tax: number;
+    public CUSTOMER_ID: number;
+    public type_order: string;
+    public Confirmation: boolean;
+
+}
+
+class ORDER_DELIVERY extends SecurityClass {
+    constructor() {
+        super();
+        this.ID_ORDER_Delivery = 0;
+        this.EMPLOYEE_ID = 0;
+        this.Namber_Order_Delivery = 0;
+        this.Date_Order_Delivery = "";
+        this.CUSTOMER_ID = 0;
+        this.Total_All
+        this.Tax = 0;
+        this.type_order = "";
+        this.Name_Pilot = "";
+        this.Confirmation = false;
+        this.Num_Day = 0;
+    }
+    public ID_ORDER_Delivery: number;
+    public EMPLOYEE_ID: number;
+    public Namber_Order_Delivery: number;
+    public Date_Order_Delivery: string;
+    public CUSTOMER_ID: number;
+    public Total_All: any;
+    public Tax: number;
+    public type_order: string;
+    public Name_Pilot: string;
+    public Confirmation: boolean;
+    public Num_Day: number;
+}
+class SlsInvoiceMasterDetails extends SecurityClass {
+    constructor() {
+        super();
+        this.I_Sls_TR_Invoice = new ORDER_Master();
+        this.I_Sls_TR_InvoiceItems = new Array<Stok_ORDER_DELIVERY>();
+    }
+    public I_Sls_TR_Invoice: ORDER_Master;
+    public I_Sls_TR_InvoiceItems: Array<Stok_ORDER_DELIVERY>;
+
+
+}
+
+class SlsMasterDetails extends SecurityClass {
+    constructor() {
+        super();
+        this.I_Sls_TR_Invoice = new ORDER_DELIVERY();
+        this.I_Sls_TR_InvoiceItems = new Array<Stok_ORDER_DELIVERY>();
+    }
+    public I_Sls_TR_Invoice: ORDER_DELIVERY;
+    public I_Sls_TR_InvoiceItems: Array<Stok_ORDER_DELIVERY>;
+
+
+}
+
+
+class PurchasesMasterDetails extends SecurityClass {
+    constructor() {
+        super();
+        this.Purchases_Master = new Purchases_Master();
+        this.Purchases_Details = new Array<IQ_Purchases_Details>();
+    }
+    public Purchases_Master: Purchases_Master;
+    public Purchases_Details: Array<IQ_Purchases_Details>;
+
+
+}
+
+
+
+class CustomG_USERS extends SecurityClass {
+    constructor() {
+        super();
+        this.G_USERS = new G_USERS();
+        this.G_RoleUsers = new Array<G_RoleUsers>();
+    }
+    public G_USERS: G_USERS;
+    public G_RoleUsers: Array<G_RoleUsers>;
+
+
+}
+
+class CUSTOMER extends SecurityClass {
+    constructor() {
+        super();
+        this.CUSTOMER_ID = 0;
+        this.CUSTOMER_NAME = "";
+        this.CUSTOMER_ADDRES = "";
+        this.CUSTOMER_ADDRES_2 = "";
+        this.PHONE = "";
+        this.StatusFlag = "";
+    }
+    public CUSTOMER_ID: number;
+    public CUSTOMER_NAME: string;
+    public CUSTOMER_ADDRES: string;
+    public CUSTOMER_ADDRES_2: string;
+    public PHONE: string;
+    public StatusFlag: string;
+}
+
+
+class Stok_ORDER_DELIVERY extends SecurityClass {
+    constructor() {
+        super();
+        this.ID_DELIVERY = 0;
+        this.PRODUCT_ID = 0;
+        this.Quantity_sell = 0;
+        this.price_One_part
+        this.Total_Price_One_Part
+        this.Notes_Order = "";
+        this.FK_ORDER_Delivery = 0;
+        this.Name_Product_sell = "";
+        this.Remarks = "";
+        this.StatusFlag = "";
+    }
+    public ID_DELIVERY: number;
+    public PRODUCT_ID: number;
+    public Quantity_sell: number;
+    public price_One_part: any;
+    public Total_Price_One_Part: any;
+    public Notes_Order: string;
+    public FK_ORDER_Delivery: number;
+    public Name_Product_sell: string;
+    public Remarks: string;
+    public StatusFlag: string;
+}
+
+
+
+class Notification_Proc extends SecurityClass {
+    constructor() {
+        super();
+        this.CUSTOMER_NAME = '';
+        this.Date_Order_Delivery = '';
+        this.ID_ORDER_Delivery = 0;
+        this.Namber_Order_Delivery = 0;
+        this.Name_Pilot = "";
+        this.PHONE = "";
+        this.confirmation = false;
+    }
+    public CUSTOMER_NAME: string;
+    public Date_Order_Delivery: string;
+    public ID_ORDER_Delivery: number;
+    public Namber_Order_Delivery: number;
+    public Name_Pilot: string;
+    public PHONE: string;
+    public confirmation: false;
+}
+
+
+class IQ_Purchases_Master extends SecurityClass {
+    constructor() {
+        super();
+        this.TrNo = 0;
+        this.Tr_Date = "";
+        this.ID_Supplier = 0;
+        this.Name_Supplier = "";
+        this.Type_Debit = false;
+        this.Type_Debit_Name = "";
+        this.Total_Amount = 0;
+        this.phone = "";
+        this.Type_Supplier = "";
+        this.Notes = "";
+        this.REMARKS = "";
+        this.IS_Active = false;
+        this.Paid_Up = 0;
+        this.To_be_Paid = 0;
+        this.CashPaidAmount = 0;
+    }
+    public TrNo: number;
+    public Tr_Date: string;
+    public ID_Supplier: number;
+    public Name_Supplier: string;
+    public Type_Debit: boolean;
+    public Type_Debit_Name: string;
+    public Total_Amount: any;
+    public phone: string;
+    public Type_Supplier: string;
+    public Notes: string;
+    public REMARKS: string;
+    public IS_Active: boolean;
+    public Paid_Up: any;
+    public To_be_Paid: any;
+    public CashPaidAmount: any;
+}
+
+
+
+class IQ_Purchases_Details extends SecurityClass {
+    constructor() {
+        super();
+        this.ID = 0;
+        this.TrNo = 0;
+        this.Name_CAT = "";
+        this.PRODUCT_NAME = "";
+        this.Purchases_Quantity = 0;
+        this.Purchases_Price = 0;
+        this.Sales_Price = 0;
+        this.MinUnitPrice = 0;
+        this.PRODUCT_ID = 0;
+        this.ID_CAT = 0;
+        this.ID_familly_Cat = 0;
+        this.PRODUCT_QET = 0;
+        this.StatusFlag = "";
+    }
+    public ID: number;
+    public TrNo: number;
+    public Name_CAT: string;
+    public PRODUCT_NAME: string;
+    public Purchases_Quantity: number;
+    public Purchases_Price: any;
+    public Sales_Price: any;
+    public MinUnitPrice: any;
+    public PRODUCT_ID: number;
+    public ID_CAT: number;
+    public ID_familly_Cat: number;
+    public PRODUCT_QET: number;
+    public StatusFlag: string;
+}
+
+
+class familly_Cat extends SecurityClass {
+    constructor() {
+        super();
+        this.ID_familly_Cat = 0;
+        this.Name_familly_Cat = "";
+        this.StatusFlag = '';
+    }
+    public ID_familly_Cat: number;
+    public Name_familly_Cat: string;
+    public StatusFlag: string;
+}
+
+
+class Purchases_Details extends SecurityClass {
+    constructor() {
+        super();
+        this.ID = 0;
+        this.TrNo = 0;
+        this.ID_familly_Cat = 0;
+        this.ID_CAT = 0;
+        this.PRODUCT_ID = 0;
+        this.Purchases_Quantity = 0;
+        this.Purchases_Price
+        this.Sales_Price
+        this.MinUnitPrice
+        this.StatusFlag = '';
+    }
+    public ID: number;
+    public TrNo: number;
+    public ID_familly_Cat: number;
+    public ID_CAT: number;
+    public PRODUCT_ID: number;
+    public Purchases_Quantity: number;
+    public Purchases_Price: any;
+    public Sales_Price: any;
+    public MinUnitPrice: any;
+    public StatusFlag: string;
+}
+
+class Purchases_Master extends SecurityClass {
+    constructor() {
+        super();
+        this.TrNo = 0;
+        this.Tr_Date = "";
+        this.ID_Supplier = 0;
+        this.Type_Debit = false;
+        this.Total_Amount = 0;
+        this.Paid_Up = 0;
+        this.To_be_Paid = 0;
+        this.REMARKS = "";
+        this.Num_Day = 0;
+        this.CashPaidAmount = 0;
+    }
+    public TrNo: number;
+    public Tr_Date: string;
+    public ID_Supplier: number;
+    public Type_Debit: boolean;
+    public Total_Amount: any;
+    public Paid_Up: any;
+    public To_be_Paid: any;
+    public REMARKS: string;
+    public Num_Day: number;
+    public CashPaidAmount: any;
+}
+
+
+class The_Gard extends SecurityClass {
+    constructor() {
+        super();
+        this.id_Num = 0;
+        this.PRODUCT_NAME = "";
+        this.PRODUCT_Purchasing_price = 0;
+        this.PRODUCT_PRICE = 0;
+        this.PRODUCT_Qut = 0;
+        this.Total_Price_One_Part = 0;
+        this.Shortage = 0;
+        this.Outlet = 0;
+        this.Task = 0;
+        this.Day_Date = "";
+        this.Shift_User = "";
+    }
+    public id_Num: number;
+    public PRODUCT_NAME: string;
+    public PRODUCT_Purchasing_price: any;
+    public PRODUCT_PRICE: any;
+    public PRODUCT_Qut: number;
+    public Total_Price_One_Part: any;
+    public Shortage: any;
+    public Outlet: any;
+    public Task: number;
+    public Day_Date: string;
+    public Shift_User: string;
+}
+
+
+
+class Supplier extends SecurityClass {
+    constructor() {
+        super();
+        this.ID_Supplier = 0;
+        this.Name_Supplier = "";
+        this.phone = "";
+        this.Type_Supplier = "";
+        this.Notes = "";
+        this.IS_Active = false;
+        this.IS_Active_Name = "";
+    }
+    public ID_Supplier: number;
+    public Name_Supplier: string;
+    public phone: string;
+    public Type_Supplier: string;
+    public Notes: string;
+    public IS_Active: boolean;
+    public IS_Active_Name: string;
+}
+
+
+
+class CATEGRES extends SecurityClass {
+    constructor() {
+        super();
+        this.ID_CAT = 0;
+        this.Name_CAT = "";
+        this.ID_familly_Cat = 0;
+        this.StatusFlag = "";
+
+    }
+    public ID_CAT: number;
+    public Name_CAT: string;
+    public ID_familly_Cat: number;
+    public StatusFlag: string;
+
+}
+
+
+
+class SlsInvoiceTrNo_Or_ID {
+    constructor() {
+        this.TrNo = 0;
+        this.ID_ORDER = 0;
+    }
+    public TrNo: number;
+    public ID_ORDER: number;
+}
+
