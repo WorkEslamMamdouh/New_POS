@@ -20,12 +20,25 @@ namespace Inv.API.Controllers
         private readonly IG_USER_BRANCHService G_USER_BRANCHService;
 
 
-        public G_USERSController(IG_USERSService _G_USERSController , IG_USER_BRANCHService _G_USER_BRANCHService )
+        public G_USERSController(IG_USERSService _G_USERSController, IG_USER_BRANCHService _G_USER_BRANCHService)
         {
 
             this.G_USERSService = _G_USERSController;
             this.G_USER_BRANCHService = _G_USER_BRANCHService;
 
+        }
+
+        [HttpGet, AllowAnonymous]
+        public IHttpActionResult GetAllUser()
+        {
+            if (ModelState.IsValid)
+            {
+                var Login = G_USERSService.GetAll(x => x.USER_CODE != "islam").ToList();
+
+                return Ok(new BaseResponse(Login));
+
+            }
+            return BadRequest(ModelState);
         }
 
         [HttpGet, AllowAnonymous]
@@ -159,9 +172,11 @@ namespace Inv.API.Controllers
                     try
                     {
 
+                        string EMPLOY = " insert_EMPLOYEE '" + USER.USER_NAME + "','" + USER.USER_CODE + "'";
+                        db.Database.ExecuteSqlCommand(EMPLOY);
                         var usr = G_USERSService.Insert(USER);
 
-                       ResponseResult res = Shared.TransactionProcess(Convert.ToInt32(usr.CompCode), 0, 0, "USERS", "ADD",db);
+                        ResponseResult res = Shared.TransactionProcess(Convert.ToInt32(usr.CompCode), 0, 0, "USERS", "ADD", db);
                         if (res.ResponseState == true)
                         {
                             db.Database.ExecuteSqlCommand("execute GProc_CreateUser '" + usr.USER_CODE + "', '" + usr.DepartmentName + "'");
@@ -293,14 +308,14 @@ namespace Inv.API.Controllers
                         {
                             var usr = G_USERSService.Insert(USER.G_USERS);
 
-                              
+
 
                             var SecCreateUser = db.Database.ExecuteSqlCommand("execute GProc_SecCreateUser '" + USER.G_USERS.USER_CODE + "', " + USER.G_USERS.CompCode + "");
-                          }
+                        }
                         else
                         {
                             var res = G_USERSService.Update(USER.G_USERS);
- 
+
                         }
 
                         var insertedOperationItems = USER.G_RoleUsers.Where(x => x.StatusFlag == 'i').ToList();
@@ -310,7 +325,7 @@ namespace Inv.API.Controllers
                         //loop insered   
                         foreach (var items in insertedOperationItems)
                         {
-                             var InsertedRec = G_USERSService.InsertRoleUser(items);
+                            var InsertedRec = G_USERSService.InsertRoleUser(items);
                         }
 
                         //loop Update  
@@ -328,19 +343,19 @@ namespace Inv.API.Controllers
                             G_USERSService.DeleteRoleUsers(deletedId, UserCodeE);
                         }
 
-                         
-                        var updatedBRANCH = USER.BRANCHDetailsModel.Where(x => x.StatusFlag == 'u').ToList(); 
 
-                       
+                        var updatedBRANCH = USER.BRANCHDetailsModel.Where(x => x.StatusFlag == 'u').ToList();
+
+
                         //loop Update  
                         foreach (var items in updatedBRANCH)
                         {
 
                             var updatedRec = G_USER_BRANCHService.Update(items);
                         }
-  
+
                         dbTransaction.Commit();
-                         
+
 
                         return Ok(new BaseResponse(ModelState));
 
@@ -357,10 +372,10 @@ namespace Inv.API.Controllers
         }
 
         [HttpGet, AllowAnonymous]
-        public IHttpActionResult GetUSER(int CompCode , string UserCode, string Token, int? Status, int? UserType)
+        public IHttpActionResult GetUSER(int CompCode, string UserCode, string Token, int? Status, int? UserType)
 
         {
-            string s = "select * from GQ_GetUsers where CompCode = "+ CompCode + " and 1=1";
+            string s = "select * from GQ_GetUsers where CompCode = " + CompCode + " and 1=1";
             string condition = "";
             if (Status != null)
                 condition = condition + " and USER_ACTIVE='" + Status + "'";
@@ -375,12 +390,12 @@ namespace Inv.API.Controllers
         }
 
         [HttpGet, AllowAnonymous]
-        public IHttpActionResult GetBarnch(int CompCode, string UserCode, string Token) 
+        public IHttpActionResult GetBarnch(int CompCode, string UserCode, string Token)
         {
-            string s = "select * from GQ_GetUserBarnchAccess where COMP_CODE = " + CompCode + "";  
-            string query = s ;
+            string s = "select * from GQ_GetUserBarnchAccess where COMP_CODE = " + CompCode + "";
+            string query = s;
             var res = db.Database.SqlQuery<GQ_GetUserBarnchAccess>(query).ToList();
-            return Ok(new BaseResponse(res)); 
+            return Ok(new BaseResponse(res));
         }
 
 

@@ -1450,6 +1450,18 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
           <Parameter Name="USER_CODE" Type="nvarchar" Mode="In" />
           <Parameter Name="Type" Type="int" Mode="In" />
         </Function>
+        <Function Name="update_Sales_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Total_All" Type="money" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ID_ORDER" Type="int" Mode="In" />
+        </Function>
+        <Function Name="update_SalesReturn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PRODUCT_ID" Type="int" Mode="In" />
+          <Parameter Name="Quantity_sell" Type="int" Mode="In" />
+          <Parameter Name="Total_Price_One_Part" Type="money" Mode="In" />
+          <Parameter Name="ID_ORDER" Type="int" Mode="In" />
+          <Parameter Name="StatusFlag" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="POS2021ModelStoreContainer">
           <EntitySet Name="CATEGRES" EntityType="Self.CATEGRES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
@@ -3219,6 +3231,18 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
             <Parameter Name="USER_CODE" Mode="In" Type="String" />
             <Parameter Name="Type" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="update_SalesReturn">
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Quantity_sell" Mode="In" Type="Int32" />
+            <Parameter Name="Total_Price_One_Part" Mode="In" Type="Decimal" />
+            <Parameter Name="ID_ORDER" Mode="In" Type="Int32" />
+            <Parameter Name="StatusFlag" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_Sales_Master" ReturnType="Collection(Decimal)">
+            <Parameter Name="Total_All" Mode="In" Type="Decimal" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="ID_ORDER" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="all_The_Gard_Result">
           <Property Type="Int64" Name="RowNum" Nullable="true" />
@@ -4605,6 +4629,8 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="update_SalesReturn" FunctionName="POS2021Model.Store.update_SalesReturn" />
+          <FunctionImportMapping FunctionImportName="update_Sales_Master" FunctionName="POS2021Model.Store.update_Sales_Master" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

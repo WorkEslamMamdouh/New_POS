@@ -249,11 +249,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\Close_Day.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\familly_CatController.cs" />
     <Compile Include="Controllers\GAlertControlController.cs" />
     <Compile Include="Controllers\GCompController.cs" />
     <Compile Include="Controllers\G_SUB_SYSTEController.cs" />
     <Compile Include="Controllers\GCodesController.cs" />
     <Compile Include="Controllers\GBranchController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\Outletpirce.cs" />
+    <Compile Include="Controllers\PurchasesController.cs" />
+    <Compile Include="Controllers\ReviewSales.cs" />
     <Compile Include="Controllers\Shared\G_RoleController.cs" />
     <Compile Include="Controllers\Shared\G_RoleUsersController.cs" />
     <Compile Include="Controllers\Shared\I_ControlController.cs" />
@@ -261,17 +270,24 @@
     <Compile Include="Controllers\Shared\DatabaseChangeController.cs" />
     <Compile Include="Controllers\Shared\I_VW__GetCompStatusController.cs" />
     <Compile Include="Controllers\Shared\SystemToolsController.cs" />
+    <Compile Include="Controllers\SlsTrSalesController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\APIResolver.cs" />
     <Compile Include="Infrastructure\IocConfigurator.cs" />
     <Compile Include="Models\BaseResponse.cs" />
+    <Compile Include="Models\CustomEntities\ORDER_Master.cs" />
     <Compile Include="Models\CustomEntities\SystemEnvironment.cs" />
     <Compile Include="Models\CustomEntities\SystemParameters.cs" />
     <Compile Include="Models\CustomEntities\UserPrivilege.cs" />
     <Compile Include="Models\CustomModel\CompanyLoginStatus.cs" />
     <Compile Include="Models\CustomModel\MasterDetailsUserRoles.cs" />
+    <Compile Include="Models\CustomModel\PurchasesMasterDetails.cs" />
+    <Compile Include="Models\CustomModel\SlsInvoiceMasterDetails.cs" />
+    <Compile Include="Models\CustomModel\SlsMasterDetails.cs" />
     <Compile Include="Models\ResponseResult.cs" />
     <Compile Include="Models\SessionRecord.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />

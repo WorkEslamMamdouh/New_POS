@@ -602,5 +602,47 @@ namespace Inv.DAL.Domain
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Stord_Get_Outlet_Result>("Stord_Get_Outlet", fromDateParameter, toDateParameter, uSER_CODEParameter, typeParameter);
         }
+    
+        public virtual int update_SalesReturn(Nullable<int> pRODUCT_ID, Nullable<int> quantity_sell, Nullable<decimal> total_Price_One_Part, Nullable<int> iD_ORDER, string statusFlag)
+        {
+            var pRODUCT_IDParameter = pRODUCT_ID.HasValue ?
+                new ObjectParameter("PRODUCT_ID", pRODUCT_ID) :
+                new ObjectParameter("PRODUCT_ID", typeof(int));
+    
+            var quantity_sellParameter = quantity_sell.HasValue ?
+                new ObjectParameter("Quantity_sell", quantity_sell) :
+                new ObjectParameter("Quantity_sell", typeof(int));
+    
+            var total_Price_One_PartParameter = total_Price_One_Part.HasValue ?
+                new ObjectParameter("Total_Price_One_Part", total_Price_One_Part) :
+                new ObjectParameter("Total_Price_One_Part", typeof(decimal));
+    
+            var iD_ORDERParameter = iD_ORDER.HasValue ?
+                new ObjectParameter("ID_ORDER", iD_ORDER) :
+                new ObjectParameter("ID_ORDER", typeof(int));
+    
+            var statusFlagParameter = statusFlag != null ?
+                new ObjectParameter("StatusFlag", statusFlag) :
+                new ObjectParameter("StatusFlag", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("update_SalesReturn", pRODUCT_IDParameter, quantity_sellParameter, total_Price_One_PartParameter, iD_ORDERParameter, statusFlagParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> update_Sales_Master(Nullable<decimal> total_All, string userName, Nullable<int> iD_ORDER)
+        {
+            var total_AllParameter = total_All.HasValue ?
+                new ObjectParameter("Total_All", total_All) :
+                new ObjectParameter("Total_All", typeof(decimal));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var iD_ORDERParameter = iD_ORDER.HasValue ?
+                new ObjectParameter("ID_ORDER", iD_ORDER) :
+                new ObjectParameter("ID_ORDER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("update_Sales_Master", total_AllParameter, userNameParameter, iD_ORDERParameter);
+        }
     }
 }
