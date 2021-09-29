@@ -1409,7 +1409,7 @@ namespace SlsTrSales {
         let _Stock: Settings_Report = new Settings_Report();
         _Stock.Type_Print = 4;
         _Stock.ID_Button_Print = 'saless';
-        _Stock.Parameter_1 = res;
+        _Stock.Parameter_1 = res.ID_ORDER;     
         //_Stock.Parameter_2 = "";
         //_Stock.Parameter_3 = "";
         //_Stock.Parameter_4 = "";
@@ -1428,25 +1428,45 @@ namespace SlsTrSales {
 
         debugger
         Ajax.Callsync({
-            url: Url.Action("Data_Report_Open", "GeneralReports"),
+            url: Url.Action("Data_Report_Open", "PrintReports"),
             data: rp,
             success: (d) => {
-                debugger
-                let result = d.result as string;
-
-
-                window.open(result, "_blank");
+                let result = d as BaseResponse;
+                        
+                PrintImage(result)
             }
         })
+           
+
+    }
 
 
 
+    function ImagetoPrint(source) {
+        return "<html><head><scri" + "pt>function step1(){\n" +
+            "setTimeout('step2()', 10);}\n" +
+            "function step2(){window.print();window.close()}\n" +
+            "</scri" + "pt></head><body onload='step1()'>\n" +
+            "<img src='data:image/png;base64," + source + "' /></body></html>";
+    }
+    function PrintImage(source) {
+        //var Pagelink = "about:blank";
+        //var pwa = window.open(Pagelink, "_new");
+        //pwa.document.open();
+        //pwa.document.write(ImagetoPrint(source));
+        //pwa.document.close();   
+                               
 
-
+        //this.prints = true;
+        var pwa = window.open('', 'Print-Window', 'height=600,width=800');
+        pwa.document.open();
+        pwa.document.write(ImagetoPrint(source));
+        pwa.document.close();
 
 
 
     }
+
 
     function Insert_Basket() {
         if (InvoiceModel.CUSTOMER_ID == null || InvoiceModel.CUSTOMER_ID == 0) {
