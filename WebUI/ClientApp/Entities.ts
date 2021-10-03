@@ -9513,6 +9513,7 @@ class Settings_Report {
         this.Parameter_7 = "";
         this.Parameter_8 = "";
         this.Parameter_9 = "";
+        this.Parameter_ = "";   
         this.Type_Print = 1;
 
     }
@@ -9528,6 +9529,7 @@ class Settings_Report {
     public Parameter_7: string;
     public Parameter_8: string;
     public Parameter_9: string;
+    public Parameter_: string;   
     public Type_Print: number;
 }
 

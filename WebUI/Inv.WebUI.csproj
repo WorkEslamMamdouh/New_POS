@@ -1067,6 +1067,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\PrintReportsController.cs" />
     <Compile Include="Controllers\PrintTransactionController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SessionController.cs" />

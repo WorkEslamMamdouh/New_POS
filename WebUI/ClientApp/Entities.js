@@ -5637,6 +5637,7 @@ var Settings_Report = (function () {
         this.Parameter_7 = "";
         this.Parameter_8 = "";
         this.Parameter_9 = "";
+        this.Parameter_ = "";
         this.Type_Print = 1;
     }
     return Settings_Report;

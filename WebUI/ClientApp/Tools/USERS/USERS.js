@@ -278,8 +278,8 @@ var USERS;
                     List_Roles = List_Roles.filter(function (x) { return x.IsShowable == true; });
                     for (var i = 0; i < List_Roles.length; i++) {
                         List_Roles[i].IsActiveDesc = List_Roles[i].ISActive == true ? "نعم" : "لا";
-                        DisplayUserRole(List_Roles);
                     }
+                    DisplayUserRole(List_Roles);
                 }
             }
         });
