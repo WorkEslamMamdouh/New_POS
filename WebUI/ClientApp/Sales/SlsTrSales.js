@@ -12,6 +12,7 @@ var SlsTrSales;
     var Details_Updata_Cust = new Array();
     var SearchDetails = new Array();
     var CustomerDetails = new Array();
+    var CustDetails = new Array();
     var CategoryDetails = new Array();
     var Category = new Array();
     var familly_CatDetails = new Array();
@@ -261,6 +262,7 @@ var SlsTrSales;
                 var result = d;
                 if (result.IsSuccess) {
                     UserDetails = result.Response;
+                    UserDetails = UserDetails.filter(function (x) { return x.USER_TYPE = 2; });
                     debugger;
                     DocumentActions.FillCombowithdefult(UserDetails, ddlUserMaster, "USER_CODE", "USER_CODE", "اختار المندوب");
                 }
@@ -1246,8 +1248,12 @@ var SlsTrSales;
                 Det_Single_Cust = new CUSTOMER();
                 Det_Single_Cust.CUSTOMER_ID = null;
                 Det_Single_Cust.CUSTOMER_NAME = CUST_NAME.value;
+                Det_Single_Cust.NAMEE = CUST_NAME.value;
                 Det_Single_Cust.PHONE = CUST_Phone.value;
-                Det_Single_Cust.CUSTOMER_ADDRES = CUST_ADDRES.value;
+                Det_Single_Cust.STATUS = true;
+                Det_Single_Cust.REMARKS = CUST_ADDRES.value;
+                Det_Single_Cust.CustomerCODE = (Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000)).toString();
+                Det_Single_Cust.IsCreditCustomer = $('#txt_Cust_Type').val() == '0' ? false : true;
                 Det_Single_Cust.CUSTOMER_ADDRES_2 = CUST_ADDRES_2.value;
                 Det_Single_Cust.StatusFlag = "i";
                 Details_Updata_Cust.push(Det_Single_Cust);
@@ -1274,8 +1280,12 @@ var SlsTrSales;
             Det_Single_Cust = new CUSTOMER();
             Det_Single_Cust.CUSTOMER_ID = Number(idCust.value);
             Det_Single_Cust.CUSTOMER_NAME = CUST_NAME.value;
+            Det_Single_Cust.NAMEE = CUST_NAME.value;
             Det_Single_Cust.PHONE = CUST_Phone.value;
-            Det_Single_Cust.CUSTOMER_ADDRES = CUST_ADDRES.value;
+            Det_Single_Cust.STATUS = true;
+            Det_Single_Cust.REMARKS = CUST_ADDRES.value;
+            Det_Single_Cust.CustomerCODE = (Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000)).toString();
+            Det_Single_Cust.IsCreditCustomer = $('#txt_Cust_Type').val() == '0' ? false : true;
             Det_Single_Cust.CUSTOMER_ADDRES_2 = CUST_ADDRES_2.value;
             Det_Single_Cust.StatusFlag = "u";
             Details_Updata_Cust.push(Det_Single_Cust);
@@ -1296,18 +1306,21 @@ var SlsTrSales;
             CUST_ADDRES_2.value = "";
             CUST_Phone.value = "";
             idCust.value = "";
+            $('#txt_Cust_Type').val('1');
             document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #4386da; border - radius: 50px;');
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr');
         }
         else {
             var search_1 = cust_search_phone.value.toLowerCase();
-            SearchDetails = CustomerDetails.filter(function (x) { return x.PHONE.toString().search(search_1) >= 0 || x.CUSTOMER_NAME.toLowerCase().search(search_1) >= 0; }); /*|| x.MOBILE.toLowerCase().search(search) >= 0*/
+            CustDetails = CustomerDetails.filter(function (x) { return x.STATUS == true; });
+            SearchDetails = CustDetails.filter(function (x) { return x.PHONE.toString().search(search_1) >= 0 || x.CUSTOMER_NAME.toLowerCase().search(search_1) >= 0 && x.STATUS == true; }); /*|| x.MOBILE.toLowerCase().search(search) >= 0*/
             //    || x.CustomerCODE.toString().search(search) >= 0 /* || x.CreditLimit.toString().search(search) >= 0 || x.Emp_NameA.toString().search(search) >= 0
             //    || x.ContactMobile.toString().search(search) >= 0 /*|| x.DueAmount.toString().search(search) >= 0 *//*|| x.DaysDiff.toString().search(search) >= 0*/);
             if (SearchDetails[0] != null) {
                 CUST_NAME.value = SearchDetails[0].CUSTOMER_NAME;
                 CUST_ADDRES.value = SearchDetails[0].CUSTOMER_NAME;
                 //CUST_ADDRES_2.value = SearchDetails[0].CUSTOMER_NAME;
+                $('#txt_Cust_Type').val(SearchDetails[0].IsCreditCustomer == false ? '0' : '1');
                 CUST_Phone.value = SearchDetails[0].PHONE;
                 idCust.value = SearchDetails[0].CUSTOMER_ID.toString();
                 document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #499449; border - radius: 50px;');
@@ -1321,6 +1334,7 @@ var SlsTrSales;
                 CUST_ADDRES_2.value = "";
                 CUST_Phone.value = "";
                 idCust.value = "";
+                $('#txt_Cust_Type').val('1');
             }
         }
     }
@@ -1358,6 +1372,7 @@ var SlsTrSales;
         CUST_Phone.value = "";
         idCust.value = "";
         cust_search_phone.value = "";
+        $('#txt_Cust_Type').val('1');
         document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #4386da; border - radius: 50px;');
         document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr');
     }

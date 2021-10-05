@@ -1179,6 +1179,7 @@
     <Content Include="Views\Stock\CategoriesIndex.cshtml" />
     <Content Include="Views\Stock\familly_Cat.cshtml" />
     <Content Include="Views\Stock\ItemsIndex.cshtml" />
+    <Content Include="Views\Generalsetting\CUSTOMERSIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1200,6 +1201,7 @@
     <TypeScriptCompile Include="ClientApp\App.ts" />
     <TypeScriptCompile Include="ClientApp\ClientGeneralTools.ts" />
     <TypeScriptCompile Include="ClientApp\CollectionReports\Clientaccstat.ts" />
+    <TypeScriptCompile Include="ClientApp\Generalsetting\CUSTOMERS.ts" />
     <TypeScriptCompile Include="ClientApp\Generalsetting\Supplier.ts" />
     <TypeScriptCompile Include="ClientApp\Pages\LoginAdmin.ts" />
     <TypeScriptCompile Include="ClientApp\Pages\LoginComponent.ts" />

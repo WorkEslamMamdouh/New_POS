@@ -9743,18 +9743,72 @@ class CUSTOMER extends SecurityClass {
         super();
         this.CUSTOMER_ID = 0;
         this.CUSTOMER_NAME = "";
+        this.NAMEE = "";      
         this.CUSTOMER_ADDRES = "";
         this.CUSTOMER_ADDRES_2 = "";
         this.PHONE = "";
+        this.EMAIL = "";
+        this.REMARKS = "";
+        this.STATUS = false;
+        this.IsCreditCustomer = false;        
+        this.BranchCode = 0;
+        this.CompCode = 0;
+        this.CREATED_BY = "";
+        this.CREATED_AT = "";
+        this.UPDATED_AT = "";
+        this.UPDATED_BY = "";
+        this.VatNo = "";
+        this.CreditLimit = 0;
+        this.CreditLimitFC = 0;
+        this.CreditPeriod = 0;
+        this.OpenBalanceFC = 0;
+        this.Openbalance = 0;
+        this.Debit = 0;
+        this.DebitFC = 0;
+        this.Credit = 0;
+        this.CreditFC = 0;
+        this.CustomerCODE = "";
         this.StatusFlag = "";
+        this.Name_STATUS = "";    
+        this.NameIsCreditCustomer = "";
+
+        
     }
     public CUSTOMER_ID: number;
     public CUSTOMER_NAME: string;
+    public NAMEE: string;   
     public CUSTOMER_ADDRES: string;
     public CUSTOMER_ADDRES_2: string;
     public PHONE: string;
-    public StatusFlag: string;
-}
+    public EMAIL: string;
+    public REMARKS: string;
+    public STATUS: boolean;
+    public IsCreditCustomer: boolean;      
+    public BranchCode: number;
+    public CompCode: number;
+    public CREATED_BY: string;
+    public CREATED_AT: string;
+    public UPDATED_AT: string;
+    public UPDATED_BY: string;
+    public VatNo: string;
+    public CreditLimit: number;
+    public CreditLimitFC: number;
+    public CreditPeriod: number;
+    public OpenBalanceFC: number;
+    public Openbalance: number;
+    public Debit: number;
+    public DebitFC: number;
+    public Credit: number;
+    public CreditFC: number;
+    public CustomerCODE: string;
+    public StatusFlag: string;     
+    public Name_STATUS: string; 
+    public NameIsCreditCustomer: string; 
+
+    
+
+
+}                              
 
 
 class Stok_ORDER_DELIVERY extends SecurityClass {

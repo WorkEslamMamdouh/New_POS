@@ -155,6 +155,10 @@ namespace Inv.WebUI.Controllers
         {
             return View("~/Views/Generalsetting/SupplierIndex.cshtml");
         }
+        public ActionResult CUSTOMERSIndex()
+        {
+            return View("~/Views/Generalsetting/CUSTOMERSIndex.cshtml");
+        } 
         public ActionResult SalesinventoryIndex()
         {
 

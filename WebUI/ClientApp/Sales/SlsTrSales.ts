@@ -13,6 +13,9 @@ namespace SlsTrSales {
     var Details_Updata_Cust: Array<CUSTOMER> = new Array<CUSTOMER>();
     var SearchDetails: Array<CUSTOMER> = new Array<CUSTOMER>();
     var CustomerDetails: Array<CUSTOMER> = new Array<CUSTOMER>();
+    var CustDetails: Array<CUSTOMER> = new Array<CUSTOMER>();
+
+     
     var CategoryDetails: Array<CATEGRES> = new Array<CATEGRES>();
     var Category: Array<CATEGRES> = new Array<CATEGRES>();
     var familly_CatDetails: Array<familly_Cat> = new Array<familly_Cat>();
@@ -310,6 +313,7 @@ namespace SlsTrSales {
                 let result = d as BaseResponse;
                 if (result.IsSuccess) {
                     UserDetails = result.Response as Array<G_USERS>;
+                    UserDetails = UserDetails.filter(x => x.USER_TYPE = 2);
                     debugger
 
                     DocumentActions.FillCombowithdefult(UserDetails, ddlUserMaster, "USER_CODE", "USER_CODE", "اختار المندوب");
@@ -1685,8 +1689,12 @@ namespace SlsTrSales {
                 Det_Single_Cust = new CUSTOMER();
                 Det_Single_Cust.CUSTOMER_ID = null;
                 Det_Single_Cust.CUSTOMER_NAME = CUST_NAME.value;
+                Det_Single_Cust.NAMEE = CUST_NAME.value;   
                 Det_Single_Cust.PHONE = CUST_Phone.value;
-                Det_Single_Cust.CUSTOMER_ADDRES = CUST_ADDRES.value;
+                Det_Single_Cust.STATUS = true;   
+                Det_Single_Cust.REMARKS = CUST_ADDRES.value;
+                Det_Single_Cust.CustomerCODE = (Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000)).toString();
+                Det_Single_Cust.IsCreditCustomer = $('#txt_Cust_Type').val() == '0' ? false : true;  
                 Det_Single_Cust.CUSTOMER_ADDRES_2 = CUST_ADDRES_2.value;
                 Det_Single_Cust.StatusFlag = "i";
 
@@ -1722,8 +1730,12 @@ namespace SlsTrSales {
             Det_Single_Cust = new CUSTOMER();
             Det_Single_Cust.CUSTOMER_ID = Number(idCust.value);
             Det_Single_Cust.CUSTOMER_NAME = CUST_NAME.value;
+            Det_Single_Cust.NAMEE = CUST_NAME.value;
             Det_Single_Cust.PHONE = CUST_Phone.value;
-            Det_Single_Cust.CUSTOMER_ADDRES = CUST_ADDRES.value;
+            Det_Single_Cust.STATUS = true;
+            Det_Single_Cust.REMARKS = CUST_ADDRES.value;
+            Det_Single_Cust.CustomerCODE = (Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000)).toString();
+            Det_Single_Cust.IsCreditCustomer = $('#txt_Cust_Type').val() == '0' ? false : true;
             Det_Single_Cust.CUSTOMER_ADDRES_2 = CUST_ADDRES_2.value;
             Det_Single_Cust.StatusFlag = "u";
 
@@ -1753,13 +1765,15 @@ namespace SlsTrSales {
             CUST_ADDRES_2.value = "";
             CUST_Phone.value = "";
             idCust.value = "";
+            $('#txt_Cust_Type').val('1');
             document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #4386da; border - radius: 50px;');
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr');
 
         }
         else {
             let search: string = cust_search_phone.value.toLowerCase();
-            SearchDetails = CustomerDetails.filter(x => x.PHONE.toString().search(search) >= 0 || x.CUSTOMER_NAME.toLowerCase().search(search) >= 0); /*|| x.MOBILE.toLowerCase().search(search) >= 0*/
+            CustDetails = CustomerDetails.filter(x => x.STATUS == true);
+            SearchDetails = CustDetails.filter(x => x.PHONE.toString().search(search) >= 0 || x.CUSTOMER_NAME.toLowerCase().search(search) >= 0 && x.STATUS == true); /*|| x.MOBILE.toLowerCase().search(search) >= 0*/
             //    || x.CustomerCODE.toString().search(search) >= 0 /* || x.CreditLimit.toString().search(search) >= 0 || x.Emp_NameA.toString().search(search) >= 0
             //    || x.ContactMobile.toString().search(search) >= 0 /*|| x.DueAmount.toString().search(search) >= 0 *//*|| x.DaysDiff.toString().search(search) >= 0*/);
 
@@ -1767,6 +1781,7 @@ namespace SlsTrSales {
                 CUST_NAME.value = SearchDetails[0].CUSTOMER_NAME;
                 CUST_ADDRES.value = SearchDetails[0].CUSTOMER_NAME;
                 //CUST_ADDRES_2.value = SearchDetails[0].CUSTOMER_NAME;
+                $('#txt_Cust_Type').val(SearchDetails[0].IsCreditCustomer == false ? '0' : '1');     
                 CUST_Phone.value = SearchDetails[0].PHONE;
                 idCust.value = SearchDetails[0].CUSTOMER_ID.toString();
                 document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #499449; border - radius: 50px;');
@@ -1782,6 +1797,8 @@ namespace SlsTrSales {
                 CUST_ADDRES_2.value = "";
                 CUST_Phone.value = "";
                 idCust.value = "";
+                $('#txt_Cust_Type').val('1');
+
 
             }
 
@@ -1827,6 +1844,7 @@ namespace SlsTrSales {
         CUST_Phone.value = "";
         idCust.value = "";
         cust_search_phone.value = "";
+        $('#txt_Cust_Type').val('1');    
         document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #4386da; border - radius: 50px;');
         document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr');
     }

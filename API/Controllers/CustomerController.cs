@@ -43,6 +43,61 @@ namespace API.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpGet, AllowAnonymous]
+        public IHttpActionResult GetFiltered(int? CreditType, string BalType)
+        {
+
+            string s = "select * from CUSTOMER ";
+            string condition = "";
+
+            if (CreditType != null && BalType != "All")
+            {
+                condition = condition + " where IsCreditCustomer =" + CreditType;
+
+                if (BalType == ">")
+                {
+                    condition = condition + " and  Openbalance > CreditLimit ";
+                }
+                if (BalType == "=")
+                {
+                    condition = condition + " and Openbalance = CreditLimit ";
+                }
+                if (BalType == "<")
+                {
+                    condition = condition + " and Openbalance < CreditLimit ";
+                }
+
+
+            }
+
+
+            else if (CreditType != null)
+                condition = condition + " where  IsCreditCustomer =" + CreditType;
+
+            else if (BalType != "All")
+            {
+                if (BalType == ">")
+                {
+                    condition = condition + " where  Openbalance > CreditLimit ";
+                }
+                if (BalType == "=")
+                {
+                    condition = condition + " where Openbalance = CreditLimit ";
+                }
+                if (BalType == "<")
+                {
+                    condition = condition + " where Openbalance < CreditLimit "; 
+                }
+
+            }
+
+            string query = s + condition;
+            var res = db.Database.SqlQuery<CUSTOMER>(query).ToList();
+            return Ok(new BaseResponse(res));
+
+
+        }
+
 
         [HttpPost, AllowAnonymous]
         public IHttpActionResult Insert([FromBody]CUSTOMER Nation)
@@ -107,48 +162,48 @@ namespace API.Controllers
         public IHttpActionResult UpdateCustlist(List<CUSTOMER> CUSTOMERList)
         {
 
-            
 
-                try
+
+            try
+            {
+                var insertedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'i').ToList();
+                var updatedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'u').ToList();
+                var deletedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'd').ToList();
+                ResponseResult res = new ResponseResult();
+                //loop insered 
+                if (insertedRecords.Count > 0)
                 {
-                    var insertedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'i').ToList();
-                    var updatedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'u').ToList();
-                    var deletedRecords = CUSTOMERList.Where(x => x.StatusFlag == 'd').ToList();
-                    ResponseResult res = new ResponseResult();
-                    //loop insered 
-                    if (insertedRecords.Count > 0)
+                    foreach (var item in insertedRecords)
                     {
-                        foreach (var item in insertedRecords)
-                        {
-                            var InsertedRec = CustomerServices.Insert(item);
-                            return Ok(new BaseResponse(InsertedRec.CUSTOMER_ID));
-                        }
-
+                        var InsertedRec = CustomerServices.Insert(item);
+                        return Ok(new BaseResponse(InsertedRec.CUSTOMER_ID));
                     }
 
+                }
 
-                    //loop Update 
-                    if (updatedRecords.Count > 0)
+
+                //loop Update 
+                if (updatedRecords.Count > 0)
+                {
+                    foreach (var item in updatedRecords)
                     {
-                        foreach (var item in updatedRecords)
-                        {
-                            var updatedRec = CustomerServices.Update(item);
-                            return Ok(new BaseResponse(updatedRec.CUSTOMER_ID));
-                        }
-
+                        var updatedRec = CustomerServices.Update(item);
+                        return Ok(new BaseResponse(updatedRec.CUSTOMER_ID));
                     }
 
-                    //var ID_CUSTOMER = CustomerServices.GetAll(x => x.PHONE == CUSTOMERList[0].PHONE).ToList();
-
-                    //return Ok(new BaseResponse(ID_CUSTOMER[0].CUSTOMER_ID));
-
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new BaseResponse(HttpStatusCode.ExpectationFailed, ex.Message));
                 }
 
-          
+                //var ID_CUSTOMER = CustomerServices.GetAll(x => x.PHONE == CUSTOMERList[0].PHONE).ToList();
+
+                //return Ok(new BaseResponse(ID_CUSTOMER[0].CUSTOMER_ID));
+
+            }
+            catch (Exception ex)
+            {
+                return Ok(new BaseResponse(HttpStatusCode.ExpectationFailed, ex.Message));
+            }
+
+
             return BadRequest(ModelState);
         }
 

@@ -28,7 +28,6 @@ namespace Inv.DAL.Domain
         }
     
         public virtual DbSet<CATEGRE> CATEGRES { get; set; }
-        public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<EMPLOYEE> EMPLOYEEs { get; set; }
         public virtual DbSet<Enter_Money> Enter_Money { get; set; }
         public virtual DbSet<familly_Cat> familly_Cat { get; set; }
@@ -87,6 +86,7 @@ namespace Inv.DAL.Domain
         public virtual DbSet<IQ_Purchases_Master> IQ_Purchases_Master { get; set; }
         public virtual DbSet<ReviewSalesItemInfo> ReviewSalesItemInfoes { get; set; }
         public virtual DbSet<ReviewSalesMaster> ReviewSalesMasters { get; set; }
+        public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
     
         [DbFunction("InvEntities", "GFun_Companies")]
         public virtual IQueryable<GFun_Companies_Result> GFun_Companies(string userCode)

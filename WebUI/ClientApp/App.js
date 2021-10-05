@@ -21,6 +21,7 @@ var Modules = {
     Items: "Items",
     Purchases: "Purchases",
     Supplier: "Supplier",
+    CUSTOMERS: "CUSTOMERS",
     Salesinventory: "Salesinventory",
     familly_Cat: "familly_Cat",
     Income_expenses: "Income_expenses",

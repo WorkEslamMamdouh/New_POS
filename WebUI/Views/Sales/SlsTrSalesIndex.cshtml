@@ -1,5 +1,6 @@
-﻿
+﻿@using Inv.WebUI.Resources
 @{
+    ViewBag.Title = @SystemResource.Men_AccDefCustomer;
     ViewBag.Title = "مبيعات";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
@@ -1039,8 +1040,16 @@
                             <label class="login2 pull-right pull-right-pro" style="color: bisque;">الاسم</label>
                         </div>
 
-                        <div class="col-lg-10">
+                        <div class="col-lg-7">
                             <input id="CUST_NAME" class="form-control" type="text" placeholder="الاسم">
+                        </div>
+
+                        <div class="col-lg-3 col-xs-3">
+                            <select id="txt_Cust_Type"   name="" class="form-control  text_Display">
+                                <option value="Null">@SystemResource.App_Type</option>
+                                <option value="1">@SystemResource.App_Cash</option>
+                                <option value="0">@SystemResource.App_Doubted</option>
+                            </select>
                         </div>
 
                     </div>

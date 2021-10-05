@@ -616,6 +616,7 @@ var HomeComponent;
         $("#btnCategories").click(function () { OpenPage(Modules.Categories); });
         $("#btnItems").click(function () { OpenPage(Modules.Items); });
         $("#btnSupplier").click(function () { OpenPage(Modules.Supplier); });
+        $("#btnCUSTOMERS").click(function () { OpenPage(Modules.CUSTOMERS); });
         $("#btnSalesinventory").click(function () { OpenPage(Modules.Salesinventory); });
         $("#btnfamilly_Cat").click(function () { OpenPage(Modules.familly_Cat); });
         $("#btnIncome_expenses").click(function () { OpenPage(Modules.Income_expenses); });
