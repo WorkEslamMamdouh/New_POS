@@ -224,7 +224,7 @@ namespace API.Controllers
 
 
                 string query = s + condition;
-                var res = db.Database.SqlQuery<ReviewSalesMaster>(query).ToList();
+                var res = db.Database.SqlQuery<IQ_Catch_Receipt>(query).ToList();
                 return Ok(new BaseResponse(res));
             }
             return BadRequest(ModelState);

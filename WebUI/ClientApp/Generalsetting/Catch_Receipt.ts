@@ -275,14 +275,14 @@ namespace CatchReceipt {
                                         
                         Get_IQ_IQ_Catch_Receipt[i].Data = DateFormat(Get_IQ_IQ_Catch_Receipt[i].Data);
                                    
-                        Credit = Number(Get_IQ_IQ_Catch_Receipt[i].Openbalance - Get_IQ_IQ_Catch_Receipt[i].CreditLimit);
+                        //Credit = Number(Get_IQ_IQ_Catch_Receipt[i].Openbalance - Get_IQ_IQ_Catch_Receipt[i].CreditLimit);
                         if (Credit < 0) {
-                            Get_IQ_IQ_Catch_Receipt[i].Debit = (Credit * -1);
-                            Get_IQ_IQ_Catch_Receipt[i].DebitFC = 0;   
+                            //Get_IQ_IQ_Catch_Receipt[i].Debit = (Credit * -1);
+                            //Get_IQ_IQ_Catch_Receipt[i].DebitFC = 0;   
                         }
                         else {
-                            Get_IQ_IQ_Catch_Receipt[i].DebitFC = Credit;
-                            Get_IQ_IQ_Catch_Receipt[i].Debit = 0;       
+                            //Get_IQ_IQ_Catch_Receipt[i].DebitFC = Credit;
+                            //Get_IQ_IQ_Catch_Receipt[i].Debit = 0;       
 
                         }
 
@@ -334,7 +334,7 @@ namespace CatchReceipt {
             { title: " التاريخ  ", name: "Data", type: "text", width: "12%" },
             { title: "الرصيد الافتتاحي", name: "Openbalance", type: "text", width: "100px" },     
             { title: "مدين", name: "Debit", type: "text", width: "100px" },
-            { title: "دائن", name: "DebitFC", type: "text", width: "100px" },
+            { title: "دائن", name: "Credit", type: "text", width: "100px" },
             { title: "الرصيد", name: "CreditLimit", type: "text", width: "100px" },  
             { title: "اجمالي الفاتوره", name: "Tax", type: "text", width: "16%" },
 

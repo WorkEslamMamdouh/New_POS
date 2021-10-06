@@ -100,6 +100,7 @@ var SlsTrSales;
     var idCust;
     var txt_search;
     var ddlUserMaster;
+    var txt_Cust_Type;
     var fouse;
     var Num_Order;
     var Success;
@@ -162,6 +163,7 @@ var SlsTrSales;
         txt_ApprovePass = document.getElementById('txt_ApprovePass');
         txt_search = document.getElementById('txt_search');
         ddlUserMaster = document.getElementById('ddlUserMaster');
+        txt_Cust_Type = document.getElementById('txt_Cust_Type');
         //-------------------------------------------------------Customr-----------------------
         Insert_But_Cust = document.getElementById("Insert_But_Cust");
         CUST_NAME = document.getElementById("CUST_NAME");
@@ -201,6 +203,7 @@ var SlsTrSales;
         update_div_cust.onclick = update_cust;
         Remove_cust.onclick = Remove_cust_onclick;
         txt_search.onchange = searcdisplay;
+        txt_Cust_Type.onchange = txt_Cust_Type_onchange;
     }
     function timer() {
         debugger;
@@ -944,11 +947,11 @@ var SlsTrSales;
         List_MinUnitPrice = new Array();
         InvoiceModel.UserName = ddlUserMaster.value == 'null' ? SysSession.CurrentEnvironment.UserCode : ddlUserMaster.value;
         InvoiceModel.Namber_Order_Delivery = 1;
-        InvoiceModel.Total_All = Number($('#All_Total_Basket').attr('All_Total'));
+        InvoiceModel.Total_All = (Number($('#All_Total_Basket').attr('All_Total')));
         InvoiceModel.Date_Order_Delivery = timer();
         InvoiceModel.Tax = 0;
         InvoiceModel.CUSTOMER_ID = Number(idCust.value) == null ? null : Number(idCust.value);
-        InvoiceModel.type_order = 'Delivery';
+        InvoiceModel.type_order = (Number($('#txt_Amount').val())).toString();
         InvoiceModel.Confirmation = true;
         for (var i = 1; i < Num_Add_List + 1; i++) {
             var prgraph = document.getElementById("ppp" + i);
@@ -996,6 +999,18 @@ var SlsTrSales;
                 flag_Cust = true;
                 return;
             }
+            //Number($('#All_Total_Basket').attr('All_Total'))
+            if ((idCust.value.trim() == '' || idCust.value.trim() == '0') && txt_Cust_Type.value == '0') {
+                show_Cutomr();
+                Errorinput($('#cust_search_phone'));
+                MessageBox.Show('برجاء ادخال العميل', '');
+                return;
+            }
+            if (($('#txt_Amount').val().trim() == '' || $('#txt_Amount').val().trim() == '0') && txt_Cust_Type.value == '0') {
+                show_Cutomr();
+                Errorinput($('#txt_Amount'));
+                return;
+            }
             ValidationMinUnitPrice = 1;
             Assign_Get_Data();
             if (Validation_Insert != 1) {
@@ -1024,6 +1039,11 @@ var SlsTrSales;
             if (flag_Cust == false) {
                 show_Cutomr();
                 flag_Cust = true;
+                return;
+            }
+            if (($('#txt_Amount').val().trim() == '' || $('#txt_Amount').val().trim() == '0') && txt_Cust_Type.value == '0') {
+                show_Cutomr();
+                Errorinput($('#txt_Amount'));
                 return;
             }
             ValidationMinUnitPrice = 1;
@@ -1189,6 +1209,12 @@ var SlsTrSales;
         });
     }
     function show_Cutomr() {
+        if (txt_Cust_Type.value == "1" || txt_Cust_Type.value == "Null") {
+            $('#txt_Amount').attr('disabled', 'disabled');
+        }
+        else {
+            $('#txt_Amount').removeAttr('disabled');
+        }
         $("#Popup_Custmor").modal("show");
         debugger;
         document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset animated zoomIn collapse in castmr animated shake');
@@ -1321,6 +1347,12 @@ var SlsTrSales;
                 CUST_ADDRES.value = SearchDetails[0].CUSTOMER_NAME;
                 //CUST_ADDRES_2.value = SearchDetails[0].CUSTOMER_NAME;
                 $('#txt_Cust_Type').val(SearchDetails[0].IsCreditCustomer == false ? '0' : '1');
+                if (txt_Cust_Type.value == "1" || txt_Cust_Type.value == "Null") {
+                    $('#txt_Amount').attr('disabled', 'disabled');
+                }
+                else {
+                    $('#txt_Amount').removeAttr('disabled');
+                }
                 CUST_Phone.value = SearchDetails[0].PHONE;
                 idCust.value = SearchDetails[0].CUSTOMER_ID.toString();
                 document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #499449; border - radius: 50px;');
@@ -1373,8 +1405,18 @@ var SlsTrSales;
         idCust.value = "";
         cust_search_phone.value = "";
         $('#txt_Cust_Type').val('1');
+        $('#txt_Amount').val('');
+        $('#txt_Amount').attr('disabled', 'disabled');
         document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #4386da; border - radius: 50px;');
         document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr');
+    }
+    function txt_Cust_Type_onchange() {
+        if (txt_Cust_Type.value == "1" || txt_Cust_Type.value == "Null") {
+            $('#txt_Amount').attr('disabled', 'disabled');
+        }
+        else {
+            $('#txt_Amount').removeAttr('disabled');
+        }
     }
 })(SlsTrSales || (SlsTrSales = {}));
 //# sourceMappingURL=SlsTrSales.js.map

@@ -155,19 +155,19 @@ namespace CUSTOMERS {
                         CustomerDetails[i].Name_STATUS = CustomerDetails[i].STATUS == false ? 'غير فعال' : 'فعال';
                         CustomerDetails[i].NameIsCreditCustomer = CustomerDetails[i].IsCreditCustomer == false ? 'أجل' : 'نقدي';  
 
-                        Credit = Number(CustomerDetails[i].Openbalance - CustomerDetails[i].CreditLimit);
-                        if (Credit < 0) {
-                            CustomerDetails[i].Debit = (Credit * -1);
-                            CustomerDetails[i].DebitFC = 0;
+                        //Credit = Number(CustomerDetails[i].Openbalance - CustomerDetails[i].CreditLimit);
+                        //if (Credit < 0) {
+                        //    CustomerDetails[i].Debit = (Credit * -1);
+                        //    CustomerDetails[i].DebitFC = 0;
                                                         
 
-                        }
-                        else {
-                            CustomerDetails[i].DebitFC = Credit;
-                            CustomerDetails[i].Debit = 0;
+                        //}
+                        //else {
+                        //    CustomerDetails[i].DebitFC = Credit;
+                        //    CustomerDetails[i].Debit = 0;
 
 
-                        }
+                        //}
 
                     }
 
@@ -203,7 +203,7 @@ namespace CUSTOMERS {
             { title: "النوع", name: "NameIsCreditCustomer", type: "text", width: "100px" },
             { title: "الرصيد الافتتاحي", name: "Openbalance", type: "text", width: "100px" },      
             { title: "مدين", name: "Debit", type: "text", width: "100px" },    
-            { title: "دائن", name: "DebitFC", type: "text", width: "100px" },    
+            { title: "دائن", name: "Credit", type: "text", width: "100px" },    
             { title: "الرصيد", name: "CreditLimit", type: "text", width: "100px" },     
             { title: "مفعل", name: "Name_STATUS", type: "textdd", width: "100px" },
         ];
@@ -237,21 +237,21 @@ namespace CUSTOMERS {
         }
 
 
-        Debit = Selecteditem[0].CreditLimit;
+        //Debit = Selecteditem[0].CreditLimit;
         
 
-        Credit = Number(Selecteditem[0].Openbalance - Selecteditem[0].CreditLimit);
-        if (Credit < 0) {
-            $('#txt_Debit').val((Credit * -1));
-            $('#txt_DebitFC').val(('0'));
+        //Credit = Number(Selecteditem[0].Openbalance - Selecteditem[0].CreditLimit);
+        //if (Credit < 0) {
+        //    $('#txt_Debit').val((Credit * -1));
+        //    $('#txt_DebitFC').val(('0'));
 
-        }
-        else {
-            $('#txt_DebitFC').val((Credit));
-            $('#txt_Debit').val(('0'));
+        //}
+        //else {
+        //    $('#txt_DebitFC').val((Credit));
+        //    $('#txt_Debit').val(('0'));
 
 
-        }
+        //}
 
         CUSTOMER_ID = Selecteditem[0].CUSTOMER_ID;
         $('#Div_control').removeClass("display_none");
@@ -261,19 +261,23 @@ namespace CUSTOMERS {
     function txt_Openbalance_onchange() {
         if (IsNew != true) {
             //$('#txt_DebitFC').val((Number(txt_Openbalance.value) - Debit).toString());
-
-            Credit = Number((Number(txt_Openbalance.value) - Debit));
-            if (Credit < 0) {
-                $('#txt_Debit').val((Credit * -1));
-                $('#txt_DebitFC').val(('0'));
+            var credit = Selecteditem[0].Debit - Number(txt_Openbalance.value);
+            if (credit > 0) {
+                $('#txt_Debit').val(credit);
+                $('#txt_DebitFC').val("0");
 
             }
             else {
-                $('#txt_DebitFC').val((Credit));
-                $('#txt_Debit').val(('0'));
+                $('#txt_DebitFC').val(credit * -1);
+                $('#txt_Debit').val("0");
 
-
+                
             }
+         
+            
+        }
+        else {
+            $('#txt_DebitFC').val(txt_Openbalance.value);    
         }
 
     }
@@ -291,6 +295,7 @@ namespace CUSTOMERS {
         $('#txt_balance').attr("disabled", "disabled");
         $('#txt_DebitFC').attr("disabled", "disabled");
         $('#txt_Debit').attr("disabled", "disabled");
+        $('#txt_Openbalance').attr("disabled", "disabled");  
         $('#txt_CustomerCODE').attr("disabled", "disabled");
 
 
@@ -554,21 +559,21 @@ namespace CUSTOMERS {
         }
 
 
-        Debit = Selecteditem[0].CreditLimit;
+        //Debit = Selecteditem[0].CreditLimit;
 
 
-        Credit = Number(Selecteditem[0].Openbalance - Selecteditem[0].CreditLimit);
-        if (Credit < 0) {
-            $('#txt_Debit').val((Credit * -1));
-            $('#txt_DebitFC').val(('0'));
+        //Credit = Number(Selecteditem[0].Openbalance - Selecteditem[0].CreditLimit);
+        //if (Credit < 0) {
+        //    $('#txt_Debit').val((Credit * -1));
+        //    $('#txt_DebitFC').val(('0'));
 
-        }
-        else {
-            $('#txt_DebitFC').val((Credit));
-            $('#txt_Debit').val(('0'));
+        //}
+        //else {
+        //    $('#txt_DebitFC').val((Credit));
+        //    $('#txt_Debit').val(('0'));
 
 
-        }
+        //}
 
         CUSTOMER_ID = Selecteditem[0].CUSTOMER_ID;
         $('#Div_control').removeClass("display_none");
