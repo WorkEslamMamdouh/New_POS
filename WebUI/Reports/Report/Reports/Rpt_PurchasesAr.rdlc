@@ -557,7 +557,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.08333in</Height>
+    <Height>1.33686in</Height>
     <Style />
   </Body>
   <Width>3.36459in</Width>
@@ -576,8 +576,9 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>التوحيد سنتر</Value>
+                      <Value>Comanda</Value>
                       <Style>
+                        <FontFamily>Britannic Bold</FontFamily>
                         <FontSize>18pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
