@@ -5994,4 +5994,48 @@ var SlsInvoiceTrNo_Or_ID = (function () {
     }
     return SlsInvoiceTrNo_Or_ID;
 }());
+var Catch_Receipt = (function () {
+    function Catch_Receipt() {
+        this.ID_Receipt = 0;
+        this.CUSTOMER_ID = 0;
+        this.USER_CODE = "";
+        this.ID_ORDER_Delivery = 0;
+        this.AmountRequired;
+        this.Amount;
+        this.ShootMoney;
+        this.Remarks = "";
+        this.Data = "";
+    }
+    return Catch_Receipt;
+}());
+var IQ_Catch_Receipt = (function () {
+    function IQ_Catch_Receipt() {
+        this.ID_Receipt = 0;
+        this.CUSTOMER_ID = 0;
+        this.USER_CODE = "";
+        this.AmountRequired;
+        this.ShootMoney;
+        this.Remarks = "";
+        this.CustomerCODE = "";
+        this.CUSTOMER_NAME = "";
+        this.NAMEE = "";
+        this.CUSTOMER_ADDRES = "";
+        this.CUSTOMER_ADDRES_2 = "";
+        this.PHONE = "";
+        this.CreditLimit = 0;
+        this.CreditLimitFC = 0;
+        this.CreditPeriod = 0;
+        this.OpenBalanceFC = 0;
+        this.Openbalance = 0;
+        this.Debit = 0;
+        this.DebitFC = 0;
+        this.Credit = 0;
+        this.IsCreditCustomer = false;
+        this.USER_PASSWORD = "";
+        this.USER_ACTIVE = false;
+        this.USER_NAME = "";
+        this.Data = "";
+    }
+    return IQ_Catch_Receipt;
+}());
 //# sourceMappingURL=Entities.js.map

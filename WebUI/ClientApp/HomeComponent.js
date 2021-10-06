@@ -202,6 +202,9 @@ var HomeComponent;
         Check_Close_Day();
         tol_allnotification2.onclick = tol_allnotification_onclick;
         FillddlPilot();
+        if (SysSession.CurrentEnvironment.I_Control[0].IvoiceDateEditable != true) {
+            Close.classList.add("display_none");
+        }
     }
     HomeComponent.InitalizeComponent = InitalizeComponent;
     function FillddlPilot() {
@@ -617,6 +620,7 @@ var HomeComponent;
         $("#btnItems").click(function () { OpenPage(Modules.Items); });
         $("#btnSupplier").click(function () { OpenPage(Modules.Supplier); });
         $("#btnCUSTOMERS").click(function () { OpenPage(Modules.CUSTOMERS); });
+        $("#btnCatch_Receipt").click(function () { OpenPage(Modules.Catch_Receipt); });
         $("#btnSalesinventory").click(function () { OpenPage(Modules.Salesinventory); });
         $("#btnfamilly_Cat").click(function () { OpenPage(Modules.familly_Cat); });
         $("#btnIncome_expenses").click(function () { OpenPage(Modules.Income_expenses); });

@@ -87,6 +87,8 @@ namespace Inv.DAL.Domain
         public virtual DbSet<ReviewSalesItemInfo> ReviewSalesItemInfoes { get; set; }
         public virtual DbSet<ReviewSalesMaster> ReviewSalesMasters { get; set; }
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
+        public virtual DbSet<Catch_Receipt> Catch_Receipt { get; set; }
+        public virtual DbSet<IQ_Catch_Receipt> IQ_Catch_Receipt { get; set; }
     
         [DbFunction("InvEntities", "GFun_Companies")]
         public virtual IQueryable<GFun_Companies_Result> GFun_Companies(string userCode)

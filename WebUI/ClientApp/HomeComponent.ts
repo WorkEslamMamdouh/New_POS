@@ -243,8 +243,10 @@ namespace HomeComponent {
         Check_Close_Day();
 
         tol_allnotification2.onclick = tol_allnotification_onclick;
-        FillddlPilot();
-
+        FillddlPilot();         
+        if (SysSession.CurrentEnvironment.I_Control[0].IvoiceDateEditable != true) {
+            Close.classList.add("display_none");
+        }
 
     }
 
@@ -747,7 +749,8 @@ namespace HomeComponent {
         $("#btnCategories").click(() => { OpenPage(Modules.Categories); })
         $("#btnItems").click(() => { OpenPage(Modules.Items); })
         $("#btnSupplier").click(() => { OpenPage(Modules.Supplier); })
-        $("#btnCUSTOMERS").click(() => { OpenPage(Modules.CUSTOMERS); })      
+        $("#btnCUSTOMERS").click(() => { OpenPage(Modules.CUSTOMERS); })
+        $("#btnCatch_Receipt").click(() => { OpenPage(Modules.Catch_Receipt); })    
         $("#btnSalesinventory").click(() => { OpenPage(Modules.Salesinventory); })
         $("#btnfamilly_Cat").click(() => { OpenPage(Modules.familly_Cat); })
         $("#btnIncome_expenses").click(() => { OpenPage(Modules.Income_expenses); })

@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="POS2021Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Catch_Receipt">
+          <Key>
+            <PropertyRef Name="ID_Receipt" />
+          </Key>
+          <Property Name="ID_Receipt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="int" />
+          <Property Name="USER_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_ORDER_Delivery" Type="int" />
+          <Property Name="AmountRequired" Type="money" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="ShootMoney" Type="money" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="Data" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="CATEGRES">
           <Key>
             <PropertyRef Name="ID_CAT" />
@@ -1086,6 +1100,39 @@ warning 6002: The table/view 'POS2021.dbo.I_VW_GetCompStatus' does not have a pr
           <Property Name="LoginMsg" Type="varchar" MaxLength="106" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'POS2021.dbo.IQ_Catch_Receipt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IQ_Catch_Receipt">
+          <Key>
+            <PropertyRef Name="ID_Receipt" />
+            <PropertyRef Name="USER_ACTIVE" />
+          </Key>
+          <Property Name="ID_Receipt" Type="int" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="int" />
+          <Property Name="USER_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="AmountRequired" Type="money" />
+          <Property Name="ShootMoney" Type="money" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="CustomerCODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CUSTOMER_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="NAMEE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CUSTOMER_ADDRES" Type="nvarchar" MaxLength="50" />
+          <Property Name="CUSTOMER_ADDRES_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditLimit" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="CreditLimitFC" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="CreditPeriod" Type="int" />
+          <Property Name="OpenBalanceFC" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="Openbalance" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="Debit" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="DebitFC" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="Credit" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="IsCreditCustomer" Type="bit" />
+          <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="20" />
+          <Property Name="USER_ACTIVE" Type="bit" Nullable="false" />
+          <Property Name="USER_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="Data" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'POS2021.dbo.IQ_Outlet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="IQ_Outlet">
           <Key>
@@ -1485,6 +1532,7 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
           <Parameter Name="StatusFlag" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="POS2021ModelStoreContainer">
+          <EntitySet Name="Catch_Receipt" EntityType="Self.Catch_Receipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CATEGRES" EntityType="Self.CATEGRES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="dbo" store:Type="Tables" />
@@ -1717,6 +1765,35 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
     [I_VW_GetCompStatus].[CompStatus] AS [CompStatus], 
     [I_VW_GetCompStatus].[LoginMsg] AS [LoginMsg]
     FROM [dbo].[I_VW_GetCompStatus] AS [I_VW_GetCompStatus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IQ_Catch_Receipt" EntityType="Self.IQ_Catch_Receipt" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IQ_Catch_Receipt].[ID_Receipt] AS [ID_Receipt], 
+    [IQ_Catch_Receipt].[CUSTOMER_ID] AS [CUSTOMER_ID], 
+    [IQ_Catch_Receipt].[USER_CODE] AS [USER_CODE], 
+    [IQ_Catch_Receipt].[AmountRequired] AS [AmountRequired], 
+    [IQ_Catch_Receipt].[ShootMoney] AS [ShootMoney], 
+    [IQ_Catch_Receipt].[Remarks] AS [Remarks], 
+    [IQ_Catch_Receipt].[CustomerCODE] AS [CustomerCODE], 
+    [IQ_Catch_Receipt].[CUSTOMER_NAME] AS [CUSTOMER_NAME], 
+    [IQ_Catch_Receipt].[NAMEE] AS [NAMEE], 
+    [IQ_Catch_Receipt].[CUSTOMER_ADDRES] AS [CUSTOMER_ADDRES], 
+    [IQ_Catch_Receipt].[CUSTOMER_ADDRES_2] AS [CUSTOMER_ADDRES_2], 
+    [IQ_Catch_Receipt].[PHONE] AS [PHONE], 
+    [IQ_Catch_Receipt].[CreditLimit] AS [CreditLimit], 
+    [IQ_Catch_Receipt].[CreditLimitFC] AS [CreditLimitFC], 
+    [IQ_Catch_Receipt].[CreditPeriod] AS [CreditPeriod], 
+    [IQ_Catch_Receipt].[OpenBalanceFC] AS [OpenBalanceFC], 
+    [IQ_Catch_Receipt].[Openbalance] AS [Openbalance], 
+    [IQ_Catch_Receipt].[Debit] AS [Debit], 
+    [IQ_Catch_Receipt].[DebitFC] AS [DebitFC], 
+    [IQ_Catch_Receipt].[Credit] AS [Credit], 
+    [IQ_Catch_Receipt].[IsCreditCustomer] AS [IsCreditCustomer], 
+    [IQ_Catch_Receipt].[USER_PASSWORD] AS [USER_PASSWORD], 
+    [IQ_Catch_Receipt].[USER_ACTIVE] AS [USER_ACTIVE], 
+    [IQ_Catch_Receipt].[USER_NAME] AS [USER_NAME], 
+    [IQ_Catch_Receipt].[Data] AS [Data]
+    FROM [dbo].[IQ_Catch_Receipt] AS [IQ_Catch_Receipt]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="IQ_Outlet" EntityType="Self.IQ_Outlet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -3255,6 +3332,8 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
             <Parameter Name="ID_ORDER" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="CUSTOMERs" EntityType="POS2021Model.CUSTOMER" />
+          <EntitySet Name="Catch_Receipt" EntityType="POS2021Model.Catch_Receipt" />
+          <EntitySet Name="IQ_Catch_Receipt" EntityType="POS2021Model.IQ_Catch_Receipt" />
         </EntityContainer>
         <ComplexType Name="all_The_Gard_Result">
           <Property Type="Int64" Name="RowNum" Nullable="true" />
@@ -3338,6 +3417,51 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
           <Property Name="Credit" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="CreditFC" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="IsCreditCustomer" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Catch_Receipt">
+          <Key>
+            <PropertyRef Name="ID_Receipt" />
+          </Key>
+          <Property Name="ID_Receipt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSTOMER_ID" Type="Int32" />
+          <Property Name="USER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_ORDER_Delivery" Type="Int32" />
+          <Property Name="AmountRequired" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ShootMoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IQ_Catch_Receipt">
+          <Key>
+            <PropertyRef Name="ID_Receipt" />
+            <PropertyRef Name="USER_ACTIVE" />
+          </Key>
+          <Property Name="ID_Receipt" Type="Int32" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="Int32" />
+          <Property Name="USER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AmountRequired" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ShootMoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NAMEE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER_ADDRES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER_ADDRES_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="CreditLimitFC" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="CreditPeriod" Type="Int32" />
+          <Property Name="OpenBalanceFC" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Openbalance" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Debit" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="DebitFC" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Credit" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="IsCreditCustomer" Type="Boolean" />
+          <Property Name="USER_PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USER_ACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4694,6 +4818,52 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
                 <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
                 <ScalarProperty Name="CustomerCODE" ColumnName="CustomerCODE" />
                 <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Catch_Receipt">
+            <EntityTypeMapping TypeName="POS2021Model.Catch_Receipt">
+              <MappingFragment StoreEntitySet="Catch_Receipt">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ShootMoney" ColumnName="ShootMoney" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AmountRequired" ColumnName="AmountRequired" />
+                <ScalarProperty Name="ID_ORDER_Delivery" ColumnName="ID_ORDER_Delivery" />
+                <ScalarProperty Name="USER_CODE" ColumnName="USER_CODE" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="ID_Receipt" ColumnName="ID_Receipt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IQ_Catch_Receipt">
+            <EntityTypeMapping TypeName="POS2021Model.IQ_Catch_Receipt">
+              <MappingFragment StoreEntitySet="IQ_Catch_Receipt">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="USER_ACTIVE" ColumnName="USER_ACTIVE" />
+                <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+                <ScalarProperty Name="IsCreditCustomer" ColumnName="IsCreditCustomer" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="DebitFC" ColumnName="DebitFC" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Openbalance" ColumnName="Openbalance" />
+                <ScalarProperty Name="OpenBalanceFC" ColumnName="OpenBalanceFC" />
+                <ScalarProperty Name="CreditPeriod" ColumnName="CreditPeriod" />
+                <ScalarProperty Name="CreditLimitFC" ColumnName="CreditLimitFC" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="CUSTOMER_ADDRES_2" ColumnName="CUSTOMER_ADDRES_2" />
+                <ScalarProperty Name="CUSTOMER_ADDRES" ColumnName="CUSTOMER_ADDRES" />
+                <ScalarProperty Name="NAMEE" ColumnName="NAMEE" />
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="CustomerCODE" ColumnName="CustomerCODE" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ShootMoney" ColumnName="ShootMoney" />
+                <ScalarProperty Name="AmountRequired" ColumnName="AmountRequired" />
+                <ScalarProperty Name="USER_CODE" ColumnName="USER_CODE" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="ID_Receipt" ColumnName="ID_Receipt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

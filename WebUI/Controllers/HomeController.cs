@@ -158,6 +158,10 @@ namespace Inv.WebUI.Controllers
         public ActionResult CUSTOMERSIndex()
         {
             return View("~/Views/Generalsetting/CUSTOMERSIndex.cshtml");
+        }
+        public ActionResult Catch_ReceiptIndex()
+        {
+            return View("~/Views/Generalsetting/Catch_ReceiptIndex.cshtml");
         } 
         public ActionResult SalesinventoryIndex()
         {

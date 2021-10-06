@@ -53,6 +53,9 @@
     <Compile Include="Domain\all_The_Gard_Result.cs">
       <DependentUpon>InvModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Domain\Catch_Receipt.cs">
+      <DependentUpon>InvModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Domain\CATEGRE.cs">
       <DependentUpon>InvModel.tt</DependentUpon>
     </Compile>
@@ -218,6 +221,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InvModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\IQ_Catch_Receipt.cs">
+      <DependentUpon>InvModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Domain\IQ_Outlet.cs">
       <DependentUpon>InvModel.tt</DependentUpon>

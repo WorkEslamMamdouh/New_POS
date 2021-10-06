@@ -10076,3 +10076,84 @@ class SlsInvoiceTrNo_Or_ID {
     public ID_ORDER: number;
 }
 
+
+
+class Catch_Receipt {
+    constructor() {
+        this.ID_Receipt = 0;
+        this.CUSTOMER_ID = 0;
+        this.USER_CODE = "";
+        this.ID_ORDER_Delivery = 0;
+        this.AmountRequired
+        this.Amount
+        this.ShootMoney
+        this.Remarks = "";
+        this.Data = "";
+    }
+    public ID_Receipt: number;
+    public CUSTOMER_ID: number;
+    public USER_CODE: string;
+    public ID_ORDER_Delivery: number;
+    public AmountRequired: any;
+    public Amount: any;
+    public ShootMoney: any;
+    public Remarks: string;
+    public Data: string;
+}
+
+class IQ_Catch_Receipt {
+    constructor() {
+        this.ID_Receipt = 0;
+        this.CUSTOMER_ID = 0;
+        this.USER_CODE = "";
+        this.AmountRequired
+        this.ShootMoney
+        this.Remarks = "";
+        this.CustomerCODE = "";
+        this.CUSTOMER_NAME = "";
+        this.NAMEE = "";
+        this.CUSTOMER_ADDRES = "";
+        this.CUSTOMER_ADDRES_2 = "";
+        this.PHONE = "";
+        this.CreditLimit = 0;
+        this.CreditLimitFC = 0;
+        this.CreditPeriod = 0;
+        this.OpenBalanceFC = 0;
+        this.Openbalance = 0;
+        this.Debit = 0;
+        this.DebitFC = 0;
+        this.Credit = 0;
+        this.IsCreditCustomer = false;
+        this.USER_PASSWORD = "";
+        this.USER_ACTIVE = false;
+        this.USER_NAME = "";
+        this.Data = "";
+    }
+    public ID_Receipt: number;
+    public CUSTOMER_ID: number;
+    public USER_CODE: string;
+    public AmountRequired: any;
+    public ShootMoney: any;
+    public Remarks: string;
+    public CustomerCODE: string;
+    public CUSTOMER_NAME: string;
+    public NAMEE: string;
+    public CUSTOMER_ADDRES: string;
+    public CUSTOMER_ADDRES_2: string;
+    public PHONE: string;
+    public CreditLimit: number;
+    public CreditLimitFC: number;
+    public CreditPeriod: number;
+    public OpenBalanceFC: number;
+    public Openbalance: number;
+    public Debit: number;
+    public DebitFC: number;
+    public Credit: number;
+    public IsCreditCustomer: boolean;
+    public USER_PASSWORD: string;
+    public USER_ACTIVE: boolean;
+    public USER_NAME: string;
+    public Data: string;
+}
+
+

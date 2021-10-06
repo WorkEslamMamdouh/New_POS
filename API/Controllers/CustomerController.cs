@@ -207,5 +207,31 @@ namespace API.Controllers
             return BadRequest(ModelState);
         }
 
+
+
+        [HttpGet, AllowAnonymous]
+        public IHttpActionResult GetAll_IQ_Catch_Receipt(string startDate, string endDate, int? CustomerId)
+        {
+            if (ModelState.IsValid)
+            {
+                string s = "select * from IQ_Catch_Receipt where [Data] >='" + startDate + "' and [Data] <='" + endDate + "'";
+
+                string condition = "";
+
+                if (CustomerId != 0 && CustomerId != null)
+                    condition = condition + " and CUSTOMER_ID =" + CustomerId;
+                
+
+
+                string query = s + condition;
+                var res = db.Database.SqlQuery<ReviewSalesMaster>(query).ToList();
+                return Ok(new BaseResponse(res));
+            }
+            return BadRequest(ModelState);
+        }
+
+
+
+
     }
 }

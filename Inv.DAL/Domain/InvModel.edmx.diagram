@@ -65,6 +65,8 @@
         <EntityTypeShape EntityType="POS2021Model.ReviewSalesItemInfo" Width="1.5" PointX="22.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="POS2021Model.ReviewSalesMaster" Width="1.5" PointX="22.75" PointY="21.75" IsExpanded="true" />
         <EntityTypeShape EntityType="POS2021Model.CUSTOMER" Width="1.5" PointX="19.375" PointY="23.75" />
+        <EntityTypeShape EntityType="POS2021Model.Catch_Receipt" Width="1.5" PointX="15.375" PointY="24.75" />
+        <EntityTypeShape EntityType="POS2021Model.IQ_Catch_Receipt" Width="1.5" PointX="25.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
