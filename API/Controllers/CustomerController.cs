@@ -175,6 +175,10 @@ namespace API.Controllers
                 {
                     foreach (var item in insertedRecords)
                     {
+
+                      
+                        string quer = "insert_Outlet 'رصيد للعميل "+ item.CUSTOMER_NAME+ "', " + item.Openbalance + ", '" + item.UserCode + "', 'رصيد عميل'";
+                        var Outlet = db.Database.SqlQuery<decimal>(quer);
                         var InsertedRec = CustomerServices.Insert(item);
                         return Ok(new BaseResponse(InsertedRec.CUSTOMER_ID));
                     }

@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.23308cm</Width>
+              <Width>1.39424cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.12183cm</Width>
+              <Width>1.06802cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.75683cm</Width>
+              <Width>1.40413cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.40783cm</Width>
+              <Width>3.05513cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -455,8 +455,9 @@
         </TablixRowHierarchy>
         <DataSetName>Rpt_salessAr</DataSetName>
         <Top>0.06171cm</Top>
+        <Left>0.0125in</Left>
         <Height>1.2cm</Height>
-        <Width>8.51957cm</Width>
+        <Width>6.92151cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -502,8 +503,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Tax</rd:DefaultName>
-        <Top>1.70603cm</Top>
-        <Left>0.127cm</Left>
+        <Top>2.18228cm</Top>
+        <Left>1.0795cm</Left>
         <Height>0.81167cm</Height>
         <Width>3.04857cm</Width>
         <ZIndex>1</ZIndex>
@@ -539,8 +540,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox30</rd:DefaultName>
-        <Top>1.80128cm</Top>
-        <Left>3.21438cm</Left>
+        <Top>2.27753cm</Top>
+        <Left>4.16688cm</Left>
         <Height>0.6cm</Height>
         <Width>1.35651cm</Width>
         <ZIndex>2</ZIndex>
@@ -575,8 +576,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox31</rd:DefaultName>
-        <Top>1.76953cm</Top>
-        <Left>4.82071cm</Left>
+        <Top>1.40282cm</Top>
+        <Left>1.3697cm</Left>
         <Height>0.6cm</Height>
         <Width>1.56047cm</Width>
         <ZIndex>3</ZIndex>
@@ -612,8 +613,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox30</rd:DefaultName>
-        <Top>1.76953cm</Top>
-        <Left>6.41646cm</Left>
+        <Top>1.40282cm</Top>
+        <Left>2.96545cm</Left>
         <Height>0.6cm</Height>
         <Width>1.8698cm</Width>
         <ZIndex>4</ZIndex>
@@ -662,9 +663,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox30</rd:DefaultName>
         <Top>3.17663cm</Top>
-        <Left>0.43893cm</Left>
-        <Height>1.12917cm</Height>
-        <Width>7.49484cm</Width>
+        <Left>0.75643cm</Left>
+        <Height>1.743cm</Height>
+        <Width>5.73441cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -680,10 +681,10 @@
     <Height>2.05001in</Height>
     <Style />
   </Body>
-  <Width>3.36667in</Width>
+  <Width>2.79167in</Width>
   <Page>
     <PageHeader>
-      <Height>4.80595cm</Height>
+      <Height>6.60723cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -698,7 +699,6 @@
                     <TextRun>
                       <Value>=First(Fields!Date_Order_Delivery.Value, "Rpt_salessAr")</Value>
                       <Style>
-                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -709,10 +709,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Date_Order_Delivery</rd:DefaultName>
-              <Top>1.2985cm</Top>
-              <Left>2.15279cm</Left>
+              <Top>1.9335cm</Top>
+              <Left>0cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.70792cm</Width>
+              <Width>2.86667cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -732,7 +732,6 @@
                     <TextRun>
                       <Value>التاريخ</Value>
                       <Style>
-                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -743,10 +742,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>1.26675cm</Top>
-              <Left>7.36896cm</Left>
+              <Top>1.90175cm</Top>
+              <Left>5.40046cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.15062cm</Width>
+              <Width>1.30937cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -777,10 +776,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CUSTOMER_NAME</rd:DefaultName>
-              <Top>1.962cm</Top>
+              <Top>2.597cm</Top>
               <Left>0.127cm</Left>
               <Height>0.6cm</Height>
-              <Width>7.19786cm</Width>
+              <Width>5.07238cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -801,7 +800,6 @@
                     <TextRun>
                       <Value>العميل</Value>
                       <Style>
-                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -812,10 +810,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>1.95671cm</Top>
-              <Left>7.36896cm</Left>
+              <Top>2.60758cm</Top>
+              <Left>5.40046cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.15062cm</Width>
+              <Width>1.30937cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -846,10 +844,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CUSTOMER_ADDRES</rd:DefaultName>
-              <Top>3.52793cm</Top>
-              <Left>0.127cm</Left>
-              <Height>1.1715cm</Height>
-              <Width>6.54551cm</Width>
+              <Top>4.56661cm</Top>
+              <Left>0.25399cm</Left>
+              <Height>1.9965cm</Height>
+              <Width>4.93074cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -870,7 +868,6 @@
                     <TextRun>
                       <Value>الملاحظات</Value>
                       <Style>
-                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -881,10 +878,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>3.563cm</Top>
-              <Left>6.70426cm</Left>
+              <Top>4.58329cm</Top>
+              <Left>5.23346cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.78357cm</Width>
+              <Width>1.47637cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -915,10 +912,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>ID_ORDER_Delivery</rd:DefaultName>
-              <Top>0.49918cm</Top>
-              <Left>1.89619in</Left>
+              <Top>1.22767cm</Top>
+              <Left>0.59005in</Left>
               <Height>0.6cm</Height>
-              <Width>1.85618cm</Width>
+              <Width>2.11018cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <Border>
@@ -939,7 +936,7 @@
                     <TextRun>
                       <Value>رقم الفاتورة</Value>
                       <Style>
-                        <FontSize>11pt</FontSize>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -950,10 +947,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.49036cm</Top>
-              <Left>6.70426cm</Left>
+              <Top>1.21885cm</Top>
+              <Left>3.70417cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.78357cm</Width>
+              <Width>2.03757cm</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>
@@ -985,10 +982,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Date</rd:DefaultName>
-              <Top>1.29144cm</Top>
-              <Left>5.11174cm</Left>
+              <Top>1.92644cm</Top>
+              <Left>2.88924cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.15139cm</Width>
+              <Width>2.31014cm</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <Border>
@@ -1019,10 +1016,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PHONE</rd:DefaultName>
-              <Top>2.74558cm</Top>
-              <Left>4.09575cm</Left>
-              <Height>0.6cm</Height>
-              <Width>3.23766cm</Width>
+              <Top>3.29619cm</Top>
+              <Left>1.778cm</Left>
+              <Height>0.60596cm</Height>
+              <Width>3.39641cm</Width>
               <ZIndex>9</ZIndex>
               <Style>
                 <Border>
@@ -1043,7 +1040,6 @@
                     <TextRun>
                       <Value>الهاتف</Value>
                       <Style>
-                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -1054,10 +1050,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.75154cm</Top>
-              <Left>7.33721cm</Left>
+              <Top>3.30215cm</Top>
+              <Left>5.40046cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.15062cm</Width>
+              <Width>1.30937cm</Width>
               <ZIndex>10</ZIndex>
               <Style>
                 <Border>
@@ -1089,10 +1085,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.75154cm</Top>
-              <Left>2.87457cm</Left>
+              <Top>3.90215cm</Top>
+              <Left>5.37197cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.15062cm</Width>
+              <Width>1.30937cm</Width>
               <ZIndex>11</ZIndex>
               <Style>
                 <Border>
@@ -1123,10 +1119,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>EMPLOYEE_NAME</rd:DefaultName>
-              <Top>2.75154cm</Top>
-              <Left>0.0635cm</Left>
+              <Top>3.92075cm</Top>
+              <Left>1.80975cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.81433cm</Width>
+              <Width>3.37498cm</Width>
               <ZIndex>12</ZIndex>
               <Style>
                 <Border>
@@ -1145,10 +1141,10 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Comanda</Value>
+                      <Value>الصعيدي</Value>
                       <Style>
-                        <FontFamily>Script MT Bold</FontFamily>
-                        <FontSize>28pt</FontSize>
+                        <FontFamily>Constantia</FontFamily>
+                        <FontSize>20pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -1160,7 +1156,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Height>1.12257cm</Height>
-              <Width>4.57089cm</Width>
+              <Width>7.00618cm</Width>
               <ZIndex>13</ZIndex>
               <Style>
                 <Border>
@@ -1174,8 +1170,8 @@
             </Textbox>
           </ReportItems>
           <KeepTogether>true</KeepTogether>
-          <Height>4.80595cm</Height>
-          <Width>8.55133cm</Width>
+          <Height>6.60723cm</Height>
+          <Width>7.00618cm</Width>
           <Style>
             <Border>
               <Color>Gray</Color>
@@ -1221,8 +1217,8 @@
         </Border>
       </Style>
     </PageFooter>
-    <PageHeight>8.5cm</PageHeight>
-    <PageWidth>5.5cm</PageWidth>
+    <PageHeight>21cm</PageHeight>
+    <PageWidth>8cm</PageWidth>
     <LeftMargin>0cm</LeftMargin>
     <RightMargin>0cm</RightMargin>
     <TopMargin>0cm</TopMargin>

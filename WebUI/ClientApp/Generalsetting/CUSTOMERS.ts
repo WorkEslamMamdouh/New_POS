@@ -474,6 +474,7 @@ namespace CUSTOMERS {
             Det_Single_Cust.CustomerCODE = (Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000)).toString();    
             Det_Single_Cust.CUSTOMER_ID = 0;    
             Det_Single_Cust.STATUS = status.checked;
+            Det_Single_Cust.UserCode = SysSession.CurrentEnvironment.UserCode;
             Det_Single_Cust.IsCreditCustomer = $('#txt_Cust_Type').val() == '0' ? false : true;
             Det_Single_Cust.StatusFlag = "i";    
             Details_Updata_Cust.push(Det_Single_Cust);

