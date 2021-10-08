@@ -182,8 +182,7 @@ namespace SlsTrSalesReturn {
     function IntializeEvents() {
 
         searchbutmemreport.onkeydown = _SearchBox_Change;
-        searchbutmemreport.onkeyup = _SearchBox_Change;
-
+        searchbutmemreport.onkeyup = _SearchBox_Change;            
 
         btnShow.onclick = btnShow_onclick;
         btnUpdate.onclick = Update_onclick;
@@ -212,7 +211,8 @@ namespace SlsTrSalesReturn {
         ReturnedDate = yyyy + '-' + mm + '-' + dd;
         return ReturnedDate;
     }
-
+    
+    
     function FillddlUserMaster() {
         debugger
         Ajax.Callsync({
@@ -262,7 +262,17 @@ namespace SlsTrSalesReturn {
         $("#divTotalSatistics").addClass("display_none");
 
         Display();
+        if (ddlCustomerMaster.value != 'null') {
+            $('#div_total').removeClass('display_none');
 
+        } else {
+            $('#div_total').addClass('display_none');
+        }
+        var sum = 0;
+        for (var i = 0; i < Get_IQ_ReviewSalesMaster.length; i++) {
+            sum += Get_IQ_ReviewSalesMaster[i].Total_All;
+        }
+        $('#totalcustomer').val(sum);
 
     }
 

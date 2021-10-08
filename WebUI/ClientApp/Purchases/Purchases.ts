@@ -88,8 +88,8 @@ namespace Purchases {
     var searchbutmemreport: HTMLInputElement;
     var txtPaid_Up: HTMLInputElement;
     var txtTo_be_Paid: HTMLInputElement;
-    var txt_Barcode  : HTMLInputElement;
-    var txt_ItemName : HTMLInputElement;
+    var txt_Barcode: HTMLInputElement;
+    var txt_ItemName: HTMLInputElement;
     var txt_Quantity: HTMLInputElement;
     var btnPrint: HTMLButtonElement;
     var btnPrintTrview: HTMLButtonElement;
@@ -177,7 +177,7 @@ namespace Purchases {
         btnBack.onclick = btnBack_onclick;
         btnSave.onclick = btnSave_onclick;
         btnadd.onclick = btnAdd_onclick;
-        
+
         btnAddDetails.onclick = AddNewRow;
 
         btnSupplierSearch.onclick = Search;
@@ -201,7 +201,7 @@ namespace Purchases {
         if (Number(txtTo_be_Paid.value) < 0) {
 
             MessageBox.Show("يجب ان يكون المبلغ المدفوع بيساوي الاجمالي", "خطأ");
-            Errorinput($("#txtPaid_Up"));      
+            Errorinput($("#txtPaid_Up"));
             Errorinput($("#txtTo_be_Paid"));
             txtTo_be_Paid.value = '0';
             txtPaid_Up.value = $('#txtTotal').val();
@@ -246,10 +246,10 @@ namespace Purchases {
                     Qtys = DetailsBar[0].PRODUCT_QET;
                     txt_ItemName.value = DetailsBar[0].PRODUCT_NAME
                 }
-                
+
             }
         });
-    } 
+    }
     function btnAddQty_onclick() {
         debugger
         var CanAdd: boolean = true;
@@ -300,8 +300,8 @@ namespace Purchases {
 
             $("#Family" + CountGrid).val("" + famliy[0].Name_CAT + "");
             $("#Items" + CountGrid).val("" + DetailsBar[0].PRODUCT_NAME + "");
-            $("#txtQuantity" + CountGrid).val(""+Number(txt_Quantity.value)+"");
-           
+            $("#txtQuantity" + CountGrid).val("" + Number(txt_Quantity.value) + "");
+
 
 
 
@@ -316,11 +316,11 @@ namespace Purchases {
 
 
 
-         
-                    txt_ItemName.value = "";
-                    txt_Quantity.value = "";
-                    txt_Barcode.value = "";
-             
+
+        txt_ItemName.value = "";
+        txt_Quantity.value = "";
+        txt_Barcode.value = "";
+
     }
 
 
@@ -490,7 +490,7 @@ namespace Purchases {
                     //  $("#btnExecute").attr("disabled", "disabled");
 
                     MessageBox.Show('يجب ان يكون المبلغ المطلوب سداده مساوي للسداد  للفاتورة رقم   ( ' + FilteredModel[i].TrNo + "  )", "تم");
-                    
+
                     ValidDataFlag = false;
                     break;
                 }
@@ -718,7 +718,7 @@ namespace Purchases {
             '<div class="col-lg-1" style="width: 7%;"><input id="Sales_Price' + cnt + '" type="number" disabled class="form-control right2"   value="0"/></div>' +
             '<div class="col-lg-1"style="width: 7%;"><input id="MinUnitPrice' + cnt + '" type="number" disabled class="form-control right2"   value="0"/></div>' +
             //'<div class="col-lg-1" style=""><input id="txtReturn' + cnt + '" type="number" disabled class="form-control right2"   value=""/></div>' +
-            '<div class="col-lg-2" style="width: 12%;"><input id="txtTotal' + cnt + '" type="number" disabled class="form-control right2"   value="0"/></div>' +
+            '<div class="col-lg-2" style="width: 12%;"><input id="txtTotal' + cnt + '" type="number"  class="form-control right2"   value="0"/></div>' +
 
             '</div></div></div>' +
 
@@ -990,7 +990,7 @@ namespace Purchases {
                 ComputeTotals();
             }
 
-          
+
 
         });
 
@@ -1000,6 +1000,13 @@ namespace Purchases {
         });
 
 
+        $("#txtTotal" + cnt).on('keyup', function () {
+            if ($("#txt_StatusFlag" + cnt).val() != "i")
+                $("#txt_StatusFlag" + cnt).val("u");
+            Number($("#txtPrice" + cnt).val((Number($("#txtTotal" + cnt).val()) / Number($("#txtQuantity" + cnt).val()))));
+            ComputeTotals();
+
+        });
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1140,7 +1147,7 @@ namespace Purchases {
 
         for (let i = 0; i < CountGrid + 1; i++) {
             var flagvalue = $("#txt_StatusFlag" + i).val();
-            if (flagvalue != "d") {
+            if (flagvalue != "d" && flagvalue != "m") {
 
                 CountTotal += Number($("#txtTotal" + i).val());
                 CountTotal = Number(CountTotal.toFixed(2).toString());
@@ -1304,7 +1311,7 @@ namespace Purchases {
         PurMasterDetails.Purchases_Master.Tr_Date = $('#txtDate').val();
         PurMasterDetails.Purchases_Master.ID_Supplier = Number(ID_Supp);
         PurMasterDetails.Purchases_Master.Type_Debit = Number(txtTo_be_Paid.value) == 0 ? true : false;
-        PurMasterDetails.Purchases_Master.Total_Amount = Number( $('#txtTotal').val());
+        PurMasterDetails.Purchases_Master.Total_Amount = Number($('#txtTotal').val());
         PurMasterDetails.Purchases_Master.Paid_Up = Number($('#txtPaid_Up').val());
         PurMasterDetails.Purchases_Master.To_be_Paid = Number($('#txtTo_be_Paid').val());
         PurMasterDetails.Purchases_Master.REMARKS = $('#txtRemarks').val();
@@ -1395,7 +1402,7 @@ namespace Purchases {
         Ajax.Callsync({
             type: "Get",
             url: sys.apiUrl("Outletpirce", "Insert"),
-            data: { Dasc_Name: "مشتريات", pirce: pirce, UserName: SysSession.CurrentEnvironment.UserCode, Tr_Type},
+            data: { Dasc_Name: "مشتريات", pirce: pirce, UserName: SysSession.CurrentEnvironment.UserCode, Tr_Type },
             success: (d) => {
                 debugger
                 let result = d as BaseResponse;
@@ -1562,7 +1569,7 @@ namespace Purchases {
 
             MessageBox.Show(" برجاءادخال المورد ", "خطأ");
             Errorinput($("#btnSupplierSearch"));
-            Errorinput($("#txtName_Supplier"));   
+            Errorinput($("#txtName_Supplier"));
 
             return false
         }
@@ -1723,7 +1730,7 @@ namespace Purchases {
             //$("#txtScrapQty" + i).attr("disabled", "disabled");
         }
     }
-    
+
 
     function printreport(type: number) {
         debugger;

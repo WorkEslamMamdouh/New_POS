@@ -486,6 +486,7 @@ var Purchases;
                 if (result.IsSuccess) {
                     debugger;
                     Detailsfamilly_Cat = result.Response;
+                    //DocumentActions.FillCombowithdefult(Detailsfamilly_Cat, ddlVendor, "ID_Supplier", "Name_Supplier", "اختر المورد");
                 }
             }
         });
@@ -560,7 +561,7 @@ var Purchases;
             '<div class="col-lg-1" style="width: 7%;"><input id="Sales_Price' + cnt + '" type="number" disabled class="form-control right2"   value="0"/></div>' +
             '<div class="col-lg-1"style="width: 7%;"><input id="MinUnitPrice' + cnt + '" type="number" disabled class="form-control right2"   value="0"/></div>' +
             //'<div class="col-lg-1" style=""><input id="txtReturn' + cnt + '" type="number" disabled class="form-control right2"   value=""/></div>' +
-            '<div class="col-lg-2" style="width: 12%;"><input id="txtTotal' + cnt + '" type="number" disabled class="form-control right2"   value="0"/></div>' +
+            '<div class="col-lg-2" style="width: 12%;"><input id="txtTotal' + cnt + '" type="number"  class="form-control right2"   value="0"/></div>' +
             '</div></div></div>' +
             '<input id="txt_StatusFlag' + cnt + '" name = " " type = "hidden" class="form-control"/><input id="txt_ID' + cnt + '" name = " " type = "hidden" class="form-control" /><input id="PRODUCT_ID' + cnt + '" name = " " type = "hidden" class="form-control" />';
         $("#div_Data").append(html);
@@ -763,6 +764,12 @@ var Purchases;
         $("#btn_minus" + cnt).on('click', function () {
             DeleteRow(cnt);
         });
+        $("#txtTotal" + cnt).on('keyup', function () {
+            if ($("#txt_StatusFlag" + cnt).val() != "i")
+                $("#txt_StatusFlag" + cnt).val("u");
+            Number($("#txtPrice" + cnt).val((Number($("#txtTotal" + cnt).val()) / Number($("#txtQuantity" + cnt).val()))));
+            ComputeTotals();
+        });
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         return;
@@ -874,7 +881,7 @@ var Purchases;
         var ItemCount = 0;
         for (var i = 0; i < CountGrid + 1; i++) {
             var flagvalue = $("#txt_StatusFlag" + i).val();
-            if (flagvalue != "d") {
+            if (flagvalue != "d" && flagvalue != "m") {
                 CountTotal += Number($("#txtTotal" + i).val());
                 CountTotal = Number(CountTotal.toFixed(2).toString());
                 ItemCount += 1;
@@ -1189,6 +1196,11 @@ var Purchases;
             Errorinput($("#btnAddDetails"));
             return false;
         }
+        //if (Number($("#txtPaid_Up").val()) <= 0 || $("#txtPaid_Up").val() == null || $("#txtPaid_Up").val() == "" || $("#txtPaid_Up").val() == " ") {
+        //    MessageBox.Show(" برجاءادخال المبلغ المدفوع", "خطأ");
+        //    Errorinput($("#txtPaid_Up"));
+        //    return false
+        //}
         else {
             var CanAdd = true;
             if (CountGrid > -1) {
@@ -1199,7 +1211,7 @@ var Purchases;
                     }
                 }
             }
-            if (CanAdd) {
+            if (CanAdd) { //add
                 IsSuccess = false;
                 if ($('#txtNumber').val() == '') {
                     //alert('Add');
@@ -1216,7 +1228,7 @@ var Purchases;
                         }
                     }
                 }
-                else {
+                else { //Edit
                     if (Number($("#txtTo_be_Paid").val()) < 0) {
                         var Paid_1 = Number($("#txtTo_be_Paid").val()) * -1;
                         WorningMessage(" برجاءاستلام (" + Paid_1 + ")ج من المورد ", "Do you want to delete?", "تحذير", "worning", function () {
@@ -1277,6 +1289,7 @@ var Purchases;
             $("#Sales_Price" + i).removeAttr("disabled");
             $("#MinUnitPrice" + i).removeAttr("disabled");
             $("#txt_StatusFlag" + i).val("");
+            //$("#txtTotal" + i).removeAttr("disabled");
         }
     }
     function disabled_Grid_Controls() {
@@ -1295,6 +1308,7 @@ var Purchases;
             $("#Sales_Price" + i).attr("disabled", "disabled");
             $("#txtMinPrice" + i).attr("disabled", "disabled");
             $("#txt_StatusFlag" + i).val("");
+            //$("#txtScrapQty" + i).attr("disabled", "disabled");
         }
     }
     function printreport(type) {

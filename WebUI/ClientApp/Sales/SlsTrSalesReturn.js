@@ -206,6 +206,17 @@ var SlsTrSalesReturn;
         $("#rowData").addClass("display_none");
         $("#divTotalSatistics").addClass("display_none");
         Display();
+        if (ddlCustomerMaster.value != 'null') {
+            $('#div_total').removeClass('display_none');
+        }
+        else {
+            $('#div_total').addClass('display_none');
+        }
+        var sum = 0;
+        for (var i = 0; i < Get_IQ_ReviewSalesMaster.length; i++) {
+            sum += Get_IQ_ReviewSalesMaster[i].Total_All;
+        }
+        $('#totalcustomer').val(sum);
     }
     function Display() {
         debugger;
@@ -787,6 +798,9 @@ var SlsTrSalesReturn;
             // can delete new inserted record  without need for delete privilage
             $("#btn_minus" + CountGrid).removeClass("display_none");
             $("#btn_minus" + CountGrid).removeAttr("disabled");
+            //CountGrid++;
+            //eslam
+            //bind statistics data
         }
     }
     function DeleteRow(RecNo) {
@@ -870,6 +884,16 @@ var SlsTrSalesReturn;
             StatusFlag = $("#txt_StatusFlag" + i).val();
             $("#txt_StatusFlag" + i).val("");
             if (StatusFlag == "i") {
+                //OperationItemSingleModel.StatusFlag = StatusFlag.toString();
+                //OperationItemSingleModel.OperationItemID = 0;
+                //OperationItemSingleModel.OperationID = OperationID;
+                //OperationItemSingleModel.ItemID = $("#ddlItem" + i).val();
+                //OperationItemSingleModel.ReceivedQty = $('#txtQuantity' + i).val();
+                //OperationItemSingleModel.Est_SalesPrice = $("#txtPrice" + i).val();
+                //OperationItemSingleModel.Min_SalesPrice = $("#txtMinPrice" + i).val();
+                //OperationItemSingleModel.SoldQty = $('#txtSoldQty' + i).val();//
+                //OperationItemSingleModel.ScrapQty = $("#txtScrapQty" + i).val();
+                //OperationItemModel.push(OperationItemSingleModel);
             }
             if (StatusFlag == "u") {
                 var OperationItemID = $("#txt_ID" + i).val();
@@ -1007,6 +1031,7 @@ var SlsTrSalesReturn;
             //$("#txtQuantity" + i).removeAttr("disabled");
             //$("#txtPrice" + i).removeAttr("disabled");
             $("#txtReturn" + i).removeAttr("disabled");
+            //$("#txtScrapQty" + i).removeAttr("disabled");
         }
     }
     function disabled_Grid_Controls() {
