@@ -10078,8 +10078,9 @@ class SlsInvoiceTrNo_Or_ID {
 
 
 
-class Catch_Receipt {
+class Catch_Receipt extends SecurityClass {
     constructor() {
+        super();
         this.ID_Receipt = 0;
         this.CUSTOMER_ID = 0;
         this.USER_CODE = "";
@@ -10088,7 +10089,8 @@ class Catch_Receipt {
         this.Amount
         this.ShootMoney
         this.Remarks = "";
-        this.Data = "";
+        this.Data = "";   
+
     }
     public ID_Receipt: number;
     public CUSTOMER_ID: number;

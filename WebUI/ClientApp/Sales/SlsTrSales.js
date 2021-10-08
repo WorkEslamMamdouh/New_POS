@@ -1156,7 +1156,7 @@ var SlsTrSales;
     }
     function btn_Approveprice_onclick() {
         //debugger;
-        if (txt_ApprovePass.value == '1234') {
+        if (txt_ApprovePass.value == SysSession.CurrentEnvironment.I_Control[0].Currencyid) {
             Insert_Basket();
             if (Success == true) {
                 Remove_Item_in_Basket();

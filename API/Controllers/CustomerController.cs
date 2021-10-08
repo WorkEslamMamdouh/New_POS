@@ -56,17 +56,8 @@ namespace API.Controllers
 
                 if (BalType == ">")
                 {
-                    condition = condition + " and  Openbalance > CreditLimit ";
+                    condition = condition + " where  Debit > 0 ";
                 }
-                if (BalType == "=")
-                {
-                    condition = condition + " and Openbalance = CreditLimit ";
-                }
-                if (BalType == "<")
-                {
-                    condition = condition + " and Openbalance < CreditLimit ";
-                }
-
 
             }
 
@@ -78,16 +69,8 @@ namespace API.Controllers
             {
                 if (BalType == ">")
                 {
-                    condition = condition + " where  Openbalance > CreditLimit ";
-                }
-                if (BalType == "=")
-                {
-                    condition = condition + " where Openbalance = CreditLimit ";
-                }
-                if (BalType == "<")
-                {
-                    condition = condition + " where Openbalance < CreditLimit "; 
-                }
+                    condition = condition + " where  Debit > 0 ";
+                } 
 
             }
 
@@ -234,7 +217,35 @@ namespace API.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpGet, AllowAnonymous]
+        public IHttpActionResult Insert(int CUSTOMER_ID ,string USER_CODE ,int ID_ORDER_Delivery, decimal AmountRequired ,decimal Amount ,decimal ShootMoney ,string Remarks , string Data)
+        {
+            
+                try
+                {
+                    string query = "insert into [dbo].[Catch_Receipt] values("+ CUSTOMER_ID+ ",'"+USER_CODE+ "',"+ ID_ORDER_Delivery+ ","+AmountRequired+ "," +Amount + "," +ShootMoney + ",'" +Remarks + "','" + Data + "')";
+                     
+                    db.Database.ExecuteSqlCommand(query);
 
+
+                string updateDebit = "updateDebit  " + CUSTOMER_ID + ","+ ShootMoney + ",'" + USER_CODE + "'";
+
+                db.Database.ExecuteSqlCommand(updateDebit);
+
+
+
+                string Receipt = "select max(ID_Receipt) from [dbo].[Catch_Receipt] ";
+
+                    int ID_Receipt = db.Database.SqlQuery<int>(Receipt).FirstOrDefault();
+                      
+                    return Ok(new BaseResponse(ID_Receipt));
+                }
+                catch (Exception ex)
+                {
+                    return Ok(new BaseResponse(HttpStatusCode.ExpectationFailed, ex.Message));
+                }
+           
+        }
 
 
     }

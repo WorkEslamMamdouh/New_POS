@@ -119,6 +119,7 @@ namespace SlsTrSales {
     var TrType;
     export function InitalizeComponent() {
         debugger
+
         $('#cont').toggleClass('colapsdivcont');
 
         $('#sidebar').toggleClass('active');
@@ -1557,7 +1558,7 @@ namespace SlsTrSales {
     }
     function btn_Approveprice_onclick() {
         //debugger;
-        if (txt_ApprovePass.value == '1234') {
+        if (txt_ApprovePass.value == SysSession.CurrentEnvironment.I_Control[0].Currencyid ) {
 
             Insert_Basket();
             if (Success == true) {

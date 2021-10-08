@@ -5994,20 +5994,23 @@ var SlsInvoiceTrNo_Or_ID = (function () {
     }
     return SlsInvoiceTrNo_Or_ID;
 }());
-var Catch_Receipt = (function () {
+var Catch_Receipt = (function (_super) {
+    __extends(Catch_Receipt, _super);
     function Catch_Receipt() {
-        this.ID_Receipt = 0;
-        this.CUSTOMER_ID = 0;
-        this.USER_CODE = "";
-        this.ID_ORDER_Delivery = 0;
-        this.AmountRequired;
-        this.Amount;
-        this.ShootMoney;
-        this.Remarks = "";
-        this.Data = "";
+        var _this = _super.call(this) || this;
+        _this.ID_Receipt = 0;
+        _this.CUSTOMER_ID = 0;
+        _this.USER_CODE = "";
+        _this.ID_ORDER_Delivery = 0;
+        _this.AmountRequired;
+        _this.Amount;
+        _this.ShootMoney;
+        _this.Remarks = "";
+        _this.Data = "";
+        return _this;
     }
     return Catch_Receipt;
-}());
+}(SecurityClass));
 var IQ_Catch_Receipt = (function () {
     function IQ_Catch_Receipt() {
         this.ID_Receipt = 0;

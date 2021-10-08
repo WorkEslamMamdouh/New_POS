@@ -452,7 +452,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Shortage.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.0;(0.0)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -489,7 +491,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Total_Price_One_Part.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.0;(0.0)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -526,7 +530,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!PRODUCT_Purchasing_price.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.0;(0.0)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -563,7 +569,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!PRODUCT_PRICE.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.0;(0.0)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -806,6 +814,7 @@
                               <Value>=SUM(Fields!Shortage.Value)</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>0.0;(0.0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -849,6 +858,7 @@
                               <Value>=SUM(Fields!Total_Price_One_Part.Value)</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>0.0;(0.0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -893,6 +903,7 @@
                               <Value>=SUM(Fields!PRODUCT_Purchasing_price.Value)</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>0.0;(0.0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -937,6 +948,7 @@
                               <Value>=SUM(Fields!PRODUCT_PRICE.Value)</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>0.0;(0.0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -981,6 +993,7 @@
                               <Value>=SUM(Fields!PRODUCT_Qut.Value)</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>0.0;(0.0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1114,7 +1127,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!The_total_amount.Value, "Rpt_GardDetailAr")</Value>
-                <Style />
+                <Style>
+                  <Format>0.0;(0.0)</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1134,26 +1149,6 @@
             <Style>Solid</Style>
             <Width>0.5pt</Width>
           </Border>
-          <TopBorder>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </TopBorder>
-          <BottomBorder>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </BottomBorder>
-          <LeftBorder>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </LeftBorder>
-          <RightBorder>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </RightBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -1236,7 +1231,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!Net_Money.Value, "Rpt_GardDetailAr")</Value>
-                <Style />
+                <Style>
+                  <Format>0.0;(0.0)</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1256,26 +1253,6 @@
             <Style>Solid</Style>
             <Width>0.5pt</Width>
           </Border>
-          <TopBorder>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </TopBorder>
-          <BottomBorder>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </BottomBorder>
-          <LeftBorder>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </LeftBorder>
-          <RightBorder>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </RightBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -1283,7 +1260,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>1.13447in</Height>
+    <Height>1.1178in</Height>
     <Style />
   </Body>
   <Width>10.06192in</Width>

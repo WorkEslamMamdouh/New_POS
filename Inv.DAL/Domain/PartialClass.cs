@@ -133,6 +133,10 @@ namespace Inv.DAL.Domain
     {
 
     }
+    public partial class CUSTOMER : SecurityandUpdateFlagClass
+    {
+
+    }
     public partial class Purchases_Details : SecurityandUpdateFlagClass
     {
 
