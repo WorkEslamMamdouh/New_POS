@@ -1120,17 +1120,17 @@ warning 6002: The table/view 'POS2021.dbo.IQ_Catch_Receipt' does not have a prim
           <Property Name="PHONE" Type="nvarchar" MaxLength="50" />
           <Property Name="CreditLimit" Type="numeric" Precision="18" Scale="6" />
           <Property Name="CreditLimitFC" Type="numeric" Precision="18" Scale="6" />
-          <Property Name="CreditPeriod" Type="int" />
-          <Property Name="OpenBalanceFC" Type="numeric" Precision="18" Scale="6" />
           <Property Name="Openbalance" Type="numeric" Precision="18" Scale="6" />
           <Property Name="Debit" Type="numeric" Precision="18" Scale="6" />
           <Property Name="DebitFC" Type="numeric" Precision="18" Scale="6" />
           <Property Name="Credit" Type="numeric" Precision="18" Scale="6" />
           <Property Name="IsCreditCustomer" Type="bit" />
-          <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="20" />
-          <Property Name="USER_ACTIVE" Type="bit" Nullable="false" />
           <Property Name="USER_NAME" Type="nvarchar" MaxLength="50" />
           <Property Name="Data" Type="nvarchar" MaxLength="50" />
+          <Property Name="OpenBalanceFC" Type="money" />
+          <Property Name="CreditPeriod" Type="int" />
+          <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="20" />
+          <Property Name="USER_ACTIVE" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'POS2021.dbo.IQ_Outlet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1782,17 +1782,17 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
     [IQ_Catch_Receipt].[PHONE] AS [PHONE], 
     [IQ_Catch_Receipt].[CreditLimit] AS [CreditLimit], 
     [IQ_Catch_Receipt].[CreditLimitFC] AS [CreditLimitFC], 
-    [IQ_Catch_Receipt].[CreditPeriod] AS [CreditPeriod], 
-    [IQ_Catch_Receipt].[OpenBalanceFC] AS [OpenBalanceFC], 
     [IQ_Catch_Receipt].[Openbalance] AS [Openbalance], 
     [IQ_Catch_Receipt].[Debit] AS [Debit], 
     [IQ_Catch_Receipt].[DebitFC] AS [DebitFC], 
     [IQ_Catch_Receipt].[Credit] AS [Credit], 
     [IQ_Catch_Receipt].[IsCreditCustomer] AS [IsCreditCustomer], 
-    [IQ_Catch_Receipt].[USER_PASSWORD] AS [USER_PASSWORD], 
-    [IQ_Catch_Receipt].[USER_ACTIVE] AS [USER_ACTIVE], 
     [IQ_Catch_Receipt].[USER_NAME] AS [USER_NAME], 
-    [IQ_Catch_Receipt].[Data] AS [Data]
+    [IQ_Catch_Receipt].[Data] AS [Data], 
+    [IQ_Catch_Receipt].[OpenBalanceFC] AS [OpenBalanceFC], 
+    [IQ_Catch_Receipt].[CreditPeriod] AS [CreditPeriod], 
+    [IQ_Catch_Receipt].[USER_PASSWORD] AS [USER_PASSWORD], 
+    [IQ_Catch_Receipt].[USER_ACTIVE] AS [USER_ACTIVE]
     FROM [dbo].[IQ_Catch_Receipt] AS [IQ_Catch_Receipt]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="IQ_Outlet" EntityType="Self.IQ_Outlet" store:Type="Views" store:Schema="dbo">
@@ -3216,11 +3216,6 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
             <Parameter Name="Comp" Mode="In" Type="Int32" />
             <Parameter Name="OpCode" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="all_The_Gard" ReturnType="Collection(POS2021Model.all_The_Gard_Result)">
-            <Parameter Name="UserName" Mode="In" Type="String" />
-            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
-            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="Close_days" />
           <FunctionImport Name="Date_Time_Now" ReturnType="Collection(DateTime)" />
           <FunctionImport Name="G_ProcessTrans">
@@ -3334,26 +3329,12 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
           <EntitySet Name="CUSTOMERs" EntityType="POS2021Model.CUSTOMER" />
           <EntitySet Name="Catch_Receipt" EntityType="POS2021Model.Catch_Receipt" />
           <EntitySet Name="IQ_Catch_Receipt" EntityType="POS2021Model.IQ_Catch_Receipt" />
+          <FunctionImport Name="all_The_Gard" ReturnType="Collection(POS2021Model.all_The_Gard_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="all_The_Gard_Result">
-          <Property Type="Int64" Name="RowNum" Nullable="true" />
-          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="PRODUCT_Purchasing_price" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="MinUnitPrice" Nullable="true" Precision="19" />
-          <Property Type="Double" Name="PRODUCT_Qut" Nullable="true" />
-          <Property Type="Decimal" Name="Total_Price_One_Part" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="Shortage" Nullable="true" Precision="19" />
-          <Property Type="Int32" Name="Outlet" Nullable="true" />
-          <Property Type="Int32" Name="Enter_Money" Nullable="true" />
-          <Property Type="Double" Name="Task" Nullable="true" />
-          <Property Type="Int32" Name="TrType" Nullable="true" />
-          <Property Type="Decimal" Name="PRODUCT_PRICE" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="The_total_amount" Nullable="true" Precision="19" />
-          <Property Type="Double" Name="Net_Money" Nullable="true" />
-          <Property Type="String" Name="Shift_User" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="FromDate" Nullable="true" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="Get_Settings_Report_Result">
           <Property Type="Int32" Name="ID_Report" Nullable="false" />
           <Property Type="String" Name="ID_Button_Print" Nullable="false" MaxLength="50" />
@@ -3452,7 +3433,7 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
           <Property Name="CreditLimit" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="CreditLimitFC" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="CreditPeriod" Type="Int32" />
-          <Property Name="OpenBalanceFC" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="OpenBalanceFC" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Openbalance" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="Debit" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="DebitFC" Type="Decimal" Precision="18" Scale="6" />
@@ -3463,6 +3444,26 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
           <Property Name="USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="all_The_Gard_Result">
+          <Property Type="Int64" Name="RowNum" Nullable="true" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="PRODUCT_Purchasing_price" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="MinUnitPrice" Nullable="true" Precision="19" />
+          <Property Type="Double" Name="PRODUCT_Qut" Nullable="true" />
+          <Property Type="Decimal" Name="Total_Price_One_Part" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Shortage" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Outlet" Nullable="true" />
+          <Property Type="Int32" Name="Enter_Money" Nullable="true" />
+          <Property Type="Double" Name="Task" Nullable="true" />
+          <Property Type="Int32" Name="TrType" Nullable="true" />
+          <Property Type="Decimal" Name="PRODUCT_PRICE" Nullable="true" Precision="19" />
+          <Property Type="Double" Name="total_Dibt" Nullable="true" />
+          <Property Type="Decimal" Name="The_total_amount" Nullable="true" Precision="19" />
+          <Property Type="Double" Name="Net_Money" Nullable="true" />
+          <Property Type="String" Name="Shift_User" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4701,29 +4702,6 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="A_ProcessVouchers" FunctionName="POS2021Model.Store.A_ProcessVouchers" />
-          <FunctionImportMapping FunctionImportName="all_The_Gard" FunctionName="POS2021Model.Store.all_The_Gard">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="POS2021Model.all_The_Gard_Result">
-                <ScalarProperty Name="RowNum" ColumnName="RowNum" />
-                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
-                <ScalarProperty Name="PRODUCT_Purchasing_price" ColumnName="PRODUCT_Purchasing_price" />
-                <ScalarProperty Name="MinUnitPrice" ColumnName="MinUnitPrice" />
-                <ScalarProperty Name="PRODUCT_Qut" ColumnName="PRODUCT_Qut" />
-                <ScalarProperty Name="Total_Price_One_Part" ColumnName="Total_Price_One_Part" />
-                <ScalarProperty Name="Shortage" ColumnName="Shortage" />
-                <ScalarProperty Name="Outlet" ColumnName="Outlet" />
-                <ScalarProperty Name="Enter_Money" ColumnName="Enter_Money" />
-                <ScalarProperty Name="Task" ColumnName="Task" />
-                <ScalarProperty Name="TrType" ColumnName="TrType" />
-                <ScalarProperty Name="PRODUCT_PRICE" ColumnName="PRODUCT_PRICE" />
-                <ScalarProperty Name="The_total_amount" ColumnName="The_total_amount" />
-                <ScalarProperty Name="Net_Money" ColumnName="Net_Money" />
-                <ScalarProperty Name="Shift_User" ColumnName="Shift_User" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Close_days" FunctionName="POS2021Model.Store.Close_days" />
           <FunctionImportMapping FunctionImportName="Date_Time_Now" FunctionName="POS2021Model.Store.Date_Time_Now" />
           <FunctionImportMapping FunctionImportName="G_ProcessTrans" FunctionName="POS2021Model.Store.G_ProcessTrans" />
@@ -4867,6 +4845,30 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="all_The_Gard" FunctionName="POS2021Model.Store.all_The_Gard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POS2021Model.all_The_Gard_Result">
+                <ScalarProperty Name="RowNum" ColumnName="RowNum" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="PRODUCT_Purchasing_price" ColumnName="PRODUCT_Purchasing_price" />
+                <ScalarProperty Name="MinUnitPrice" ColumnName="MinUnitPrice" />
+                <ScalarProperty Name="PRODUCT_Qut" ColumnName="PRODUCT_Qut" />
+                <ScalarProperty Name="Total_Price_One_Part" ColumnName="Total_Price_One_Part" />
+                <ScalarProperty Name="Shortage" ColumnName="Shortage" />
+                <ScalarProperty Name="Outlet" ColumnName="Outlet" />
+                <ScalarProperty Name="Enter_Money" ColumnName="Enter_Money" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="TrType" ColumnName="TrType" />
+                <ScalarProperty Name="PRODUCT_PRICE" ColumnName="PRODUCT_PRICE" />
+                <ScalarProperty Name="total_Dibt" ColumnName="total_Dibt" />
+                <ScalarProperty Name="The_total_amount" ColumnName="The_total_amount" />
+                <ScalarProperty Name="Net_Money" ColumnName="Net_Money" />
+                <ScalarProperty Name="Shift_User" ColumnName="Shift_User" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

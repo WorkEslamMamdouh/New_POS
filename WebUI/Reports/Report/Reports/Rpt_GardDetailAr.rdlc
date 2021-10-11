@@ -608,7 +608,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!PRODUCT_Qut.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.00;(0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -624,7 +626,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Gray</Color>
-                          <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -1010,12 +1011,10 @@
                         </Border>
                         <TopBorder>
                           <Color>Gray</Color>
-                          <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Gray</Color>
-                          <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -1126,7 +1125,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!The_total_amount.Value, "Rpt_GardDetailAr")</Value>
+                <Value>=Sum(Fields!total_Dibt.Value, "Rpt_GardDetailAr")</Value>
                 <Style>
                   <Format>0.0;(0.0)</Format>
                 </Style>
@@ -1139,7 +1138,7 @@
         </Paragraphs>
         <rd:DefaultName>The_total_amount</rd:DefaultName>
         <Top>2.19688cm</Top>
-        <Left>14.94367cm</Left>
+        <Left>19.70617cm</Left>
         <Height>0.6cm</Height>
         <Width>3.12208cm</Width>
         <ZIndex>1</ZIndex>
@@ -1162,7 +1161,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>اجمالى الخزينة</Value>
+                <Value>اجمالى الأجل</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -1175,7 +1174,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
         <Top>2.19688cm</Top>
-        <Left>18.09433cm</Left>
+        <Left>22.85683cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>2</ZIndex>
@@ -1209,7 +1208,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
         <Top>2.19688cm</Top>
-        <Left>5.98635cm</Left>
+        <Left>4.39885cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>3</ZIndex>
@@ -1243,7 +1242,7 @@
         </Paragraphs>
         <rd:DefaultName>Net_Money</rd:DefaultName>
         <Top>2.19688cm</Top>
-        <Left>2.84253cm</Left>
+        <Left>1.25503cm</Left>
         <Height>0.6cm</Height>
         <Width>3.10854cm</Width>
         <ZIndex>4</ZIndex>
@@ -1259,8 +1258,148 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="The_total_amount2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!The_total_amount.Value, "Rpt_GardDetailAr")-Sum(Fields!total_Dibt.Value, "Rpt_GardDetailAr")</Value>
+                <Style>
+                  <Format>0.0;(0.0)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>The_total_amount</rd:DefaultName>
+        <Top>2.19688cm</Top>
+        <Left>13.23975cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.12208cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>0.5pt</Width>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox27">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>اجمالى الخزينة</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>2.19688cm</Top>
+        <Left>16.39041cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="The_total_amount3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!The_total_amount.Value, "Rpt_GardDetailAr")</Value>
+                <Style>
+                  <Format>0.0;(0.0)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>The_total_amount</rd:DefaultName>
+        <Top>2.19688cm</Top>
+        <Left>7.32218cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.12208cm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>0.5pt</Width>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox28">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>الاجمالي الكلي</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>2.19688cm</Top>
+        <Left>10.47284cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>1.1178in</Height>
+    <Height>1.21224in</Height>
     <Style />
   </Body>
   <Width>10.06192in</Width>
@@ -1561,7 +1700,7 @@
       <Fields>
         <Field Name="RowNum">
           <DataField>RowNum</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="PRODUCT_NAME">
           <DataField>PRODUCT_NAME</DataField>
@@ -1569,51 +1708,55 @@
         </Field>
         <Field Name="PRODUCT_Purchasing_price">
           <DataField>PRODUCT_Purchasing_price</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="MinUnitPrice">
           <DataField>MinUnitPrice</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="PRODUCT_Qut">
           <DataField>PRODUCT_Qut</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="Total_Price_One_Part">
           <DataField>Total_Price_One_Part</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Shortage">
           <DataField>Shortage</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Outlet">
           <DataField>Outlet</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Enter_Money">
           <DataField>Enter_Money</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Task">
           <DataField>Task</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="TrType">
           <DataField>TrType</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="PRODUCT_PRICE">
           <DataField>PRODUCT_PRICE</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="total_Dibt">
+          <DataField>total_Dibt</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="The_total_amount">
           <DataField>The_total_amount</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Net_Money">
           <DataField>Net_Money</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="Shift_User">
           <DataField>Shift_User</DataField>
@@ -1621,19 +1764,20 @@
         </Field>
         <Field Name="FromDate">
           <DataField>FromDate</DataField>
-          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="ToDate">
           <DataField>ToDate</DataField>
-          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DAL.Domain</rd:DataSetName>
-        <rd:TableName>SamahEntities</rd:TableName>
-        <rd:ObjectDataSourceSelectMethod>all_The_Gard</rd:ObjectDataSourceSelectMethod>
-        <rd:ObjectDataSourceSelectMethodSignature>System.Data.Entity.Core.Objects.ObjectResult`1[DAL.Domain.all_The_Gard_Result] all_The_Gard(System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime])</rd:ObjectDataSourceSelectMethodSignature>
-        <rd:ObjectDataSourceType>DAL.Domain.SamahEntities, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>POS2021DataSet</rd:DataSetName>
+        <rd:SchemaPath>F:\ITC\Import\New_POS\WebUI\POS2021DataSet.xsd</rd:SchemaPath>
+        <rd:TableName>all_The_Gard</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>all_The_GardTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

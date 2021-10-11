@@ -5700,6 +5700,7 @@ var ReviewSalesMaster = (function (_super) {
         _this.Nametype_order = "";
         _this.Name_Pilot = "";
         _this.Namber_Order_Delivery = 0;
+        _this.Total = 0;
         return _this;
     }
     return ReviewSalesMaster;

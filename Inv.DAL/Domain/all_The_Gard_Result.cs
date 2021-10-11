@@ -25,6 +25,7 @@ namespace Inv.DAL.Domain
         public Nullable<double> Task { get; set; }
         public Nullable<int> TrType { get; set; }
         public Nullable<decimal> PRODUCT_PRICE { get; set; }
+        public Nullable<double> total_Dibt { get; set; }
         public Nullable<decimal> The_total_amount { get; set; }
         public Nullable<double> Net_Money { get; set; }
         public string Shift_User { get; set; }

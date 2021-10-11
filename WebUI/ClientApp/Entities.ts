@@ -9615,6 +9615,9 @@ class ReviewSalesMaster extends SecurityClass {
         this.Nametype_order = "";
         this.Name_Pilot = "";
         this.Namber_Order_Delivery = 0;
+        this.Total = 0;
+
+        
     }
     public ID_ORDER_Delivery: number;
     public Date_Order_Delivery: string;
@@ -9634,6 +9637,9 @@ class ReviewSalesMaster extends SecurityClass {
     public Nametype_order: string;
     public Name_Pilot: string;
     public Namber_Order_Delivery: number;
+    public Total: number;
+
+    
 }
 
 

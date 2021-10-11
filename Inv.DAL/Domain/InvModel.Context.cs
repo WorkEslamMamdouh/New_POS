@@ -251,23 +251,6 @@ namespace Inv.DAL.Domain
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("A_ProcessVouchers", userCodeParameter, compParameter, opCodeParameter);
         }
     
-        public virtual ObjectResult<all_The_Gard_Result> all_The_Gard(string userName, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
-        {
-            var userNameParameter = userName != null ?
-                new ObjectParameter("UserName", userName) :
-                new ObjectParameter("UserName", typeof(string));
-    
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("FromDate", fromDate) :
-                new ObjectParameter("FromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("ToDate", toDate) :
-                new ObjectParameter("ToDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<all_The_Gard_Result>("all_The_Gard", userNameParameter, fromDateParameter, toDateParameter);
-        }
-    
         public virtual int Close_days()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Close_days");
@@ -645,6 +628,23 @@ namespace Inv.DAL.Domain
                 new ObjectParameter("ID_ORDER", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("update_Sales_Master", total_AllParameter, userNameParameter, iD_ORDERParameter);
+        }
+    
+        public virtual ObjectResult<all_The_Gard_Result> all_The_Gard(string userName, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<all_The_Gard_Result>("all_The_Gard", userNameParameter, fromDateParameter, toDateParameter);
         }
     }
 }

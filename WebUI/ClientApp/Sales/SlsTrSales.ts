@@ -1066,6 +1066,9 @@ namespace SlsTrSales {
 
         ID_Customer = null;
         idCust.value = "";
+        $('#txt_Amount').val('');
+        $('#txt_Cust_Type').val('1');  
+        txt_debit.value = "0";
         hide_Custm();
         flag_Cust = false;
 
@@ -1577,6 +1580,9 @@ namespace SlsTrSales {
                 $("#Popup_Passowrd").modal("hide");
                 ID_Customer = null;
                 idCust.value = "";
+                $('#txt_Amount').val('');
+                $('#txt_Cust_Type').val('1');  
+                txt_debit.value = "0";
                 hide_Custm();
                 flag_Cust = false;
                 if (type_Save_Print == true) {
@@ -1659,6 +1665,9 @@ namespace SlsTrSales {
             CUST_Phone.value = "";
             cust_search_phone.value = "";
             idCust.value = "";
+            $('#txt_Amount').val('');
+            $('#txt_Cust_Type').val('1');  
+            txt_debit.value = "0";
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset animated zoomOut collapse  castmr ');
             document.getElementById("div_cutomr").setAttribute('aria-expanded', 'true');
 
@@ -1703,6 +1712,9 @@ namespace SlsTrSales {
             document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #c12a2a; border - radius: 50px;');
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr animated shake');
             idCust.value = "";
+            $('#txt_Amount').val('');
+            $('#txt_Cust_Type').val('1');  
+            txt_debit.value = "0";
         }
 
         else {
@@ -1716,6 +1728,9 @@ namespace SlsTrSales {
                 document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #c12a2a; border - radius: 50px;');
                 document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr animated shake');
                 idCust.value = "";
+                $('#txt_Amount').val('');
+                $('#txt_Cust_Type').val('1');  
+                txt_debit.value = "0";
                 CUST_NAME.value = "";
                 CUST_ADDRES.value = "";
                 CUST_ADDRES_2.value = "";
@@ -1764,6 +1779,9 @@ namespace SlsTrSales {
             document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #c12a2a; border - radius: 50px;');
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr animated shake');
             idCust.value = "";
+            $('#txt_Amount').val('');
+            $('#txt_Cust_Type').val('1');  
+            txt_debit.value = "0";
         }
         else {
 
@@ -1808,6 +1826,9 @@ namespace SlsTrSales {
             txt_debit.value = "0";
             CUST_Phone.value = "";
             idCust.value = "";
+            $('#txt_Amount').val('');
+            $('#txt_Cust_Type').val('1');  
+            txt_debit.value = "0";
             $('#txt_Cust_Type').val('1');
             document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #4386da; border - radius: 50px;');
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr');
@@ -1849,6 +1870,9 @@ namespace SlsTrSales {
                 txt_debit.value = "0";
                 CUST_Phone.value = "";
                 idCust.value = "";
+                $('#txt_Amount').val('');
+                $('#txt_Cust_Type').val('1');  
+                txt_debit.value = "0";
                 $('#txt_Cust_Type').val('1');
 
 
@@ -1896,6 +1920,10 @@ namespace SlsTrSales {
         txt_debit.value = "0";
         CUST_Phone.value = "";
         idCust.value = "";
+        txt_debit.value = "0";    
+        $('#txt_Amount').val('');   
+        $('#txt_Cust_Type').val('1');   
+
         cust_search_phone.value = "";
         $('#txt_Cust_Type').val('1');   
         $('#txt_Amount').val('');   

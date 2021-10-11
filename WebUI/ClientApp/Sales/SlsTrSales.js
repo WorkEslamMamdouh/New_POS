@@ -531,7 +531,6 @@ var SlsTrSales;
             //this.setAttribute('style', 'zoom:' + zoom_select + ';background-color: #c80202db;');
             //this.setAttribute('class', 'Css_but chat-box-wrap shadow-reset  animated pulse');
             this.setAttribute('value', 'Finish');
-            //div.setAttribute('style', 'zoom:' + zoom_select + ';background-color: #ff000094;');
         }
         //this.focus();
     }
@@ -819,6 +818,9 @@ var SlsTrSales;
         //FamilyDetails = new Array<PRODUCT>();
         ID_Customer = null;
         idCust.value = "";
+        $('#txt_Amount').val('');
+        $('#txt_Cust_Type').val('1');
+        txt_debit.value = "0";
         hide_Custm();
         flag_Cust = false;
     }
@@ -1175,6 +1177,9 @@ var SlsTrSales;
                 $("#Popup_Passowrd").modal("hide");
                 ID_Customer = null;
                 idCust.value = "";
+                $('#txt_Amount').val('');
+                $('#txt_Cust_Type').val('1');
+                txt_debit.value = "0";
                 hide_Custm();
                 flag_Cust = false;
                 if (type_Save_Print == true) {
@@ -1238,6 +1243,9 @@ var SlsTrSales;
             CUST_Phone.value = "";
             cust_search_phone.value = "";
             idCust.value = "";
+            $('#txt_Amount').val('');
+            $('#txt_Cust_Type').val('1');
+            txt_debit.value = "0";
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset animated zoomOut collapse  castmr ');
             document.getElementById("div_cutomr").setAttribute('aria-expanded', 'true');
             document.getElementById("But_Cutomr").setAttribute('style', 'bottom: 40px;right: 25px;height: 40px;width: 40px;background:-moz-linear-gradient(left,rgba(255, 127, 77, 1)0%,rgba(255, 80, 10, 1) 100%);background:-webkit-gradient(left top,right top,color-stop(0%,rgba(255,127,77,1)),color-stop(100 %, rgba(255, 80, 10, 1)));background:-o-linear-gradient(left, rgba(255, 127, 77, 1)0%,rgba(255, 80, 10, 1)100%);background:linear-gradient(to right, #03a9f412 0%, #337ab7 100%);z-index: 999;line-height: 40px;text-align:center;border-radius:50%;cursor:pointer;color: #fff;font-size: 30px; ');
@@ -1259,6 +1267,9 @@ var SlsTrSales;
             document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #c12a2a; border - radius: 50px;');
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr animated shake');
             idCust.value = "";
+            $('#txt_Amount').val('');
+            $('#txt_Cust_Type').val('1');
+            txt_debit.value = "0";
         }
         else {
             SearchDetails = CustomerDetails.filter(function (x) { return x.PHONE == CUST_Phone.value; });
@@ -1268,6 +1279,9 @@ var SlsTrSales;
                 document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #c12a2a; border - radius: 50px;');
                 document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr animated shake');
                 idCust.value = "";
+                $('#txt_Amount').val('');
+                $('#txt_Cust_Type').val('1');
+                txt_debit.value = "0";
                 CUST_NAME.value = "";
                 CUST_ADDRES.value = "";
                 CUST_ADDRES_2.value = "";
@@ -1306,6 +1320,9 @@ var SlsTrSales;
             document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #c12a2a; border - radius: 50px;');
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr animated shake');
             idCust.value = "";
+            $('#txt_Amount').val('');
+            $('#txt_Cust_Type').val('1');
+            txt_debit.value = "0";
         }
         else {
             Details_Updata_Cust = new Array();
@@ -1340,6 +1357,9 @@ var SlsTrSales;
             txt_debit.value = "0";
             CUST_Phone.value = "";
             idCust.value = "";
+            $('#txt_Amount').val('');
+            $('#txt_Cust_Type').val('1');
+            txt_debit.value = "0";
             $('#txt_Cust_Type').val('1');
             document.getElementById("div_cutomr").setAttribute('style', 'position: fixed;height: 414px;width: 689px;background: linear - gradient(to right, rgb(22, 58, 71) 0%, #457198 100%);bottom: 90px;right: -59px;top: 91px;transition: all .4s ease 0s;z - index: 999;border: 23px solid #4386da; border - radius: 50px;');
             document.getElementById("div_cutomr").setAttribute('class', 'chat-box-wrap shadow-reset collapse in castmr');
@@ -1376,6 +1396,9 @@ var SlsTrSales;
                 txt_debit.value = "0";
                 CUST_Phone.value = "";
                 idCust.value = "";
+                $('#txt_Amount').val('');
+                $('#txt_Cust_Type').val('1');
+                txt_debit.value = "0";
                 $('#txt_Cust_Type').val('1');
             }
         }
@@ -1414,6 +1437,9 @@ var SlsTrSales;
         txt_debit.value = "0";
         CUST_Phone.value = "";
         idCust.value = "";
+        txt_debit.value = "0";
+        $('#txt_Amount').val('');
+        $('#txt_Cust_Type').val('1');
         cust_search_phone.value = "";
         $('#txt_Cust_Type').val('1');
         $('#txt_Amount').val('');

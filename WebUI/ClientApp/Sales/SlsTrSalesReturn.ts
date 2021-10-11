@@ -127,56 +127,7 @@ namespace SlsTrSalesReturn {
        btnPrintTrPDF = document.getElementById("btnPrintTrPDF") as HTMLButtonElement;
        btnPrintTrEXEL = document.getElementById("btnPrintTrEXEL") as HTMLButtonElement;
 
-        //ddlStateType = document.getElementById("ddlStateType") as HTMLSelectElement;
-        //ddlSalesman = document.getElementById("ddlSalesman") as HTMLSelectElement;
-        //ddlVendor = document.getElementById("ddlVendor") as HTMLSelectElement;
-        //txtNationality = document.getElementById("txtNationality") as HTMLSelectElement;
-
-        //id_divGridDetails = document.getElementById("DivFilter") as HTMLDivElement;
-
-        ////textboxes
-
-        //txtdateopening = document.getElementById("txtdateopening") as HTMLInputElement;
-        //txtClose_Adjustment = document.getElementById("txtClose_Adjustment") as HTMLInputElement;
-        //txtClose_SalesManCommition = document.getElementById("txtClose_SalesManCommition") as HTMLInputElement;
-        //txtClose_CompanyCommitionPrc = document.getElementById("txtClose_CompanyCommitionPrc") as HTMLInputElement;
-
-
-        //txtTruckNumber = document.getElementById("txtTruckNumber") as HTMLInputElement;
-        //txtPaperPurchaseValue = document.getElementById("txtPaperPurchaseValue") as HTMLInputElement;
-        //txtPortName = document.getElementById("txtPortName") as HTMLInputElement;
-
-        ////buttons
-        //btnPresent = document.getElementById("btnPresent") as HTMLButtonElement;
-        //btnClose = document.getElementById("btnClose") as HTMLButtonElement;
-        //btnOpen = document.getElementById("btnOpen") as HTMLButtonElement;
-        //btnView_load = document.getElementById("btnView_load") as HTMLButtonElement;
-        //btnExpenses = document.getElementById("btnExpenses") as HTMLButtonElement;
-
-
-
-        //btnadd = document.getElementById("btnadd") as HTMLButtonElement;
-
-        //btnBack_1 = document.getElementById("btnBack_1") as HTMLButtonElement;
-        //btnSave_1 = document.getElementById("btnSave_1") as HTMLButtonElement;
-        //btnUpdate = document.getElementById("btnUpdate") as HTMLButtonElement;
-
-        //btnUpdate_3 = document.getElementById("btnUpdate_3") as HTMLButtonElement;
-        //btnBack_3 = document.getElementById("btnBack_3") as HTMLButtonElement;
-        //btnSave_3 = document.getElementById("btnSave_3") as HTMLButtonElement;
-        //btnUpdate_4 = document.getElementById("btnUpdate_4") as HTMLButtonElement;
-        //btnBack_4 = document.getElementById("btnBack_4") as HTMLButtonElement;
-        //btnSave_4 = document.getElementById("btnSave_4") as HTMLButtonElement;
-        //btnUpdate_5 = document.getElementById("btnUpdate_5") as HTMLButtonElement;
-        //btnBack_5 = document.getElementById("btnBack_5") as HTMLButtonElement;
-        //btnSave_5 = document.getElementById("btnSave_5") as HTMLButtonElement;
-
-        //btnAddDetails = document.getElementById("btnAddDetails") as HTMLButtonElement;
-        //btnAddDetailsCharge = document.getElementById("btnAddDetailsCharge") as HTMLButtonElement;
-        //btnAddDetailslebel = document.getElementById("btnAddDetailslebel") as HTMLButtonElement;
-
-
-
+       
 
     }
     function IntializeEvents() {
@@ -305,6 +256,8 @@ namespace SlsTrSalesReturn {
                       
                         Get_IQ_ReviewSalesMaster[i].Date = DateFormat(Get_IQ_ReviewSalesMaster[i].Date);
 
+                        Get_IQ_ReviewSalesMaster[i].Total = Get_IQ_ReviewSalesMaster[i].Total_All - Get_IQ_ReviewSalesMaster[i].Tax;
+
 
                     }
                     InitializeGrid();
@@ -350,7 +303,12 @@ namespace SlsTrSalesReturn {
             { title: " التاريخ  ", name: "Date", type: "text", width: "12%" },
             { title: "البائع", name: "EMPLOYEE_NAME", type: "text", width: "20%" },
             { title: "العميل", name: "CUSTOMER_NAME", type: "text", width: "20%" },
-            { title: "اجمالي الفاتوره", name: "Tax", type: "text", width: "16%" },
+            { title: "اجمالي الفاتوره", name: "Total_All", type: "text", width: "16%" },
+            { title: "المدفوع", name: "Tax", type: "text", width: "16%" },
+            { title: "المتبقي", name: "Total", type: "text", width: "16%" },
+
+
+            
 
 
         ];

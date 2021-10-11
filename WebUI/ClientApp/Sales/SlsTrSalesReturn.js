@@ -105,41 +105,6 @@ var SlsTrSalesReturn;
         btnPrintTrview = document.getElementById("btnPrintTrview");
         btnPrintTrPDF = document.getElementById("btnPrintTrPDF");
         btnPrintTrEXEL = document.getElementById("btnPrintTrEXEL");
-        //ddlStateType = document.getElementById("ddlStateType") as HTMLSelectElement;
-        //ddlSalesman = document.getElementById("ddlSalesman") as HTMLSelectElement;
-        //ddlVendor = document.getElementById("ddlVendor") as HTMLSelectElement;
-        //txtNationality = document.getElementById("txtNationality") as HTMLSelectElement;
-        //id_divGridDetails = document.getElementById("DivFilter") as HTMLDivElement;
-        ////textboxes
-        //txtdateopening = document.getElementById("txtdateopening") as HTMLInputElement;
-        //txtClose_Adjustment = document.getElementById("txtClose_Adjustment") as HTMLInputElement;
-        //txtClose_SalesManCommition = document.getElementById("txtClose_SalesManCommition") as HTMLInputElement;
-        //txtClose_CompanyCommitionPrc = document.getElementById("txtClose_CompanyCommitionPrc") as HTMLInputElement;
-        //txtTruckNumber = document.getElementById("txtTruckNumber") as HTMLInputElement;
-        //txtPaperPurchaseValue = document.getElementById("txtPaperPurchaseValue") as HTMLInputElement;
-        //txtPortName = document.getElementById("txtPortName") as HTMLInputElement;
-        ////buttons
-        //btnPresent = document.getElementById("btnPresent") as HTMLButtonElement;
-        //btnClose = document.getElementById("btnClose") as HTMLButtonElement;
-        //btnOpen = document.getElementById("btnOpen") as HTMLButtonElement;
-        //btnView_load = document.getElementById("btnView_load") as HTMLButtonElement;
-        //btnExpenses = document.getElementById("btnExpenses") as HTMLButtonElement;
-        //btnadd = document.getElementById("btnadd") as HTMLButtonElement;
-        //btnBack_1 = document.getElementById("btnBack_1") as HTMLButtonElement;
-        //btnSave_1 = document.getElementById("btnSave_1") as HTMLButtonElement;
-        //btnUpdate = document.getElementById("btnUpdate") as HTMLButtonElement;
-        //btnUpdate_3 = document.getElementById("btnUpdate_3") as HTMLButtonElement;
-        //btnBack_3 = document.getElementById("btnBack_3") as HTMLButtonElement;
-        //btnSave_3 = document.getElementById("btnSave_3") as HTMLButtonElement;
-        //btnUpdate_4 = document.getElementById("btnUpdate_4") as HTMLButtonElement;
-        //btnBack_4 = document.getElementById("btnBack_4") as HTMLButtonElement;
-        //btnSave_4 = document.getElementById("btnSave_4") as HTMLButtonElement;
-        //btnUpdate_5 = document.getElementById("btnUpdate_5") as HTMLButtonElement;
-        //btnBack_5 = document.getElementById("btnBack_5") as HTMLButtonElement;
-        //btnSave_5 = document.getElementById("btnSave_5") as HTMLButtonElement;
-        //btnAddDetails = document.getElementById("btnAddDetails") as HTMLButtonElement;
-        //btnAddDetailsCharge = document.getElementById("btnAddDetailsCharge") as HTMLButtonElement;
-        //btnAddDetailslebel = document.getElementById("btnAddDetailslebel") as HTMLButtonElement;
     }
     function IntializeEvents() {
         searchbutmemreport.onkeydown = _SearchBox_Change;
@@ -242,6 +207,7 @@ var SlsTrSalesReturn;
                     for (var i = 0; i < Get_IQ_ReviewSalesMaster.length; i++) {
                         Get_IQ_ReviewSalesMaster[i].Date = DateFormat(Get_IQ_ReviewSalesMaster[i].Date);
                         Get_IQ_ReviewSalesMaster[i].Date = DateFormat(Get_IQ_ReviewSalesMaster[i].Date);
+                        Get_IQ_ReviewSalesMaster[i].Total = Get_IQ_ReviewSalesMaster[i].Total_All - Get_IQ_ReviewSalesMaster[i].Tax;
                     }
                     InitializeGrid();
                     divMasterGrid.DataSource = Get_IQ_ReviewSalesMaster;
@@ -283,7 +249,9 @@ var SlsTrSalesReturn;
             { title: " التاريخ  ", name: "Date", type: "text", width: "12%" },
             { title: "البائع", name: "EMPLOYEE_NAME", type: "text", width: "20%" },
             { title: "العميل", name: "CUSTOMER_NAME", type: "text", width: "20%" },
-            { title: "اجمالي الفاتوره", name: "Tax", type: "text", width: "16%" },
+            { title: "اجمالي الفاتوره", name: "Total_All", type: "text", width: "16%" },
+            { title: "المدفوع", name: "Tax", type: "text", width: "16%" },
+            { title: "المتبقي", name: "Total", type: "text", width: "16%" },
         ];
     }
     function MasterGridDoubleClick() {
@@ -798,9 +766,6 @@ var SlsTrSalesReturn;
             // can delete new inserted record  without need for delete privilage
             $("#btn_minus" + CountGrid).removeClass("display_none");
             $("#btn_minus" + CountGrid).removeAttr("disabled");
-            //CountGrid++;
-            //eslam
-            //bind statistics data
         }
     }
     function DeleteRow(RecNo) {
@@ -884,16 +849,6 @@ var SlsTrSalesReturn;
             StatusFlag = $("#txt_StatusFlag" + i).val();
             $("#txt_StatusFlag" + i).val("");
             if (StatusFlag == "i") {
-                //OperationItemSingleModel.StatusFlag = StatusFlag.toString();
-                //OperationItemSingleModel.OperationItemID = 0;
-                //OperationItemSingleModel.OperationID = OperationID;
-                //OperationItemSingleModel.ItemID = $("#ddlItem" + i).val();
-                //OperationItemSingleModel.ReceivedQty = $('#txtQuantity' + i).val();
-                //OperationItemSingleModel.Est_SalesPrice = $("#txtPrice" + i).val();
-                //OperationItemSingleModel.Min_SalesPrice = $("#txtMinPrice" + i).val();
-                //OperationItemSingleModel.SoldQty = $('#txtSoldQty' + i).val();//
-                //OperationItemSingleModel.ScrapQty = $("#txtScrapQty" + i).val();
-                //OperationItemModel.push(OperationItemSingleModel);
             }
             if (StatusFlag == "u") {
                 var OperationItemID = $("#txt_ID" + i).val();
@@ -1031,7 +986,6 @@ var SlsTrSalesReturn;
             //$("#txtQuantity" + i).removeAttr("disabled");
             //$("#txtPrice" + i).removeAttr("disabled");
             $("#txtReturn" + i).removeAttr("disabled");
-            //$("#txtScrapQty" + i).removeAttr("disabled");
         }
     }
     function disabled_Grid_Controls() {
