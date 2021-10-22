@@ -131,6 +131,10 @@ namespace Inv.WebUI.Controllers
         {
             return View("~/Views/Sales/SlsTrReturnIndex.cshtml");
         }
+        public ActionResult SlsTrSalesManagerIndex()
+        {
+            return View("~/Views/Sale/SlsTrSalesManagerIndex.cshtml");
+        }
         public ActionResult PurchasesIndex()
         {
             return View("~/Views/Purchases/PurchasesIndex.cshtml");

@@ -624,6 +624,7 @@ var HomeComponent;
         $("#btnSalesinventory").click(function () { OpenPage(Modules.Salesinventory); });
         $("#btnfamilly_Cat").click(function () { OpenPage(Modules.familly_Cat); });
         $("#btnIncome_expenses").click(function () { OpenPage(Modules.Income_expenses); });
+        $("#btnSlsTrSalesManager").click(function () { OpenPage(Modules.SlsTrSalesManager); });
     }
     function Notifications_Message() {
         var comCode = SysSession.CurrentEnvironment.CompCode;

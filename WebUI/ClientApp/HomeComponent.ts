@@ -754,6 +754,10 @@ namespace HomeComponent {
         $("#btnSalesinventory").click(() => { OpenPage(Modules.Salesinventory); })
         $("#btnfamilly_Cat").click(() => { OpenPage(Modules.familly_Cat); })
         $("#btnIncome_expenses").click(() => { OpenPage(Modules.Income_expenses); })
+        $("#btnSlsTrSalesManager").click(() => { OpenPage(Modules.SlsTrSalesManager); })
+
+
+        
 
 
     }

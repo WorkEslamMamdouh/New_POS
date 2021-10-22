@@ -26,6 +26,7 @@ var Modules = {
     Salesinventory: "Salesinventory",
     familly_Cat: "familly_Cat",
     Income_expenses: "Income_expenses",
+    SlsTrSalesManager: "SlsTrSalesManager",
 };
 var MessageType = {
     Error: '2',
