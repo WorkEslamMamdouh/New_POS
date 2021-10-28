@@ -167,11 +167,6 @@
     <Content Include="css\UnderConstruction\js\my_js.js" />
     <Content Include="css\UnderConstruction\js\wow.min.js" />
     <Content Include="favicon.png" />
-    <Content Include="images\Background\amal.jpg" />
-    <Content Include="images\Background\amal1.jpg" />
-    <Content Include="images\Background\bk5.jpg" />
-    <Content Include="images\Background\bk_HopeLife.jpg" />
-    <Content Include="images\Background\bk_shrouq.jpg" />
     <Content Include="images\Background\bs1.jpg" />
     <Content Include="images\Background\businessman-3087395_1920.jpg" />
     <Content Include="images\Background\fr1.jpg" />
