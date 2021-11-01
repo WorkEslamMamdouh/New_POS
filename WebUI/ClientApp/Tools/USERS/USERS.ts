@@ -531,12 +531,11 @@ namespace USERS {
         CountGrid = Result_List.length;
     }
     function BindUserGrid() {
+        
         Ajax.Callsync({
             type: "Get",
             url: sys.apiUrl("G_USERS", "GetUSER"),
-            data: {
-                CompCode: compcode,
-                UserCode: SysSession.CurrentEnvironment.UserCode, Token: "HGFD-" + SysSession.CurrentEnvironment.Token,
+            data: { CompCode: compcode,  
                 Status: drpStatus.value, UserType: drpuserType.value
             },
             success: (d) => {
@@ -832,7 +831,7 @@ namespace USERS {
             Master.G_USERS.UpdatedAt = DateTimeFormat(Date().toString());
             Master.G_USERS.UpdatedBy = SysSession.CurrentEnvironment.UserCode;
         }
-        Master.G_USERS.StoreID = null;
+   
         Master.G_USERS.SalesManID = null;
         Master.G_USERS.CashBoxID = null;
         Master.G_USERS.USER_TYPE = drpuserType_2.value == "null" ? null : Number(drpuserType_2.value);

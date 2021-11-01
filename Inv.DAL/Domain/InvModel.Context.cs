@@ -59,7 +59,6 @@ namespace Inv.DAL.Domain
         public virtual DbSet<G_USER_BRANCH> G_USER_BRANCH { get; set; }
         public virtual DbSet<G_USER_COMPANY> G_USER_COMPANY { get; set; }
         public virtual DbSet<G_USER_LOG> G_USER_LOG { get; set; }
-        public virtual DbSet<G_USERS> G_USERS { get; set; }
         public virtual DbSet<I_Control> I_Control { get; set; }
         public virtual DbSet<ORDER_DELIVERY> ORDER_DELIVERY { get; set; }
         public virtual DbSet<Outlet> Outlets { get; set; }
@@ -89,6 +88,7 @@ namespace Inv.DAL.Domain
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<Catch_Receipt> Catch_Receipt { get; set; }
         public virtual DbSet<IQ_Catch_Receipt> IQ_Catch_Receipt { get; set; }
+        public virtual DbSet<G_USERS> G_USERS { get; set; }
     
         [DbFunction("InvEntities", "GFun_Companies")]
         public virtual IQueryable<GFun_Companies_Result> GFun_Companies(string userCode)

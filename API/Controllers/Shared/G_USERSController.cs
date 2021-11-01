@@ -387,10 +387,9 @@ namespace Inv.API.Controllers
         }
 
         [HttpGet, AllowAnonymous]
-        public IHttpActionResult GetUSER(int CompCode, string UserCode, string Token, int? Status, int? UserType)
-
+        public IHttpActionResult GetUSER(int CompCode, int? Status, int? UserType) 
         {
-            string s = "select * from GQ_GetUsers where CompCode = " + CompCode + " and 1=1";
+            string s = "select * from G_USERS where CompCode = " + CompCode + " and 1=1";
             string condition = "";
             if (Status != null)
                 condition = condition + " and USER_ACTIVE='" + Status + "'";
@@ -398,7 +397,7 @@ namespace Inv.API.Controllers
                 condition = condition + " and USER_TYPE=" + UserType;
 
             string query = s + condition;
-            var res = db.Database.SqlQuery<GQ_GetUsers>(query).ToList();
+            var res = db.Database.SqlQuery<G_USERS>(query).ToList();
             return Ok(new BaseResponse(res));
             //}
             //return BadRequest(ModelState);
