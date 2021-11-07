@@ -457,7 +457,7 @@
         <Top>0.06171cm</Top>
         <Left>0.0125in</Left>
         <Height>1.2cm</Height>
-        <Width>6.92151cm</Width>
+        <Width>6.92152cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -1141,10 +1141,10 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>الصعيدي</Value>
+                      <Value>Comanda</Value>
                       <Style>
-                        <FontFamily>Constantia</FontFamily>
-                        <FontSize>20pt</FontSize>
+                        <FontFamily>Britannic Bold</FontFamily>
+                        <FontSize>18pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
