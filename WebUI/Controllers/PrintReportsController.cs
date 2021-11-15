@@ -17,6 +17,7 @@ using Inv.DAL.Domain;
 using System.Net.Http;
 using System.Web.Configuration;
 using Newtonsoft.Json;
+using Spire.Pdf;
 
 namespace Inv.WebUI.Controllers
 {//eslam 1 dec 2020
@@ -124,11 +125,43 @@ namespace Inv.WebUI.Controllers
                 //Printer.PrintToPrinter(localReport, ReportsDetail);
 
 
-                string reportType = "Image";
-                byte[] renderedBytes; 
-                renderedBytes = localReport.Render(reportType, "<DeviceInfo><OutputFormat>JPEG</OutputFormat></DeviceInfo>"); 
-                string base64String = Convert.ToBase64String(renderedBytes);
-                return base64String;
+
+
+                //string reportType = "Image";
+                //byte[] renderedBytes; 
+                //renderedBytes = localReport.Render(reportType, "<DeviceInfo><OutputFormat>JPEG</OutputFormat></DeviceInfo>"); 
+                //string base64String = Convert.ToBase64String(renderedBytes);
+                //return base64String;
+
+
+
+
+
+                //string Str = Server.MapPath("/SavePath");
+                //string Str = Server.MapPath("/SavePath");
+
+                string Str = Server.UrlPathEncode(@"E:\Backup\Reports\");
+
+
+                
+
+                byte[] renderdByte;
+                renderdByte = localReport.Render("PDF");
+
+                //string savePath = System.Web.HttpContext.Current.Server.MapPath(@"~/") + @"SavePath\Report" + ".pdf";
+                //System.IO.File.WriteAllBytes(savePath, renderdByte);
+
+
+                PdfDocument pdf = new PdfDocument();
+                pdf.LoadFromBytes(renderdByte);
+                pdf.SaveToFile(Str + "Result.html", FileFormat.HTML);
+
+                string html = System.IO.File.ReadAllText(Str + "Result.html");
+                return html;
+
+
+
+
             }
             catch (Exception ex)
             {

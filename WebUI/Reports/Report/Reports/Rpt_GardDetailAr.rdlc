@@ -1405,7 +1405,7 @@
   <Width>10.06192in</Width>
   <Page>
     <PageHeader>
-      <Height>2.63729cm</Height>
+      <Height>2.97279cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1429,10 +1429,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.05556in</Top>
-          <Left>0.25in</Left>
+          <Top>0.46612in</Top>
           <Height>0.97042cm</Height>
-          <Width>23.76933cm</Width>
+          <Width>25.55728cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1463,7 +1462,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>1.14681cm</Top>
+          <Top>2.28981cm</Top>
           <Left>21.90433cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
@@ -1498,7 +1497,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox23</rd:DefaultName>
-          <Top>1.14681cm</Top>
+          <Top>2.28981cm</Top>
           <Left>5.94995cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
@@ -1534,7 +1533,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>FromDate</rd:DefaultName>
-          <Top>1.14681cm</Top>
+          <Top>2.28981cm</Top>
           <Left>17.16948cm</Left>
           <Height>0.6cm</Height>
           <Width>4.69604cm</Width>
@@ -1570,7 +1569,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ToDate</rd:DefaultName>
-          <Top>1.17326cm</Top>
+          <Top>2.31626cm</Top>
           <Left>1.24037cm</Left>
           <Height>0.6cm</Height>
           <Width>4.69604cm</Width>
@@ -1594,7 +1593,7 @@
                 <TextRun>
                   <Value>البائع</Value>
                   <Style>
-                    <FontSize>11pt</FontSize>
+                    <FontSize>14pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1605,9 +1604,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>1.905cm</Top>
-          <Left>21.90433cm</Left>
-          <Height>0.6cm</Height>
+          <Top>0cm</Top>
+          <Left>23.05728cm</Left>
+          <Height>1.12045cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>5</ZIndex>
           <Style>
@@ -1629,7 +1628,7 @@
                 <TextRun>
                   <Value>=IIf(Fields!Shift_User.Value = "All User","الجميع",Fields!Shift_User.Value)</Value>
                   <Style>
-                    <FontSize>11pt</FontSize>
+                    <FontSize>18pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1640,11 +1639,45 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Shift_User</rd:DefaultName>
-          <Top>1.90712cm</Top>
-          <Left>17.14915cm</Left>
-          <Height>0.6cm</Height>
+          <Top>0.00212cm</Top>
+          <Left>18.3021cm</Left>
+          <Height>1.12045cm</Height>
           <Width>4.7266cm</Width>
           <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox4">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Comanda</Value>
+                  <Style>
+                    <FontFamily>Times New Roman</FontFamily>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Height>1.12257cm</Height>
+          <Width>5.93641cm</Width>
+          <ZIndex>7</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

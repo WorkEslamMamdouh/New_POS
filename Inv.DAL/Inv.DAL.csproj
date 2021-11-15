@@ -243,6 +243,12 @@
     <Compile Include="Domain\ORDER_DELIVERY.cs">
       <DependentUpon>InvModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Domain\Original_Purchases_receipt_Result.cs">
+      <DependentUpon>InvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Original_sales_receipt_Result.cs">
+      <DependentUpon>InvModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Domain\Outlet.cs">
       <DependentUpon>InvModel.tt</DependentUpon>
     </Compile>

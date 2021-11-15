@@ -808,7 +808,7 @@
         <FixedRowHeaders>true</FixedRowHeaders>
         <KeepTogether>true</KeepTogether>
         <DataSetName>Rpt_ACCIncomeAr</DataSetName>
-        <Top>0.14111cm</Top>
+        <Top>0.07056cm</Top>
         <Height>2.4cm</Height>
         <Width>19.69605cm</Width>
         <Style>
@@ -824,7 +824,7 @@
   <Width>7.75435in</Width>
   <Page>
     <PageHeader>
-      <Height>1.02333cm</Height>
+      <Height>1.97304cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -849,8 +849,43 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox33</rd:DefaultName>
+          <Top>0.3739in</Top>
           <Height>1.02333cm</Height>
           <Width>19.69604cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Comanda</Value>
+                  <Style>
+                    <FontFamily>Times New Roman</FontFamily>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Height>0.86857cm</Height>
+          <Width>6.02237cm</Width>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

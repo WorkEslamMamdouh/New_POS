@@ -934,7 +934,7 @@
         <DataSetName>Rpt_GardSammuryAr</DataSetName>
         <Top>0.07056cm</Top>
         <Height>2.43969cm</Height>
-        <Width>19.64183cm</Width>
+        <Width>19.64184cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -942,13 +942,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.53874in</Height>
+    <Height>0.98829in</Height>
     <Style />
   </Body>
-  <Width>7.733in</Width>
+  <Width>7.73301in</Width>
   <Page>
     <PageHeader>
-      <Height>2.00229cm</Height>
+      <Height>2.17692cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -972,6 +972,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.475in</Top>
           <Left>0.25in</Left>
           <Height>0.97042cm</Height>
           <Width>18.99708cm</Width>
@@ -994,6 +995,7 @@
                 <TextRun>
                   <Value>البائع</Value>
                   <Style>
+                    <FontSize>14pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1004,9 +1006,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>1.2065cm</Top>
-          <Left>17.14183cm</Left>
-          <Height>0.6cm</Height>
+          <Top>0cm</Top>
+          <Left>17.11091cm</Left>
+          <Height>1.12257cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
@@ -1027,7 +1029,10 @@
               <TextRuns>
                 <TextRun>
                   <Value>=First(Fields!Shift_User.Value, "Rpt_GardSammuryAr")</Value>
-                  <Style />
+                  <Style>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>
@@ -1036,11 +1041,45 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Shift_User</rd:DefaultName>
-          <Top>1.20862cm</Top>
-          <Left>12.38665cm</Left>
-          <Height>0.6cm</Height>
+          <Top>0.00212cm</Top>
+          <Left>12.35573cm</Left>
+          <Height>1.12257cm</Height>
           <Width>4.7266cm</Width>
           <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Comanda</Value>
+                  <Style>
+                    <FontFamily>Times New Roman</FontFamily>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Height>1.12257cm</Height>
+          <Width>4.24923cm</Width>
+          <ZIndex>3</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

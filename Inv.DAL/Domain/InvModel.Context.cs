@@ -646,5 +646,23 @@ namespace Inv.DAL.Domain
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<all_The_Gard_Result>("all_The_Gard", userNameParameter, fromDateParameter, toDateParameter);
         }
+    
+        public virtual ObjectResult<Original_Purchases_receipt_Result> Original_Purchases_receipt(Nullable<int> trNo)
+        {
+            var trNoParameter = trNo.HasValue ?
+                new ObjectParameter("TrNo", trNo) :
+                new ObjectParameter("TrNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Original_Purchases_receipt_Result>("Original_Purchases_receipt", trNoParameter);
+        }
+    
+        public virtual ObjectResult<Original_sales_receipt_Result> Original_sales_receipt(Nullable<int> trNo)
+        {
+            var trNoParameter = trNo.HasValue ?
+                new ObjectParameter("TrNo", trNo) :
+                new ObjectParameter("TrNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Original_sales_receipt_Result>("Original_sales_receipt", trNoParameter);
+        }
     }
 }

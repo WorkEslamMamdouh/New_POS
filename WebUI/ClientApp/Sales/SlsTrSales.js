@@ -1105,7 +1105,7 @@ var SlsTrSales;
             "setTimeout('step2()', 10);}\n" +
             "function step2(){window.print();window.close()}\n" +
             "</scri" + "pt></head><body onload='step1()'>\n" +
-            "<img src='data:image/png;base64," + source + "' /></body></html>";
+            "" + source + "</body></html>";
     }
     function PrintImage(source) {
         //var Pagelink = "about:blank";

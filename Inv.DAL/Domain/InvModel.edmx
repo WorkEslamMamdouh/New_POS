@@ -617,13 +617,14 @@
         <EntityType Name="G_USERS">
           <Key>
             <PropertyRef Name="USER_CODE" />
+            <PropertyRef Name="CompCode" />
           </Key>
           <Property Name="USER_CODE" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ID_Code" Type="int" />
           <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="20" />
           <Property Name="USER_ACTIVE" Type="bit" Nullable="false" />
           <Property Name="USER_NAME" Type="nvarchar" MaxLength="50" />
-          <Property Name="CompCode" Type="int" />
+          <Property Name="CompCode" Type="int" Nullable="false" />
           <Property Name="REGION_CODE" Type="nvarchar" MaxLength="10" />
           <Property Name="GRP_CODE" Type="int" />
           <Property Name="USER_PASSWORD2" Type="nvarchar" MaxLength="20" />
@@ -1520,6 +1521,12 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
           <Parameter Name="comp" Type="int" Mode="In" />
         </Function>
         <Function Name="New_Data_Bes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Original_Purchases_receipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TrNo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Original_sales_receipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TrNo" Type="int" Mode="In" />
+        </Function>
         <Function Name="Stord_Get_Outlet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
           <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
@@ -3304,6 +3311,12 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
             <Parameter Name="FromDate" Mode="In" Type="DateTime" />
             <Parameter Name="ToDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="Original_Purchases_receipt" ReturnType="Collection(POS2021Model.Original_Purchases_receipt_Result)">
+          <Parameter Name="TrNo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Original_sales_receipt" ReturnType="Collection(POS2021Model.Original_sales_receipt_Result)">
+          <Parameter Name="TrNo" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="G_USERS" EntityType="POS2021Model.G_USERS" />
         </EntityContainer>
         <ComplexType Name="Get_Settings_Report_Result">
@@ -3435,16 +3448,72 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
           <Property Type="DateTime" Name="FromDate" Nullable="true" />
           <Property Type="DateTime" Name="ToDate" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="Original_Purchases_receipt_Result">
+          <Property Type="Int32" Name="TrNo" Nullable="true" />
+          <Property Type="String" Name="Tr_Date" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID_Supplier" Nullable="true" />
+          <Property Type="String" Name="Name_Supplier" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Type_Debit" Nullable="true" />
+          <Property Type="Decimal" Name="Total_Amount" Nullable="true" Precision="19" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type_Supplier" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="IS_Active" Nullable="true" />
+          <Property Type="Decimal" Name="Paid_Up" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="To_be_Paid" Nullable="true" Precision="19" />
+          <Property Type="String" Name="REMARKS" Nullable="true" MaxLength="1000" />
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="Int32" Name="TrNo1" Nullable="true" />
+          <Property Type="String" Name="Name_CAT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Purchases_Quantity" Nullable="true" />
+          <Property Type="Decimal" Name="Purchases_Price" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Sales_Price" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="MinUnitPrice" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="true" />
+          <Property Type="Int32" Name="ID_CAT" Nullable="true" />
+          <Property Type="Int32" Name="ID_familly_Cat" Nullable="true" />
+          <Property Type="Int32" Name="PRODUCT_QET" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Original_sales_receipt_Result">
+          <Property Type="Int32" Name="ID_ORDER_Delivery" Nullable="true" />
+          <Property Type="String" Name="Date_Order_Delivery" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CUSTOMER_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CUSTOMER_ADDRES" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PHONE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CUSTOMER_ADDRES_2" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Total_All" Nullable="true" Precision="19" />
+          <Property Type="String" Name="EMPLOYEE_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="Double" Name="Tax" Nullable="true" />
+          <Property Type="Boolean" Name="Confirmation" Nullable="true" />
+          <Property Type="String" Name="USER_CODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name_Pilot" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Namber_Order_Delivery" Nullable="true" />
+          <Property Type="String" Name="type_order" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID_DELIVERY" Nullable="true" />
+          <Property Type="Double" Name="Quantity_sell" Nullable="true" />
+          <Property Type="Decimal" Name="price_One_part" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Price_One_Part" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Notes_Order" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="FK_ORDER_Delivery" Nullable="true" />
+          <Property Type="Decimal" Name="MinUnitPrice" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="ID_CAT" Nullable="true" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PRODUCT_QET" Nullable="true" />
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="true" />
+        </ComplexType>
         <EntityType Name="G_USERS">
           <Key>
             <PropertyRef Name="USER_CODE" />
+            <PropertyRef Name="CompCode" />
           </Key>
           <Property Name="USER_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ID_Code" Type="Int32" />
           <Property Name="USER_PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="USER_ACTIVE" Type="Boolean" Nullable="false" />
           <Property Name="USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CompCode" Type="Int32" />
+          <Property Name="CompCode" Type="Int32" Nullable="false" />
           <Property Name="REGION_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="GRP_CODE" Type="Int32" />
           <Property Name="USER_PASSWORD2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -4843,6 +4912,69 @@ warning 6002: The table/view 'POS2021.dbo.ReviewSalesMaster' does not have a pri
                 <ScalarProperty Name="Shift_User" ColumnName="Shift_User" />
                 <ScalarProperty Name="FromDate" ColumnName="FromDate" />
                 <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Original_Purchases_receipt" FunctionName="POS2021Model.Store.Original_Purchases_receipt">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POS2021Model.Original_Purchases_receipt_Result">
+                <ScalarProperty Name="TrNo" ColumnName="TrNo" />
+                <ScalarProperty Name="Tr_Date" ColumnName="Tr_Date" />
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="Name_Supplier" ColumnName="Name_Supplier" />
+                <ScalarProperty Name="Type_Debit" ColumnName="Type_Debit" />
+                <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Type_Supplier" ColumnName="Type_Supplier" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IS_Active" ColumnName="IS_Active" />
+                <ScalarProperty Name="Paid_Up" ColumnName="Paid_Up" />
+                <ScalarProperty Name="To_be_Paid" ColumnName="To_be_Paid" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TrNo1" ColumnName="TrNo1" />
+                <ScalarProperty Name="Name_CAT" ColumnName="Name_CAT" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="Purchases_Quantity" ColumnName="Purchases_Quantity" />
+                <ScalarProperty Name="Purchases_Price" ColumnName="Purchases_Price" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales_Price" />
+                <ScalarProperty Name="MinUnitPrice" ColumnName="MinUnitPrice" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="ID_CAT" ColumnName="ID_CAT" />
+                <ScalarProperty Name="ID_familly_Cat" ColumnName="ID_familly_Cat" />
+                <ScalarProperty Name="PRODUCT_QET" ColumnName="PRODUCT_QET" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Original_sales_receipt" FunctionName="POS2021Model.Store.Original_sales_receipt">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POS2021Model.Original_sales_receipt_Result">
+                <ScalarProperty Name="ID_ORDER_Delivery" ColumnName="ID_ORDER_Delivery" />
+                <ScalarProperty Name="Date_Order_Delivery" ColumnName="Date_Order_Delivery" />
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="CUSTOMER_ADDRES" ColumnName="CUSTOMER_ADDRES" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="CUSTOMER_ADDRES_2" ColumnName="CUSTOMER_ADDRES_2" />
+                <ScalarProperty Name="Total_All" ColumnName="Total_All" />
+                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Confirmation" ColumnName="Confirmation" />
+                <ScalarProperty Name="USER_CODE" ColumnName="USER_CODE" />
+                <ScalarProperty Name="Name_Pilot" ColumnName="Name_Pilot" />
+                <ScalarProperty Name="Namber_Order_Delivery" ColumnName="Namber_Order_Delivery" />
+                <ScalarProperty Name="type_order" ColumnName="type_order" />
+                <ScalarProperty Name="ID_DELIVERY" ColumnName="ID_DELIVERY" />
+                <ScalarProperty Name="Quantity_sell" ColumnName="Quantity_sell" />
+                <ScalarProperty Name="price_One_part" ColumnName="price_One_part" />
+                <ScalarProperty Name="Total_Price_One_Part" ColumnName="Total_Price_One_Part" />
+                <ScalarProperty Name="Notes_Order" ColumnName="Notes_Order" />
+                <ScalarProperty Name="FK_ORDER_Delivery" ColumnName="FK_ORDER_Delivery" />
+                <ScalarProperty Name="MinUnitPrice" ColumnName="MinUnitPrice" />
+                <ScalarProperty Name="ID_CAT" ColumnName="ID_CAT" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="PRODUCT_QET" ColumnName="PRODUCT_QET" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

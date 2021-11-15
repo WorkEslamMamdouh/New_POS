@@ -829,7 +829,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>كشف حساب ضخ نقدية</Value>
+                  <Value>كشف حساب نقدية</Value>
                   <Style>
                     <FontSize>18pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -843,6 +843,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox33</rd:DefaultName>
+          <Left>0in</Left>
           <Height>1.02333cm</Height>
           <Width>19.69604cm</Width>
           <Style>
