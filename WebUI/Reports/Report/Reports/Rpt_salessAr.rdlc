@@ -2,20 +2,226 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="Tablix1">
+      <Textbox Name="Tax">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Tax.Value, "Rpt_salessAr")</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>#,0.00</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Tax</rd:DefaultName>
+        <Top>1.90757cm</Top>
+        <Left>0.762cm</Left>
+        <Height>0.75875cm</Height>
+        <Width>3.05915cm</Width>
+        <Style>
+          <Border>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>0.5pt</Width>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox30">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>الاجمالى</Value>
+                <Style>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox30</rd:DefaultName>
+        <Top>1.97107cm</Top>
+        <Left>3.82115cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.01325cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox33">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>الأستبدال والأسترجاع خلال3 أيام من تاريخ الفاتورة </Value>
+                <Style>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>السعر شامل ضريبة القيمة المضافة </Value>
+                <Style>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox30</rd:DefaultName>
+        <Top>4.12913cm</Top>
+        <Height>1.0445cm</Height>
+        <Width>7.04851cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Rectangle Name="Rectangle1">
+        <ReportItems>
+          <Textbox Name="Tax2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=sum(Fields!Total_Price_One_Part.Value)-First(Fields!Tax.Value, "Rpt_salessAr")</Value>
+                    <Style>
+                      <FontSize>14pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Tax</rd:DefaultName>
+            <Top>0.27267cm</Top>
+            <Height>0.69525cm</Height>
+            <Width>3.05915cm</Width>
+            <Style>
+              <Border>
+                <Color>Gray</Color>
+                <Style>Solid</Style>
+                <Width>0.5pt</Width>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox31">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>على الحساب</Value>
+                    <Style>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox30</rd:DefaultName>
+            <Top>0.27267cm</Top>
+            <Left>3.05915cm</Left>
+            <Height>0.69525cm</Height>
+            <Width>2.01325cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <Top>2.70159cm</Top>
+        <Left>0.7258cm</Left>
+        <Height>1.14533cm</Height>
+        <Width>5.1086cm</Width>
+        <ZIndex>3</ZIndex>
+        <Visibility>
+          <Hidden>=iif(sum(Fields!Total_Price_One_Part.Value)-First(Fields!Tax.Value, "Rpt_salessAr")=0,true,false)</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Tablix Name="Tablix2">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.62707cm</Width>
+              <Width>2.3495cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.84575cm</Width>
+              <Width>2.3495cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.74281cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>2.80113cm</Width>
+              <Width>2.3495cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -24,7 +230,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox19">
+                    <Textbox Name="Textbox23">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -33,6 +239,7 @@
                             <TextRun>
                               <Value>الاجمالى</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -42,31 +249,27 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <rd:DefaultName>Textbox23</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </BottomBorder>
                         <LeftBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -77,7 +280,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox21">
+                    <Textbox Name="Textbox24">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -86,6 +289,7 @@
                             <TextRun>
                               <Value>الكمية</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -95,31 +299,27 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox21</rd:DefaultName>
+                      <rd:DefaultName>Textbox24</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </BottomBorder>
                         <LeftBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -130,7 +330,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox27">
+                    <Textbox Name="Textbox26">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -139,6 +339,7 @@
                             <TextRun>
                               <Value>السعر</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -148,83 +349,31 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox27</rd:DefaultName>
+                      <rd:DefaultName>Textbox26</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </BottomBorder>
                         <LeftBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </LeftBorder>
                         <RightBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox25">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>الصنف</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox25</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
+                          <Width>0.25pt</Width>
                         </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -241,7 +390,117 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Total_Price_One_Part">
+                    <Textbox Name="PRODUCT_NAME2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!PRODUCT_NAME.Value</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PRODUCT_NAME</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>2</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox32">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>اسم الصنف</Value>
+                              <Style>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox32</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </TopBorder>
+                        <LeftBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Total_Price_One_Part2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -276,7 +535,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Quantity_sell">
+                    <Textbox Name="Quantity_sell2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -311,7 +570,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="price_One_part">
+                    <Textbox Name="price_One_part2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -364,66 +623,12 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="PRODUCT_NAME">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!PRODUCT_NAME.Value</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>PRODUCT_NAME</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
-            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -435,261 +640,51 @@
               <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
-              <Group Name="Details" />
+              <Group Name="PRODUCT_ID">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!PRODUCT_ID.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!PRODUCT_ID.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details1" />
+                </TablixMember>
+              </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
+        <FixedColumnHeaders>true</FixedColumnHeaders>
+        <FixedRowHeaders>true</FixedRowHeaders>
+        <KeepTogether>true</KeepTogether>
         <DataSetName>Rpt_salessAr</DataSetName>
-        <Top>0.06171cm</Top>
-        <Left>0.0125in</Left>
-        <Height>1.2cm</Height>
-        <Width>7.01676cm</Width>
+        <Top>0.04407cm</Top>
+        <Height>1.8cm</Height>
+        <Width>7.0485cm</Width>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
-            <Style>Solid</Style>
+            <Style>None</Style>
           </Border>
-          <TopBorder>
-            <Color>Black</Color>
-            <Style>Solid</Style>
-            <Width>1pt</Width>
-          </TopBorder>
-          <BottomBorder>
-            <Color>Black</Color>
-            <Style>Solid</Style>
-            <Width>1pt</Width>
-          </BottomBorder>
-          <LeftBorder>
-            <Color>Black</Color>
-            <Style>Solid</Style>
-            <Width>1pt</Width>
-          </LeftBorder>
-          <RightBorder>
-            <Color>Black</Color>
-            <Style>Solid</Style>
-            <Width>1pt</Width>
-          </RightBorder>
         </Style>
       </Tablix>
-      <Textbox Name="Tax">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!Tax.Value, "Rpt_salessAr")</Value>
-                <Style>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Format>#,0.00</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Tax</rd:DefaultName>
-        <Top>1.90757cm</Top>
-        <Left>0.762cm</Left>
-        <Height>0.75875cm</Height>
-        <Width>3.05915cm</Width>
-        <ZIndex>1</ZIndex>
-        <Style>
-          <Border>
-            <Color>Gray</Color>
-            <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox30">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>الاجمالى</Value>
-                <Style>
-                  <FontSize>11pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox30</rd:DefaultName>
-        <Top>1.97107cm</Top>
-        <Left>3.82115cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.01325cm</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox33">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>الأستبدال والأسترجاع خلال 14 يوم من تاريخ الفاتورة </Value>
-                <Style>
-                  <FontSize>11pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>السعر شامل ضريبة القيمة المضافة4</Value>
-                <Style>
-                  <FontSize>11pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox30</rd:DefaultName>
-        <Top>4.12913cm</Top>
-        <Left>0cm</Left>
-        <Height>1.0445cm</Height>
-        <Width>7.04851cm</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Rectangle Name="Rectangle1">
-        <ReportItems>
-          <Textbox Name="Tax2">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=sum(Fields!Total_Price_One_Part.Value)-First(Fields!Tax.Value, "Rpt_salessAr")</Value>
-                    <Style>
-                      <FontSize>14pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <Format>#,0.00</Format>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Tax</rd:DefaultName>
-            <Top>0.27267cm</Top>
-            <Left>0cm</Left>
-            <Height>0.6cm</Height>
-            <Width>3.05915cm</Width>
-            <Style>
-              <Border>
-                <Color>Gray</Color>
-                <Style>Solid</Style>
-                <Width>0.5pt</Width>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox31">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>على الحساب</Value>
-                    <Style>
-                      <FontSize>11pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox30</rd:DefaultName>
-            <Top>0.27267cm</Top>
-            <Left>3.05915cm</Left>
-            <Height>0.6cm</Height>
-            <Width>2.01325cm</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-        </ReportItems>
-        <KeepTogether>true</KeepTogether>
-        <Top>2.70159cm</Top>
-        <Left>0.7258cm</Left>
-        <Height>1.14533cm</Height>
-        <Width>5.1086cm</Width>
-        <ZIndex>4</ZIndex>
-        <Visibility>
-          <Hidden>=iif(sum(Fields!Total_Price_One_Part.Value)-First(Fields!Tax.Value, "Rpt_salessAr")=0,true,false)</Hidden>
-        </Visibility>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Rectangle>
     </ReportItems>
-    <Height>2.2352in</Height>
+    <Height>2.12062in</Height>
     <Style />
   </Body>
   <Width>2.775in</Width>
   <Page>
     <PageHeader>
-      <Height>5.64062cm</Height>
+      <Height>6.54021cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -717,7 +712,7 @@
               <Top>1.29896cm</Top>
               <Left>0.03175cm</Left>
               <Height>0.6cm</Height>
-              <Width>3.07836cm</Width>
+              <Width>2.33753cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -737,6 +732,7 @@
                     <TextRun>
                       <Value>التاريخ</Value>
                       <Style>
+                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -748,9 +744,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>1.29896cm</Top>
-              <Left>5.44282cm</Left>
+              <Left>5.28407cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.51045cm</Width>
+              <Width>1.6692cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -781,10 +777,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CUSTOMER_NAME</rd:DefaultName>
-              <Top>2.07535cm</Top>
+              <Top>2.8056cm</Top>
               <Left>0.0423cm</Left>
               <Height>0.6cm</Height>
-              <Width>5.38997cm</Width>
+              <Width>5.24177cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -805,6 +801,7 @@
                     <TextRun>
                       <Value>العميل</Value>
                       <Style>
+                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -815,10 +812,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.07535cm</Top>
-              <Left>5.44282cm</Left>
+              <Top>2.8056cm</Top>
+              <Left>5.28407cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.51045cm</Width>
+              <Width>1.6692cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -849,10 +846,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CUSTOMER_ADDRES</rd:DefaultName>
-              <Top>3.63409cm</Top>
+              <Top>4.36434cm</Top>
               <Left>0.0423cm</Left>
               <Height>1.9965cm</Height>
-              <Width>5.40052cm</Width>
+              <Width>5.25232cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -873,6 +870,7 @@
                     <TextRun>
                       <Value>الملاحظات</Value>
                       <Style>
+                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -883,10 +881,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>3.63409cm</Top>
-              <Left>5.44282cm</Left>
+              <Top>4.36434cm</Top>
+              <Left>5.28407cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.47637cm</Width>
+              <Width>1.63512cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -907,6 +905,7 @@
                     <TextRun>
                       <Value>=First(Fields!Namber_Order_Delivery.Value, "Rpt_salessAr")</Value>
                       <Style>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -918,9 +917,9 @@
               </Paragraphs>
               <rd:DefaultName>ID_ORDER_Delivery</rd:DefaultName>
               <Top>0.25753cm</Top>
-              <Left>1.44583in</Left>
+              <Left>1.31666in</Left>
               <Height>0.6cm</Height>
-              <Width>1.45812cm</Width>
+              <Width>1.78621cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <Border>
@@ -941,7 +940,8 @@
                     <TextRun>
                       <Value>رقم الفاتورة</Value>
                       <Style>
-                        <FontSize>12pt</FontSize>
+                        <FontSize>11pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -976,7 +976,7 @@
                       <Value>=First(Fields!Date.Value, "Rpt_salessAr")</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
-                        <Format>dd/MM/yyyy</Format>
+                        <Format>yyyy/MM/dd</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -987,9 +987,9 @@
               </Paragraphs>
               <rd:DefaultName>Date</rd:DefaultName>
               <Top>1.29896cm</Top>
-              <Left>3.13268cm</Left>
+              <Left>2.45165cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.31014cm</Width>
+              <Width>2.84297cm</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <Border>
@@ -1020,10 +1020,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PHONE</rd:DefaultName>
-              <Top>2.85174cm</Top>
-              <Left>3.34645cm</Left>
+              <Top>3.58199cm</Top>
               <Height>0.60596cm</Height>
-              <Width>2.47737cm</Width>
+              <Width>5.28407cm</Width>
               <ZIndex>9</ZIndex>
               <Style>
                 <Border>
@@ -1044,6 +1043,7 @@
                     <TextRun>
                       <Value>الهاتف</Value>
                       <Style>
+                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -1054,10 +1054,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.85174cm</Top>
-              <Left>5.84499cm</Left>
+              <Top>3.58199cm</Top>
+              <Left>5.28407cm</Left>
               <Height>0.6cm</Height>
-              <Width>1.10828cm</Width>
+              <Width>1.6692cm</Width>
               <ZIndex>10</ZIndex>
               <Style>
                 <Border>
@@ -1089,10 +1089,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.8577cm</Top>
-              <Left>2.49401cm</Left>
+              <Top>2.00479cm</Top>
+              <Left>5.28407cm</Left>
               <Height>0.6cm</Height>
-              <Width>0.85244cm</Width>
+              <Width>1.6692cm</Width>
               <ZIndex>11</ZIndex>
               <Style>
                 <Border>
@@ -1123,10 +1123,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>EMPLOYEE_NAME</rd:DefaultName>
-              <Top>2.8577cm</Top>
+              <Top>2.00479cm</Top>
               <Left>0.0423cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.45171cm</Width>
+              <Width>5.25232cm</Width>
               <ZIndex>12</ZIndex>
               <Style>
                 <Border>
@@ -1160,7 +1160,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Height>1.12257cm</Height>
-              <Width>3.66182cm</Width>
+              <Width>3.34432cm</Width>
               <ZIndex>13</ZIndex>
               <Style>
                 <Border>
@@ -1175,7 +1175,7 @@
           </ReportItems>
           <KeepTogether>true</KeepTogether>
           <Top>0.00395in</Top>
-          <Height>5.63059cm</Height>
+          <Height>6.53017cm</Height>
           <Width>7.00618cm</Width>
           <Style>
             <Border>
